@@ -128,15 +128,6 @@
             background: #2c3e2b;
         }
 
-        .badge {
-            background: #2c3e2b;
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-size: 13px;
-            font-weight: 500;
-            border-left: 3px solid #9eb67b;
-        }
-
         .categories {
             background: #0b0d17;
             border-top: 1px solid #2c3e2b;
@@ -249,7 +240,6 @@
             object-fit: cover;
             background: #0d1020;
             display: block;
-            filter: brightness(0.95);
         }
 
         .product-info {
@@ -462,35 +452,29 @@
                 width: 55px;
                 height: 55px;
             }
-            .badge {
-                font-size: 10px;
-            }
         }
     </style>
 </head>
 <body>
 <div class="camouflage-border"></div>
 <div class="discount-banner" id="discountBanner">
-    🎁 30% OFF ON FIRST ORDER 🎁 <span>🔥 -30% 🔥</span>
+    20% OFF ON FIRST ORDER <span>🔥 -20% 🔥</span>
 </div>
 <div class="header">
     <div class="container">
         <div class="nav-bar">
             <div class="logo">KURBASHOP<span id="logoSub"> | tactical gear</span></div>
-            <div style="display: flex; gap: 12px; align-items: center;">
-                <div class="lang-selector">
-                    <button class="lang-btn" id="langBtn">
-                        <span id="currentLangFlag">🇬🇧</span> <span id="currentLangText">EN</span> ▼
-                    </button>
-                    <div class="lang-dropdown" id="langDropdown">
-                        <div class="lang-option" data-lang="en">🇬🇧 English</div>
-                        <div class="lang-option" data-lang="ru">🇷🇺 Русский</div>
-                        <div class="lang-option" data-lang="es">🇪🇸 Español</div>
-                        <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
-                        <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
-                    </div>
+            <div class="lang-selector">
+                <button class="lang-btn" id="langBtn">
+                    <span id="currentLangFlag">🇬🇧</span> <span id="currentLangText">EN</span> ▼
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <div class="lang-option" data-lang="en">🇬🇧 English</div>
+                    <div class="lang-option" data-lang="ru">🇷🇺 Русский</div>
+                    <div class="lang-option" data-lang="es">🇪🇸 Español</div>
+                    <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
+                    <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
                 </div>
-                <div class="badge" id="telegramBadge">📡 Telegram | 30% OFF</div>
             </div>
         </div>
     </div>
@@ -507,7 +491,7 @@
 </main>
 
 <div class="footer" id="footerText">
-    <p>© KurbaShop — tactical arsenal & gear.<br>All orders are processed via Telegram. Please contact manager for availability and pricing.<br>🔥 <strong>30% discount on first order</strong> applies to first purchase.</p>
+    <p>© KurbaShop — tactical arsenal & gear.<br>All orders are processed via Telegram. Please contact manager for availability and pricing.<br>🔥 <strong>20% discount on first order</strong> applies to first purchase.</p>
 </div>
 
 <div id="productModal" class="modal">
@@ -532,7 +516,7 @@
 <script>
     // ======================== SETTINGS ========================
     const TG_USERNAME = "kurbaaX";
-    const DISCOUNT = 0.3;
+    const DISCOUNT = 0.2;
     const CURRENCY = "$";
 
     function formatPrice(price) {
@@ -541,47 +525,73 @@
 
     // ======================== PRODUCT DATA ========================
     const products = [
-        // FIREARMS / PISTOLS
-        { id: 1, name: "Glock 17 Gen5", shortDesc: "9mm Austrian pistol, reliability standard", fullDesc: "Austrian service pistol 9x19 mm, 17-round magazine capacity. Polymer frame, improved ergonomics, interchangeable backstraps. Ideal for sport shooting, self-defense, and service use. Includes: holster, two magazines, safety lock, cleaning kit.", marketPrice: 850, category: "Firearms", subcategory: "Pistols", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Glock_17_Gen_4_Pistol_%28no_background%29.png/800px-Glock_17_Gen_4_Pistol_%28no_background%29.png"] },
-        { id: 2, name: "Beretta 92FS", shortDesc: "Legendary Italian classic", fullDesc: "9x19 mm, exposed hammer, high accuracy. Used by US Army and special forces worldwide. Features smooth trigger pull and exceptional reliability. Comes with case, two magazines, and holster.", marketPrice: 790, category: "Firearms", subcategory: "Pistols", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Beretta_92FS_pistol_%28no_background%29.png/800px-Beretta_92FS_pistol_%28no_background%29.png"] },
-        // FIREARMS / RIFLES
-        { id: 3, name: "AK-74M", shortDesc: "Kalashnikov, modern modification", fullDesc: "5.45x39 mm caliber, folding polymer stock, Picatinny rail for optics. Reliability tested for decades in all conditions. Includes: 30-round magazine, sling, oil can, cleaning rod.", marketPrice: 1250, category: "Firearms", subcategory: "Rifles", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/AK-74_%28no_background%29.png/800px-AK-74_%28no_background%29.png"] },
-        { id: 4, name: "M4 Carbine", shortDesc: "American AR-15 platform rifle", fullDesc: "5.56x45 mm, telescoping stock, aluminum M-LOK handguard. Lightweight and accurate, ideal for tactical shooting. Includes: PMAG 30 magazine, carry handle, sling.", marketPrice: 1450, category: "Firearms", subcategory: "Rifles", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/M4_Carbine_%28no_background%29.png/800px-M4_Carbine_%28no_background%29.png"] },
-        { id: 5, name: "Remington 700", shortDesc: "Precision bolt-action rifle", fullDesc: ".308 Win caliber, match-grade barrel, adjustable trigger. Accuracy standard for hunting and sniping. Includes: Weaver optics base, safety lock.", marketPrice: 1100, category: "Firearms", subcategory: "Rifles", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Remington_700_ADL_%28no_background%29.png/800px-Remington_700_ADL_%28no_background%29.png"] },
-        // AIR GUNS
-        { id: 6, name: "Umarex Walther CP88", shortDesc: "CO2 air pistol", fullDesc: "4.5 mm caliber, pellet shooting, exact Walther replica. 8-round magazine, muzzle energy up to 3 J. Suitable for training and recreational shooting.", marketPrice: 290, category: "Air Guns", subcategory: "Air Pistols", images: ["https://www.umarex.com/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/2/2/2253015_walther_cp88_competition_black_1.jpg"] },
-        { id: 7, name: "Hatsan 125", shortDesc: "Powerful spring-piston air rifle", fullDesc: "4.5 or 5.5 mm caliber, muzzle energy up to 30 J. Suitable for small game hunting and sport shooting. Includes: 4x32 scope, bipod.", marketPrice: 380, category: "Air Guns", subcategory: "Air Rifles", images: ["https://www.hatsan.com.tr/uploads/products/hatsan-125-sniper-vortex-1024x681.jpg"] },
-        // LESS-LETHAL
-        { id: 8, name: "MP-79-9TM", shortDesc: "Less-lethal Makarov pistol", fullDesc: "9 mm R.A. caliber, 10-round magazine, rubber bullet. Designed for self-defense. Includes: holster, two magazines, safety lock.", marketPrice: 320, category: "Less-Lethal", subcategory: "Less-Lethal Pistols", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/MP-79-9TM.jpg/800px-MP-79-9TM.jpg"] },
-        // HUNTING
-        { id: 9, name: "Saiga-MK", shortDesc: "Semi-auto shotgun based on AK", fullDesc: "12/76 caliber, 8-round magazine, semi-automatic. Excellent for hunting and outdoor activities. Includes: sling, case, interchangeable chokes.", marketPrice: 890, category: "Hunting", subcategory: "Shotguns", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Saiga_12K_%28no_background%29.png/800px-Saiga_12K_%28no_background%29.png"] },
-        // ACCESSORIES / AMMUNITION
-        { id: 10, name: "9x19 FMJ Ammo", shortDesc: "50 rounds, for Glock/Beretta", fullDesc: "9 mm Luger, FMJ bullet, 8 g bullet weight. 50-round box. Suitable for Glock, Beretta, CZ and other 9x19 pistols. Quality for training and competition.", marketPrice: 45, category: "Accessories", subcategory: "Ammunition", images: ["https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&h=400&fit=crop"] },
-        { id: 11, name: "5.45x39 FMJ Ammo", shortDesc: "120 rounds, for AK-74", fullDesc: "Standard ammunition for AK-74, 5.45x39 mm. Quality ammunition, 120-round box. Suitable for sport shooting and training.", marketPrice: 89, category: "Accessories", subcategory: "Ammunition", images: ["https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&h=400&fit=crop"] },
-        { id: 12, name: "5.56x45 NATO Ammo", shortDesc: "100 rounds, for M4/AR-15", fullDesc: "5.56x45 mm, FMJ bullet. Perfect for M4, AR-15 and other NATO platform rifles. 100-round box.", marketPrice: 110, category: "Accessories", subcategory: "Ammunition", images: ["https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&h=400&fit=crop"] },
-        { id: 13, name: ".308 Win Ammo", shortDesc: "50 rounds, for Remington 700", fullDesc: ".308 Winchester caliber, FMJ bullet. Suitable for Remington 700 and other bolt-action rifles. High accuracy, 50-round box.", marketPrice: 95, category: "Accessories", subcategory: "Ammunition", images: ["https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&h=400&fit=crop"] },
-        { id: 14, name: "12 Gauge Ammo", shortDesc: "25 rounds, for Saiga and shotguns", fullDesc: "Hunting ammunition 12 gauge, shot #7. Suitable for Saiga-MK, MP-153 and other smoothbore weapons. 25-round box.", marketPrice: 65, category: "Accessories", subcategory: "Ammunition", images: ["https://images.pexels.com/photos/1644926/pexels-photo-1644926.jpeg?w=600&h=400&fit=crop"] },
-        // ACCESSORIES / MAGAZINES
-        { id: 15, name: "Glock 17 Magazine", shortDesc: "17 rounds, original", fullDesc: "Original magazine for Glock 17, 9x19 caliber. 17-round capacity, steel body with polymer coating. Reliability and durability.", marketPrice: 42, category: "Accessories", subcategory: "Magazines", images: ["https://images.pexels.com/photos/1644926/pexels-photo-1644926.jpeg?w=600&h=400&fit=crop"] },
-        { id: 16, name: "Beretta 92 Magazine", shortDesc: "15 rounds, steel", fullDesc: "Magazine for Beretta 92FS, 9x19 mm. 15-round capacity, steel construction. Compatible with all 92 series models.", marketPrice: 38, category: "Accessories", subcategory: "Magazines", images: ["https://images.pexels.com/photos/1644926/pexels-photo-1644926.jpeg?w=600&h=400&fit=crop"] },
-        { id: 17, name: "AK-74 Magazine", shortDesc: "30 rounds, polymer", fullDesc: "Magazine for AK-74, 5.45x39 caliber. Polymer body, reinforced spring. 30-round capacity. Compatible with all AK-74 variants.", marketPrice: 28, category: "Accessories", subcategory: "Magazines", images: ["https://images.pexels.com/photos/1644926/pexels-photo-1644926.jpeg?w=600&h=400&fit=crop"] },
-        { id: 18, name: "PMAG 30 AR-15", shortDesc: "30 rounds, polymer, window", fullDesc: "Impact-resistant polymer magazine for M4/AR-15, 5.56x45 caliber. Transparent window for round count. 30-round capacity.", marketPrice: 35, category: "Accessories", subcategory: "Magazines", images: ["https://images.pexels.com/photos/1644926/pexels-photo-1644926.jpeg?w=600&h=400&fit=crop"] },
-        // ACCESSORIES / BODY ARMOR
-        { id: 19, name: "6B45 Body Armor", shortDesc: "Level 3 protection, tactical", fullDesc: "Military body armor, Kevlar inserts, quick-release system. Weight 8.5 kg, adjustable fit. Color: olive, protection level 3.", marketPrice: 550, category: "Accessories", subcategory: "Body Armor", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/6B45_body_armor.jpg/800px-6B45_body_armor.jpg"] },
-        { id: 20, name: "TacTec Plate Carrier", shortDesc: "Lightweight, concealed carry", fullDesc: "Tactical plate carrier with armor plate capability. Weight 2.2 kg, Cordura nylon, adjustable fit. Color: black, coyote.", marketPrice: 390, category: "Accessories", subcategory: "Body Armor", images: ["https://images.unsplash.com/photo-1587293852726-70cdffb7c2f5?w=600&h=400&fit=crop"] },
-        // ACCESSORIES / GEAR
-        { id: 21, name: "Tactical Belt", shortDesc: "MOLLE, adjustable, khaki", fullDesc: "Load-bearing belt, reinforced webbing, metal buckle. Width 5 cm, length up to 120 cm. Suitable for attaching pouches and holsters.", marketPrice: 55, category: "Accessories", subcategory: "Gear", images: ["https://images.pexels.com/photos/1644926/pexels-photo-1644926.jpeg?w=600&h=400&fit=crop"] },
-        { id: 22, name: "Magazine Pouch", shortDesc: "MOLLE, 2 compartments, khaki", fullDesc: "Tactical magazine pouch for two magazines. MOLLE attachment, adjustable flaps, quick access. Color: khaki, olive.", marketPrice: 32, category: "Accessories", subcategory: "Gear", images: ["https://images.pexels.com/photos/1644926/pexels-photo-1644926.jpeg?w=600&h=400&fit=crop"] }
+        // ========== FIREARMS / PISTOLS ==========
+        { id: 1, name: "Glock 17 Gen5", shortDesc: "9mm Austrian pistol, reliability standard", fullDesc: "Austrian service pistol 9x19 mm, 17-round magazine capacity. Polymer frame, improved ergonomics, interchangeable backstraps. Ideal for sport shooting, self-defense, and service use. Includes: holster, two magazines, safety lock, cleaning kit.", marketPrice: 850, category: "Firearms", subcategory: "Pistols", images: ["https://www.glock.com/sites/default/files/2019-10/Glock-17-Gen5-Pistol.png"] },
+        { id: 2, name: "Beretta 92FS", shortDesc: "Legendary Italian classic", fullDesc: "9x19 mm, exposed hammer, high accuracy. Used by US Army and special forces worldwide. Features smooth trigger pull and exceptional reliability. Comes with case, two magazines, and holster.", marketPrice: 790, category: "Firearms", subcategory: "Pistols", images: ["https://www.beretta.com/sites/default/files/styles/product_detail/public/2021-03/92FS_1.png"] },
+        { id: 3, name: "Sig Sauer P320", shortDesc: "Modular striker-fired pistol", fullDesc: "9mm caliber, modular grip system, 17-round magazine. US Army's M17/M18 service pistol. Excellent trigger and accuracy. Includes: two magazines, interchangeable grips.", marketPrice: 680, category: "Firearms", subcategory: "Pistols", images: ["https://www.sigsauer.com/media/catalog/product/p/3/p320-full_1.png"] },
+        { id: 4, name: "CZ P-10C", shortDesc: "Czech striker-fired compact", fullDesc: "9x19 mm, 15-round magazine, ergonomic grip. Superior trigger and reliability. Ideal for concealed carry and duty use. Includes: two magazines, cleaning kit.", marketPrice: 550, category: "Firearms", subcategory: "Pistols", images: ["https://www.czub.cz/en/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/1/p10c_1.jpg"] },
+        { id: 5, name: "Walther PDP", shortDesc: "Performance Duty Pistol", fullDesc: "9mm caliber, 18-round magazine, advanced ergonomics. Superior grip texture and trigger system. Includes: two magazines, optics-ready slide.", marketPrice: 720, category: "Firearms", subcategory: "Pistols", images: ["https://www.waltherarms.com/wp-content/uploads/2020/12/PDP_1.png"] },
+        // ========== FIREARMS / RIFLES ==========
+        { id: 6, name: "AK-74M", shortDesc: "Kalashnikov, modern modification", fullDesc: "5.45x39 mm caliber, folding polymer stock, Picatinny rail for optics. Reliability tested for decades in all conditions. Includes: 30-round magazine, sling, oil can, cleaning rod.", marketPrice: 1250, category: "Firearms", subcategory: "Rifles", images: ["https://kalashnikov.ru/wp-content/uploads/2018/03/ak74m_1.png"] },
+        { id: 7, name: "M4 Carbine", shortDesc: "American AR-15 platform rifle", fullDesc: "5.56x45 mm, telescoping stock, aluminum M-LOK handguard. Lightweight and accurate, ideal for tactical shooting. Includes: PMAG 30 magazine, carry handle, sling.", marketPrice: 1450, category: "Firearms", subcategory: "Rifles", images: ["https://www.colt.com/Portals/0/Images/Firearms/M4Carbine.png"] },
+        { id: 8, name: "HK416", shortDesc: "German premium assault rifle", fullDesc: "5.56x45 mm, gas piston system, cold hammer-forged barrel. Used by special forces worldwide. Superior reliability and accuracy. Includes: 30-round magazine, sling.", marketPrice: 2800, category: "Firearms", subcategory: "Rifles", images: ["https://www.heckler-koch.com/en/products/military/assault-rifles/hk416/hk416-14-5.png"] },
+        { id: 9, name: "FN SCAR-17", shortDesc: "Special Operations Forces rifle", fullDesc: "7.62x51 mm NATO, folding stock, fully ambidextrous controls. Battle-proven reliability. Includes: 20-round magazine, sling, cleaning kit.", marketPrice: 3400, category: "Firearms", subcategory: "Rifles", images: ["https://www.fnamerica.com/media/catalog/product/s/c/scar-17s_1.png"] },
+        { id: 10, name: "Remington 700", shortDesc: "Precision bolt-action rifle", fullDesc: ".308 Win caliber, match-grade barrel, adjustable trigger. Accuracy standard for hunting and sniping. Includes: Weaver optics base, safety lock.", marketPrice: 1100, category: "Firearms", subcategory: "Rifles", images: ["https://www.remington.com/sites/default/files/styles/product_detail/public/2020-05/Model700.png"] },
+        { id: 11, name: "Savage 110", shortDesc: "Accurate bolt-action rifle", fullDesc: ".308 Win caliber, AccuTrigger system, user-adjustable. Exceptional accuracy out of the box. Includes: scope bases, sling swivels.", marketPrice: 950, category: "Firearms", subcategory: "Rifles", images: ["https://www.savagearms.com/sites/default/files/styles/product_detail/public/2020-03/110_1.png"] },
+        // ========== AIR GUNS ==========
+        { id: 12, name: "Umarex Walther CP88", shortDesc: "CO2 air pistol", fullDesc: "4.5 mm caliber, pellet shooting, exact Walther replica. 8-round magazine, muzzle energy up to 3 J. Suitable for training and recreational shooting.", marketPrice: 290, category: "Air Guns", subcategory: "Air Pistols", images: ["https://www.umarex.com/media/catalog/product/2/2/2253015_walther_cp88_competition_black_1.jpg"] },
+        { id: 13, name: "Sig Sauer P226 Air", shortDesc: "CO2 air pistol replica", fullDesc: "4.5 mm caliber, blowback action, realistic weight and feel. 18-round magazine. Perfect for training and plinking.", marketPrice: 210, category: "Air Guns", subcategory: "Air Pistols", images: ["https://www.sigsauer.com/media/catalog/product/p/2/p226-air_1.png"] },
+        { id: 14, name: "Hatsan 125", shortDesc: "Powerful spring-piston air rifle", fullDesc: "4.5 or 5.5 mm caliber, muzzle energy up to 30 J. Suitable for small game hunting and sport shooting. Includes: 4x32 scope, bipod.", marketPrice: 380, category: "Air Guns", subcategory: "Air Rifles", images: ["https://www.hatsan.com.tr/uploads/products/hatsan-125-sniper-vortex.jpg"] },
+        { id: 15, name: "Gamo Swarm Magnum", shortDesc: "10-shot multi-shot air rifle", fullDesc: ".22 caliber, IGT gas piston, 10-shot magazine system. High power and accuracy. Includes: 3-9x40 scope.", marketPrice: 420, category: "Air Guns", subcategory: "Air Rifles", images: ["https://www.gamo.com/media/catalog/product/s/w/swarm-magnum-10x-gen2_1.jpg"] },
+        // ========== LESS-LETHAL ==========
+        { id: 16, name: "MP-79-9TM", shortDesc: "Less-lethal Makarov pistol", fullDesc: "9 mm R.A. caliber, 10-round magazine, rubber bullet. Designed for self-defense. Includes: holster, two magazines, safety lock.", marketPrice: 320, category: "Less-Lethal", subcategory: "Less-Lethal Pistols", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/MP-79-9TM.jpg/800px-MP-79-9TM.jpg"] },
+        { id: 17, name: "Byrna HD", shortDesc: "Kinetic self-defense launcher", fullDesc: ".68 caliber, CO2-powered, fires kinetic and chemical projectiles. Effective range up to 60 feet. Includes: CO2 cartridges, holster.", marketPrice: 380, category: "Less-Lethal", subcategory: "Less-Lethal Pistols", images: ["https://byrna.com/cdn/shop/products/Byrna_HD_Black_01_1024x.png"] },
+        // ========== HUNTING ==========
+        { id: 18, name: "Saiga-MK", shortDesc: "Semi-auto shotgun based on AK", fullDesc: "12/76 caliber, 8-round magazine, semi-automatic. Excellent for hunting and outdoor activities. Includes: sling, case, interchangeable chokes.", marketPrice: 890, category: "Hunting", subcategory: "Shotguns", images: ["https://kalashnikov.ru/wp-content/uploads/2019/05/saiga-mk-03.png"] },
+        { id: 19, name: "Mossberg 500", shortDesc: "Pump-action shotgun", fullDesc: "12 gauge, 5+1 capacity, dual extractors. The most reliable pump-action shotgun. Includes: sling, choke tubes, cable lock.", marketPrice: 480, category: "Hunting", subcategory: "Shotguns", images: ["https://www.mossberg.com/media/catalog/product/5/0/500_1.png"] },
+        { id: 20, name: "Benelli M4", shortDesc: "Semi-auto tactical shotgun", fullDesc: "12 gauge, 5+1 capacity, ARGO gas system. Used by US Marine Corps. Superior reliability. Includes: sling, choke kit.", marketPrice: 1850, category: "Hunting", subcategory: "Shotguns", images: ["https://www.benelliusa.com/media/catalog/product/m/4/m4_1.png"] },
+        // ========== ACCESSORIES / AMMUNITION ==========
+        { id: 21, name: "9x19 FMJ Ammo", shortDesc: "50 rounds, for Glock/Beretta", fullDesc: "9 mm Luger, FMJ bullet, 8 g bullet weight. 50-round box. Suitable for Glock, Beretta, CZ and other 9x19 pistols.", marketPrice: 45, category: "Accessories", subcategory: "Ammunition", images: ["https://www.sgammo.com/sites/default/files/styles/product_image/public/9mm-ammo-box.jpg"] },
+        { id: 22, name: "5.45x39 FMJ Ammo", shortDesc: "120 rounds, for AK-74", fullDesc: "Standard ammunition for AK-74, 5.45x39 mm. Quality ammunition, 120-round box.", marketPrice: 89, category: "Accessories", subcategory: "Ammunition", images: ["https://www.sgammo.com/sites/default/files/styles/product_image/public/545x39-ammo.jpg"] },
+        { id: 23, name: "5.56x45 NATO Ammo", shortDesc: "100 rounds, for M4/AR-15", fullDesc: "5.56x45 mm, FMJ bullet. Perfect for M4, AR-15 and other NATO platform rifles. 100-round box.", marketPrice: 110, category: "Accessories", subcategory: "Ammunition", images: ["https://www.sgammo.com/sites/default/files/styles/product_image/public/556x45-ammo-box.jpg"] },
+        { id: 24, name: ".308 Win Ammo", shortDesc: "50 rounds, for Remington 700", fullDesc: ".308 Winchester caliber, FMJ bullet. High accuracy, 50-round box.", marketPrice: 95, category: "Accessories", subcategory: "Ammunition", images: ["https://www.sgammo.com/sites/default/files/styles/product_image/public/308-win-ammo.jpg"] },
+        // ========== ACCESSORIES / MAGAZINES ==========
+        { id: 25, name: "Glock 17 Magazine", shortDesc: "17 rounds, original", fullDesc: "Original magazine for Glock 17, 9x19 caliber. 17-round capacity, steel body with polymer coating.", marketPrice: 42, category: "Accessories", subcategory: "Magazines", images: ["https://us.glock.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/f/mf23001_1.jpg"] },
+        { id: 26, name: "AK-74 Magazine", shortDesc: "30 rounds, polymer", fullDesc: "Magazine for AK-74, 5.45x39 caliber. Polymer body, reinforced spring. 30-round capacity.", marketPrice: 28, category: "Accessories", subcategory: "Magazines", images: ["https://kalashnikov.ru/wp-content/uploads/2018/05/ak74-magazine.jpg"] },
+        { id: 27, name: "PMAG 30 AR-15", shortDesc: "30 rounds, polymer, window", fullDesc: "Impact-resistant polymer magazine for M4/AR-15, 5.56x45 caliber. Transparent window for round count.", marketPrice: 35, category: "Accessories", subcategory: "Magazines", images: ["https://www.magpul.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/m/pmag30_black_1.jpg"] },
+        { id: 28, name: "HK416 Magazine", shortDesc: "30 rounds, steel", fullDesc: "Original magazine for HK416, 5.56x45 mm. Steel construction, anti-tilt follower. 30-round capacity.", marketPrice: 55, category: "Accessories", subcategory: "Magazines", images: ["https://www.hkparts.net/shop/pc/catalog/HK416-magazine_1.jpg"] },
+        // ========== ACCESSORIES / BODY ARMOR ==========
+        { id: 29, name: "6B45 Body Armor", shortDesc: "Level 3 protection, tactical", fullDesc: "Military body armor, Kevlar inserts, quick-release system. Weight 8.5 kg, adjustable fit. Color: olive, protection level 3.", marketPrice: 550, category: "Accessories", subcategory: "Body Armor", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/6B45_body_armor.jpg/800px-6B45_body_armor.jpg"] },
+        { id: 30, name: "TacTec Plate Carrier", shortDesc: "Lightweight, concealed carry", fullDesc: "Tactical plate carrier with armor plate capability. Weight 2.2 kg, Cordura nylon, adjustable fit. Color: black, coyote.", marketPrice: 390, category: "Accessories", subcategory: "Body Armor", images: ["https://www.511tactical.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/8/58180_01_1.jpg"] },
+        { id: 31, name: "AR500 Armor Plates", shortDesc: "Level III+ steel plates", fullDesc: "Two plates, Level III+ protection, multi-hit capability. Weight 7.5 lbs each. Includes anti-spall coating.", marketPrice: 280, category: "Accessories", subcategory: "Body Armor", images: ["https://www.ar500armor.com/media/catalog/product/a/r/ar500-plates_1.jpg"] },
+        // ========== ACCESSORIES / GEAR ==========
+        { id: 32, name: "Tactical Belt", shortDesc: "MOLLE, adjustable, khaki", fullDesc: "Load-bearing belt, reinforced webbing, metal buckle. Width 5 cm, length up to 120 cm. Suitable for attaching pouches and holsters.", marketPrice: 55, category: "Accessories", subcategory: "Gear", images: ["https://www.511tactical.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/9/59501_01_1.jpg"] },
+        { id: 33, name: "Magazine Pouch", shortDesc: "MOLLE, 2 compartments, khaki", fullDesc: "Tactical magazine pouch for two magazines. MOLLE attachment, adjustable flaps, quick access. Color: khaki, olive.", marketPrice: 32, category: "Accessories", subcategory: "Gear", images: ["https://www.511tactical.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/8/58007_01_1.jpg"] },
+        { id: 34, name: "Tactical Dump Pouch", shortDesc: "Collapsible utility pouch", fullDesc: "Large capacity dump pouch for empty magazines and gear. MOLLE attachment, quick deployment. Color: coyote.", marketPrice: 38, category: "Accessories", subcategory: "Gear", images: ["https://www.condor.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/a/map-001_1.jpg"] },
+        { id: 35, name: "Shooting Glasses", shortDesc: "Impact-resistant protective eyewear", fullDesc: "ANSI Z87.1 rated, UV protection, interchangeable lenses. Clear, yellow, smoke lenses included. Rubberized temples for secure fit.", marketPrice: 45, category: "Accessories", subcategory: "Gear", images: ["https://www.wileyx.com/media/catalog/product/w/x/wx-valor_1.jpg"] }
     ];
 
-    // ======================== TRANSLATIONS ========================
+    // ========== BUILD CATEGORIES ==========
+    const categoriesSet = new Set();
+    const subcategoriesMap = new Map();
+    products.forEach(p => {
+        categoriesSet.add(p.category);
+        if (!subcategoriesMap.has(p.category)) {
+            subcategoriesMap.set(p.category, new Set());
+        }
+        subcategoriesMap.get(p.category).add(p.subcategory);
+    });
+
+    let currentLang = localStorage.getItem('kurbashop_lang') || 'en';
+    let activeCategory = "Firearms";
+    let activeSubcategory = null;
+
     const translations = {
         en: {
             logoSub: " | tactical gear",
-            telegramBadge: "📡 Telegram | 30% OFF",
-            discountBanner: "🎁 30% OFF ON FIRST ORDER 🎁",
-            discountSpan: "🔥 -30% 🔥",
-            footer: "© KurbaShop — tactical arsenal & gear.<br>All orders are processed via Telegram. Please contact manager for availability and pricing.<br>🔥 <strong>30% discount on first order</strong> applies to first purchase.",
+            discountBanner: "20% OFF ON FIRST ORDER",
+            discountSpan: "🔥 -20% 🔥",
+            footer: "© KurbaShop — tactical arsenal & gear.<br>All orders are processed via Telegram. Please contact manager for availability and pricing.<br>🔥 <strong>20% discount on first order</strong> applies to first purchase.",
             orderBtn: "📲 ORDER → TELEGRAM",
             all: "All",
             categories: {
@@ -606,10 +616,9 @@
         },
         ru: {
             logoSub: " | тактический арсенал",
-            telegramBadge: "📡 Telegram | скидка 30%",
-            discountBanner: "🎁 СКИДКА НА ПЕРВЫЙ ЗАКАЗ — 30% 🎁",
-            discountSpan: "🔥 -30% 🔥",
-            footer: "© KurbaShop — тактический арсенал и снаряжение.<br>Все заказы принимаются через Telegram. Наличие и цены уточняйте у менеджера.<br>🔥 <strong>Скидка 30% на первый заказ</strong> действует при первом обращении.",
+            discountBanner: "СКИДКА 20% НА ПЕРВЫЙ ЗАКАЗ",
+            discountSpan: "🔥 -20% 🔥",
+            footer: "© KurbaShop — тактический арсенал и снаряжение.<br>Все заказы принимаются через Telegram. Наличие и цены уточняйте у менеджера.<br>🔥 <strong>Скидка 20% на первый заказ</strong> действует при первом обращении.",
             orderBtn: "📲 ЗАКАЗАТЬ → TELEGRAM",
             all: "Все",
             categories: {
@@ -629,15 +638,14 @@
                 "Ammunition": "Патроны",
                 "Magazines": "Магазины",
                 "Body Armor": "Бронежилеты",
-                "Gear": "Расходники"
+                "Gear": "Снаряжение"
             }
         },
         es: {
-            logoSub: " | arsenal táctico",
-            telegramBadge: "📡 Telegram | 30% DTO",
-            discountBanner: "🎁 30% DE DESCUENTO EN PRIMER PEDIDO 🎁",
-            discountSpan: "🔥 -30% 🔥",
-            footer: "© KurbaShop — arsenal táctico y equipo.<br>Todos los pedidos se procesan vía Telegram. Consulte disponibilidad y precios con el gerente.<br>🔥 <strong>30% de descuento en primer pedido</strong> aplica a la primera compra.",
+            logoSub: " | equipo táctico",
+            discountBanner: "20% DE DESCUENTO EN PRIMER PEDIDO",
+            discountSpan: "🔥 -20% 🔥",
+            footer: "© KurbaShop — arsenal táctico y equipo.<br>Todos los pedidos se procesan vía Telegram. Consulte disponibilidad y precios con el gerente.<br>🔥 <strong>20% de descuento en primer pedido</strong> aplica a la primera compra.",
             orderBtn: "📲 PEDIR → TELEGRAM",
             all: "Todo",
             categories: {
@@ -662,10 +670,9 @@
         },
         de: {
             logoSub: " | taktische Ausrüstung",
-            telegramBadge: "📡 Telegram | 30% RABATT",
-            discountBanner: "🎁 30% RABATT AUF ERSTBESTELLUNG 🎁",
-            discountSpan: "🔥 -30% 🔥",
-            footer: "© KurbaShop — taktisches Arsenal & Ausrüstung.<br>Alle Bestellungen werden über Telegram abgewickelt. Verfügbarkeit und Preise erfragen Sie bitte beim Manager.<br>🔥 <strong>30% Rabatt auf erste Bestellung</strong> gilt für den ersten Kauf.",
+            discountBanner: "20% RABATT AUF ERSTBESTELLUNG",
+            discountSpan: "🔥 -20% 🔥",
+            footer: "© KurbaShop — taktisches Arsenal & Ausrüstung.<br>Alle Bestellungen werden über Telegram abgewickelt. Verfügbarkeit und Preise erfragen Sie bitte beim Manager.<br>🔥 <strong>20% Rabatt auf erste Bestellung</strong> gilt für den ersten Kauf.",
             orderBtn: "📲 BESTELLEN → TELEGRAM",
             all: "Alle",
             categories: {
@@ -690,10 +697,9 @@
         },
         fr: {
             logoSub: " | équipement tactique",
-            telegramBadge: "📡 Telegram | 30% DE RÉDUCTION",
-            discountBanner: "🎁 30% DE RÉDUCTION SUR PREMIÈRE COMMANDE 🎁",
-            discountSpan: "🔥 -30% 🔥",
-            footer: "© KurbaShop — arsenal tactique et équipement.<br>Toutes les commandes sont traitées via Telegram. Veuillez contacter le responsable pour disponibilité et prix.<br>🔥 <strong>30% de réduction sur première commande</strong> s'applique au premier achat.",
+            discountBanner: "20% DE RÉDUCTION SUR PREMIÈRE COMMANDE",
+            discountSpan: "🔥 -20% 🔥",
+            footer: "© KurbaShop — arsenal tactique et équipement.<br>Toutes les commandes sont traitées via Telegram. Veuillez contacter le responsable pour disponibilité et prix.<br>🔥 <strong>20% de réduction sur première commande</strong> s'applique au premier achat.",
             orderBtn: "📲 COMMANDER → TELEGRAM",
             all: "Tous",
             categories: {
@@ -718,31 +724,20 @@
         }
     };
 
-    let currentLang = localStorage.getItem('kurbashop_lang') || 'en';
-    let activeCategory = "Firearms";
-    let activeSubcategory = null;
-
-    // Get translated category name
-    function getCategoryName(cat) {
-        return translations[currentLang].categories[cat] || cat;
-    }
-
-    function getSubcategoryName(sub) {
-        return translations[currentLang].subcategories[sub] || sub;
-    }
+    function getCategoryName(cat) { return translations[currentLang].categories[cat] || cat; }
+    function getSubcategoryName(sub) { return translations[currentLang].subcategories[sub] || sub; }
 
     function updateUIForLanguage() {
         const t = translations[currentLang];
         document.getElementById('logoSub').innerHTML = t.logoSub;
-        document.getElementById('telegramBadge').innerHTML = t.telegramBadge;
-        document.getElementById('discountBanner').innerHTML = `🎁 ${t.discountBanner.split('🎁')[1] || t.discountBanner} 🎁 <span>${t.discountSpan}</span>`;
+        document.getElementById('discountBanner').innerHTML = `${t.discountBanner} <span>${t.discountSpan}</span>`;
         document.getElementById('footerText').innerHTML = t.footer;
         document.getElementById('orderTelegramBtn').innerHTML = t.orderBtn;
         
         const flagMap = { en: '🇬🇧', ru: '🇷🇺', es: '🇪🇸', de: '🇩🇪', fr: '🇫🇷' };
         const langNameMap = { en: 'EN', ru: 'RU', es: 'ES', de: 'DE', fr: 'FR' };
-        document.getElementById('currentLangFlag').innerHTML = flagMap[currentLang] || '🇬🇧';
-        document.getElementById('currentLangText').innerHTML = langNameMap[currentLang] || 'EN';
+        document.getElementById('currentLangFlag').innerHTML = flagMap[currentLang];
+        document.getElementById('currentLangText').innerHTML = langNameMap[currentLang];
         
         renderCategories();
         updateSubcategories();
@@ -758,22 +753,14 @@
         const allBtn = document.createElement('button');
         allBtn.textContent = translations[currentLang].all;
         allBtn.className = `sub-btn ${!activeSubcategory ? 'active' : ''}`;
-        allBtn.onclick = () => {
-            activeSubcategory = null;
-            renderProducts();
-            highlightSubcategory(null);
-        };
+        allBtn.onclick = () => { activeSubcategory = null; renderProducts(); highlightSubcategory(null); };
         container.appendChild(allBtn);
         
         subs.forEach(sub => {
             const btn = document.createElement('button');
             btn.textContent = getSubcategoryName(sub);
             btn.className = `sub-btn ${activeSubcategory === sub ? 'active' : ''}`;
-            btn.onclick = () => {
-                activeSubcategory = sub;
-                renderProducts();
-                highlightSubcategory(sub);
-            };
+            btn.onclick = () => { activeSubcategory = sub; renderProducts(); highlightSubcategory(sub); };
             container.appendChild(btn);
         });
     }
@@ -793,33 +780,26 @@
         const grid = document.getElementById("productsGrid");
         if (!grid) return;
         let filtered = products.filter(p => p.category === activeCategory);
-        if (activeSubcategory) {
-            filtered = filtered.filter(p => p.subcategory === activeSubcategory);
-        }
+        if (activeSubcategory) filtered = filtered.filter(p => p.subcategory === activeSubcategory);
         if (filtered.length === 0) {
-            const noItemsText = currentLang === 'en' ? 'No items in this category' : 
-                               currentLang === 'ru' ? 'Нет товаров в выбранной категории' :
-                               currentLang === 'es' ? 'No hay artículos en esta categoría' :
-                               currentLang === 'de' ? 'Keine Artikel in dieser Kategorie' : 'Aucun article dans cette catégorie';
-            grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:50px;">${noItemsText}</div>`;
+            grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:50px;">${currentLang === 'en' ? 'No items in this category' : currentLang === 'ru' ? 'Нет товаров в выбранной категории' : currentLang === 'es' ? 'No hay artículos' : currentLang === 'de' ? 'Keine Artikel' : 'Aucun article'}</div>`;
             return;
         }
         grid.innerHTML = filtered.map(product => {
             const discountPrice = product.marketPrice * (1 - DISCOUNT);
-            return `
-            <div class="product-card" data-id="${product.id}">
-                <img class="product-img" src="${product.images[0]}" alt="${escapeHtml(product.name)}" loading="lazy">
+            return `<div class="product-card" data-id="${product.id}">
+                <img class="product-img" src="${product.images[0]}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="this.src='https://placehold.co/600x400/2a2e3a/b8c7a3?text=${encodeURIComponent(product.name)}'">
                 <div class="product-info">
                     <div class="product-name">${escapeHtml(product.name)}</div>
                     <div class="product-price">
                         <span class="old-price">${formatPrice(product.marketPrice)}</span>
                         <span class="new-price">${formatPrice(discountPrice)}</span>
-                        <span class="discount-badge">-30%</span>
+                        <span class="discount-badge">-20%</span>
                     </div>
                     <div class="product-desc">${escapeHtml(product.shortDesc)}</div>
                 </div>
-            </div>
-        `}).join('');
+            </div>`;
+        }).join('');
         document.querySelectorAll('.product-card').forEach(card => {
             const id = parseInt(card.getAttribute('data-id'));
             card.addEventListener('click', () => openProductModal(id));
@@ -831,55 +811,40 @@
         if (!product) return;
         const discountPrice = product.marketPrice * (1 - DISCOUNT);
         const modal = document.getElementById("productModal");
-        const mainImg = document.getElementById("modalMainImage");
-        const titleSpan = document.getElementById("modalTitle");
-        const descSpan = document.getElementById("modalDescription");
-        const oldPriceSpan = document.getElementById("modalOldPrice");
-        const newPriceSpan = document.getElementById("modalNewPrice");
+        document.getElementById("modalMainImage").src = product.images[0];
+        document.getElementById("modalTitle").innerText = product.name;
+        document.getElementById("modalDescription").innerText = product.fullDesc;
+        document.getElementById("modalOldPrice").innerText = formatPrice(product.marketPrice);
+        document.getElementById("modalNewPrice").innerText = formatPrice(discountPrice);
+        
         const thumbContainer = document.getElementById("thumbnailsContainer");
-
-        titleSpan.innerText = product.name;
-        descSpan.innerText = product.fullDesc;
-        oldPriceSpan.innerText = formatPrice(product.marketPrice);
-        newPriceSpan.innerText = formatPrice(discountPrice);
-        mainImg.src = product.images[0];
-        mainImg.alt = product.name;
-
         thumbContainer.innerHTML = '';
         product.images.forEach((img, idx) => {
             const thumb = document.createElement('img');
             thumb.src = img;
             thumb.classList.add('thumbnail');
             if (idx === 0) thumb.classList.add('active');
-            thumb.addEventListener('click', () => {
-                mainImg.src = img;
+            thumb.onerror = () => { thumb.src = 'https://placehold.co/70x70/2a2e3a/b8c7a3?text=img'; };
+            thumb.onclick = () => {
+                document.getElementById("modalMainImage").src = img;
                 document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
                 thumb.classList.add('active');
-            });
+            };
             thumbContainer.appendChild(thumb);
         });
-
-        const orderBtn = document.getElementById("orderTelegramBtn");
-        const orderText = currentLang === 'en' ? 'I want to order' : 
-                         currentLang === 'ru' ? 'Хочу заказать' :
-                         currentLang === 'es' ? 'Quiero pedir' :
-                         currentLang === 'de' ? 'Ich möchte bestellen' : 'Je souhaite commander';
-        const tgLink = `https://t.me/${TG_USERNAME}?text=${encodeURIComponent(`${orderText}: ${product.name} (30% off). Price: ${formatPrice(discountPrice)}. Details: ${product.fullDesc.substring(0, 300)}`)}`;
-        orderBtn.onclick = () => window.open(tgLink, '_blank');
+        
+        const tgLink = `https://t.me/${TG_USERNAME}?text=${encodeURIComponent(`I want to order: ${product.name} (20% off). Price: ${formatPrice(discountPrice)}. Details: ${product.fullDesc.substring(0, 300)}`)}`;
+        document.getElementById("orderTelegramBtn").onclick = () => window.open(tgLink, '_blank');
         modal.classList.add('active');
     }
 
-    function closeModal() {
-        document.getElementById("productModal").classList.remove('active');
-    }
+    function closeModal() { document.getElementById("productModal").classList.remove('active'); }
 
     function renderCategories() {
         const container = document.getElementById("categoriesList");
         if (!container) return;
         const categoriesArray = Array.from(categoriesSet);
-        container.innerHTML = categoriesArray.map(cat => `
-            <button class="cat-btn ${activeCategory === cat ? 'active' : ''}" data-cat="${cat}">${getCategoryName(cat)}</button>
-        `).join('');
+        container.innerHTML = categoriesArray.map(cat => `<button class="cat-btn ${activeCategory === cat ? 'active' : ''}" data-cat="${cat}">${getCategoryName(cat)}</button>`).join('');
         document.querySelectorAll('.cat-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 activeCategory = btn.getAttribute('data-cat');
@@ -894,30 +859,10 @@
 
     function escapeHtml(str) {
         if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
-        });
+        return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : m === '<' ? '&lt;' : '&gt;');
     }
 
-    // Build categories and subcategories
-    const categoriesSet = new Set();
-    const subcategoriesMap = new Map();
-    products.forEach(p => {
-        categoriesSet.add(p.category);
-        if (!subcategoriesMap.has(p.category)) {
-            subcategoriesMap.set(p.category, new Set());
-        }
-        subcategoriesMap.get(p.category).add(p.subcategory);
-    });
-
-    // Language selector
-    function toggleLangDropdown() {
-        document.getElementById('langDropdown').classList.toggle('active');
-    }
-    document.getElementById('langBtn').addEventListener('click', toggleLangDropdown);
+    document.getElementById('langBtn').addEventListener('click', () => document.getElementById('langDropdown').classList.toggle('active'));
     document.querySelectorAll('.lang-option').forEach(opt => {
         opt.addEventListener('click', () => {
             currentLang = opt.getAttribute('data-lang');
@@ -926,21 +871,11 @@
             document.getElementById('langDropdown').classList.remove('active');
         });
     });
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.lang-selector')) {
-            document.getElementById('langDropdown').classList.remove('active');
-        }
-    });
+    document.addEventListener('click', (e) => { if (!e.target.closest('.lang-selector')) document.getElementById('langDropdown').classList.remove('active'); });
+    document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+    document.getElementById('productModal').addEventListener('click', (e) => { if (e.target === document.getElementById('productModal')) closeModal(); });
 
-    function init() {
-        updateUIForLanguage();
-        const modal = document.getElementById("productModal");
-        const closeBtn = document.getElementById("closeModalBtn");
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    }
-
-    init();
+    updateUIForLanguage();
 </script>
 </body>
 </html>
