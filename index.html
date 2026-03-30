@@ -17,9 +17,9 @@
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta name="format-detection" content="telephone=no, email=no, address=no">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://iimg.su/i/m40Ico">
-    <link rel="apple-touch-icon" href="https://iimg.su/i/m40Ico">
+    <!-- Favicon - ЗАМЕНИТЕ ССЫЛКУ НА ВАШ НОВЫЙ ЛОГОТИП -->
+    <link rel="icon" type="image/jpeg" href="https://s10.iimage.su/s/30/gm40IcoxUk4TOznydW4AWPoUgZmiLVFjInPqcDGTC.jpg">
+    <link rel="apple-touch-icon" href="https://s10.iimage.su/s/30/gm40IcoxUk4TOznydW4AWPoUgZmiLVFjInPqcDGTC.jpg">
     
     <title>KurbaShop | Tactical Arsenal & Gear</title>
     
@@ -154,6 +154,9 @@
             cursor: pointer;
             color: #cddbc0;
             transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .lang-option:hover { background: #2c3e2b; }
         
@@ -468,8 +471,9 @@
         .modal-buttons {
             display: flex;
             gap: 12px;
+            margin-top: 16px;
         }
-        .modal-add-cart, .modal-order-btn {
+        .modal-add-cart, .modal-order-btn, .modal-back-btn {
             background: #5f7642;
             border: none;
             padding: 12px 20px;
@@ -477,8 +481,10 @@
             font-weight: 600;
             cursor: pointer;
             flex: 1;
+            text-align: center;
         }
         .modal-order-btn { background: #d4af37; color: #0a0c12; }
+        .modal-back-btn { background: #2c3e2b; color: #cddbc0; }
         .footer {
             text-align: center;
             padding: 28px 20px;
@@ -506,7 +512,8 @@
     <div class="container">
         <div class="nav-bar">
             <div class="logo">
-                <img class="logo-img" src="https://iimg.su/i/m40Ico" alt="KurbaShop Logo">
+                <!-- ЗАМЕНИТЕ ССЫЛКУ НА ВАШ НОВЫЙ ЛОГОТИП -->
+                <img class="logo-img" src="https://s10.iimage.su/s/30/gm40IcoxUk4TOznydW4AWPoUgZmiLVFjInPqcDGTC.jpg" alt="KurbaShop Logo">
                 <div class="logo-text">KURBASHOP<span id="logoSub"> | tactical gear</span></div>
             </div>
             <div style="display: flex; gap: 12px; align-items: center;">
@@ -518,11 +525,11 @@
                         <span id="currentLangFlag">🇬🇧</span> <span id="currentLangText">EN</span> ▼
                     </button>
                     <div class="lang-dropdown" id="langDropdown">
-                        <div class="lang-option" data-lang="en">🇬🇧 English</div>
-                        <div class="lang-option" data-lang="ru">🇷🇺 Русский</div>
-                        <div class="lang-option" data-lang="es">🇪🇸 Español</div>
-                        <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
-                        <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
+                        <div class="lang-option" data-lang="en"><span class="flag-icon">🇬🇧</span> English</div>
+                        <div class="lang-option" data-lang="ru"><span class="flag-icon">🇷🇺</span> Русский</div>
+                        <div class="lang-option" data-lang="es"><span class="flag-icon">🇪🇸</span> Español</div>
+                        <div class="lang-option" data-lang="de"><span class="flag-icon">🇩🇪</span> Deutsch</div>
+                        <div class="lang-option" data-lang="fr"><span class="flag-icon">🇫🇷</span> Français</div>
                     </div>
                 </div>
             </div>
@@ -543,14 +550,14 @@
 <!-- Cart Modal -->
 <div id="cartModal" class="cart-modal">
     <div class="cart-header">
-        <h2>🛒 Shopping Cart</h2>
+        <h2 id="cartTitle">🛒 Shopping Cart</h2>
         <button class="close-cart" id="closeCartBtn">✕</button>
     </div>
     <div class="cart-items" id="cartItemsList">
-        <div style="text-align: center; padding: 40px;">Your cart is empty</div>
+        <div style="text-align: center; padding: 40px;" id="emptyCartMsg">Your cart is empty</div>
     </div>
     <div class="cart-footer">
-        <div class="cart-total">Total: <span id="cartTotal">$0.00</span></div>
+        <div class="cart-total"><span id="cartTotalLabel">Total:</span> <span id="cartTotal">$0.00</span></div>
         <button class="cart-order-btn" id="cartOrderBtn">📲 Send Order to Telegram</button>
     </div>
 </div>
@@ -573,6 +580,7 @@
             <div class="modal-buttons">
                 <button id="modalAddToCart" class="modal-add-cart">+ Add to Cart</button>
                 <button id="modalOrderNow" class="modal-order-btn">📲 Buy Now</button>
+                <button id="modalBackBtn" class="modal-back-btn">← Back</button>
             </div>
         </div>
     </div>
@@ -595,7 +603,7 @@
 
     // ======================== PRODUCT DATA (with working images) ========================
     const products = [
-        { id: 1, name: "Glock 17 Gen5", shortDesc: "9mm Austrian pistol, reliability standard", fullDesc: "Austrian service pistol 9x19 mm, 17-round magazine capacity. Polymer frame, improved ergonomics.", marketPrice: 850, category: "Firearms", subcategory: "Pistols", images: ["https://www.glock.com/sites/default/files/2019-10/Glock-17-Gen5-Pistol.png", "https://us.glock.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/g/l/glock-17-gen5.png"] },
+        { id: 1, name: "Glock 17 Gen5", shortDesc: "9mm Austrian pistol, reliability standard", fullDesc: "Austrian service pistol 9x19 mm, 17-round magazine capacity. Polymer frame, improved ergonomics.", marketPrice: 850, category: "Firearms", subcategory: "Pistols", images: ["https://www.glock.com/sites/default/files/2019-10/Glock-17-Gen5-Pistol.png"] },
         { id: 2, name: "Beretta 92FS", shortDesc: "Legendary Italian classic", fullDesc: "9x19 mm, exposed hammer, high accuracy. Used by US Army and special forces worldwide.", marketPrice: 790, category: "Firearms", subcategory: "Pistols", images: ["https://www.beretta.com/sites/default/files/styles/product_detail/public/2021-03/92FS_1.png"] },
         { id: 3, name: "Sig Sauer P320", shortDesc: "Modular striker-fired pistol", fullDesc: "9mm caliber, modular grip system, 17-round magazine. US Army's M17/M18 service pistol.", marketPrice: 680, category: "Firearms", subcategory: "Pistols", images: ["https://www.sigsauer.com/media/catalog/product/p/3/p320-full_1.png"] },
         { id: 4, name: "CZ P-10C", shortDesc: "Czech striker-fired compact", fullDesc: "9x19 mm, 15-round magazine, ergonomic grip. Superior trigger and reliability.", marketPrice: 550, category: "Firearms", subcategory: "Pistols", images: ["https://www.czub.cz/en/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/1/p10c_1.jpg"] },
@@ -647,11 +655,41 @@
     let cart = JSON.parse(localStorage.getItem('kurbashop_cart')) || [];
 
     const translations = {
-        en: { logoSub: " | tactical gear", discountBanner: "20% OFF ON FIRST ORDER", discountSpan: "🔥 -20% 🔥", footer: "© KurbaShop — tactical arsenal & gear.<br>All orders are processed via Telegram. Please contact manager for availability and pricing.<br>🔥 <strong>20% discount on first order</strong> applies to first purchase.", orderBtn: "📲 ORDER → TELEGRAM", all: "All", cartTitle: "Shopping Cart", emptyCart: "Your cart is empty", total: "Total", sendOrder: "Send Order to Telegram", addToCart: "Add to Cart", buyNow: "Buy Now", categories: { "Firearms": "Firearms", "Air Guns": "Air Guns", "Less-Lethal": "Less-Lethal", "Hunting": "Hunting", "Accessories": "Accessories" }, subcategories: { "Pistols": "Pistols", "Rifles": "Rifles", "Air Pistols": "Air Pistols", "Air Rifles": "Air Rifles", "Less-Lethal Pistols": "Less-Lethal Pistols", "Shotguns": "Shotguns", "Ammunition": "Ammunition", "Magazines": "Magazines", "Body Armor": "Body Armor", "Gear": "Gear" } },
-        ru: { logoSub: " | тактический арсенал", discountBanner: "СКИДКА 20% НА ПЕРВЫЙ ЗАКАЗ", discountSpan: "🔥 -20% 🔥", footer: "© KurbaShop — тактический арсенал и снаряжение.<br>Все заказы принимаются через Telegram. Наличие и цены уточняйте у менеджера.<br>🔥 <strong>Скидка 20% на первый заказ</strong> действует при первом обращении.", orderBtn: "📲 ЗАКАЗАТЬ → TELEGRAM", all: "Все", cartTitle: "Корзина", emptyCart: "Корзина пуста", total: "Итого", sendOrder: "Отправить заказ в Telegram", addToCart: "В корзину", buyNow: "Купить сейчас", categories: { "Firearms": "Огнестрельное", "Air Guns": "Пневматическое", "Less-Lethal": "Травматическое", "Hunting": "Охотничье", "Accessories": "Другое" }, subcategories: { "Pistols": "Пистолеты", "Rifles": "Винтовки", "Air Pistols": "Пистолеты", "Air Rifles": "Винтовки", "Less-Lethal Pistols": "Пистолеты", "Shotguns": "Карабины", "Ammunition": "Патроны", "Magazines": "Магазины", "Body Armor": "Бронежилеты", "Gear": "Снаряжение" } },
-        es: { logoSub: " | equipo táctico", discountBanner: "20% DE DESCUENTO EN PRIMER PEDIDO", discountSpan: "🔥 -20% 🔥", footer: "© KurbaShop — arsenal táctico y equipo.<br>Todos los pedidos se procesan vía Telegram. Consulte disponibilidad y precios con el gerente.<br>🔥 <strong>20% de descuento en primer pedido</strong> aplica a la primera compra.", orderBtn: "📲 PEDIR → TELEGRAM", all: "Todo", cartTitle: "Carrito", emptyCart: "Carrito vacío", total: "Total", sendOrder: "Enviar pedido a Telegram", addToCart: "Añadir", buyNow: "Comprar ahora", categories: { "Firearms": "Armas de Fuego", "Air Guns": "Aire Comprimido", "Less-Lethal": "Menos Letales", "Hunting": "Caza", "Accessories": "Accesorios" }, subcategories: { "Pistols": "Pistolas", "Rifles": "Rifles", "Air Pistols": "Pistolas", "Air Rifles": "Rifles", "Less-Lethal Pistols": "Pistolas", "Shotguns": "Escopetas", "Ammunition": "Munición", "Magazines": "Cargadores", "Body Armor": "Chalecos", "Gear": "Equipo" } },
-        de: { logoSub: " | taktische Ausrüstung", discountBanner: "20% RABATT AUF ERSTBESTELLUNG", discountSpan: "🔥 -20% 🔥", footer: "© KurbaShop — taktisches Arsenal & Ausrüstung.<br>Alle Bestellungen werden über Telegram abgewickelt. Verfügbarkeit und Preise erfragen Sie bitte beim Manager.<br>🔥 <strong>20% Rabatt auf erste Bestellung</strong> gilt für den ersten Kauf.", orderBtn: "📲 BESTELLEN → TELEGRAM", all: "Alle", cartTitle: "Warenkorb", emptyCart: "Warenkorb ist leer", total: "Gesamt", sendOrder: "Bestellung an Telegram senden", addToCart: "In den Warenkorb", buyNow: "Jetzt kaufen", categories: { "Firearms": "Schusswaffen", "Air Guns": "Druckluft", "Less-Lethal": "Weniger tödlich", "Hunting": "Jagd", "Accessories": "Zubehör" }, subcategories: { "Pistols": "Pistolen", "Rifles": "Gewehre", "Air Pistols": "Pistolen", "Air Rifles": "Gewehre", "Less-Lethal Pistols": "Pistolen", "Shotguns": "Flinten", "Ammunition": "Munition", "Magazines": "Magazine", "Body Armor": "Körperpanzerung", "Gear": "Ausrüstung" } },
-        fr: { logoSub: " | équipement tactique", discountBanner: "20% DE RÉDUCTION SUR PREMIÈRE COMMANDE", discountSpan: "🔥 -20% 🔥", footer: "© KurbaShop — arsenal tactique et équipement.<br>Toutes les commandes sont traitées via Telegram. Veuillez contacter le responsable pour disponibilité et prix.<br>🔥 <strong>20% de réduction sur première commande</strong> s'applique au premier achat.", orderBtn: "📲 COMMANDER → TELEGRAM", all: "Tous", cartTitle: "Panier", emptyCart: "Votre panier est vide", total: "Total", sendOrder: "Envoyer la commande à Telegram", addToCart: "Ajouter", buyNow: "Acheter maintenant", categories: { "Firearms": "Armes à feu", "Air Guns": "Armes à air", "Less-Lethal": "Moins létales", "Hunting": "Chasse", "Accessories": "Accessoires" }, subcategories: { "Pistols": "Pistolets", "Rifles": "Fusils", "Air Pistols": "Pistolets", "Air Rifles": "Fusils", "Less-Lethal Pistols": "Pistolets", "Shotguns": "Fusils de chasse", "Ammunition": "Munitions", "Magazines": "Chargeurs", "Body Armor": "Gilets pare-balles", "Gear": "Équipement" } }
+        en: { 
+            logoSub: " | tactical gear", discountBanner: "20% OFF ON FIRST ORDER", discountSpan: "🔥 -20% 🔥", 
+            footer: "© KurbaShop — tactical arsenal & gear.<br>All orders are processed via Telegram. Please contact manager for availability and pricing.<br>🔥 <strong>20% discount on first order</strong> applies to first purchase.",
+            orderBtn: "📲 ORDER → TELEGRAM", all: "All", cartTitle: "🛒 Shopping Cart", emptyCart: "Your cart is empty", total: "Total:", sendOrder: "📲 Send Order to Telegram", 
+            addToCart: "Add to Cart", buyNow: "Buy Now", back: "← Back", categories: { "Firearms": "Firearms", "Air Guns": "Air Guns", "Less-Lethal": "Less-Lethal", "Hunting": "Hunting", "Accessories": "Accessories" }, 
+            subcategories: { "Pistols": "Pistols", "Rifles": "Rifles", "Air Pistols": "Air Pistols", "Air Rifles": "Air Rifles", "Less-Lethal Pistols": "Less-Lethal Pistols", "Shotguns": "Shotguns", "Ammunition": "Ammunition", "Magazines": "Magazines", "Body Armor": "Body Armor", "Gear": "Gear" } 
+        },
+        ru: { 
+            logoSub: " | тактический арсенал", discountBanner: "СКИДКА 20% НА ПЕРВЫЙ ЗАКАЗ", discountSpan: "🔥 -20% 🔥", 
+            footer: "© KurbaShop — тактический арсенал и снаряжение.<br>Все заказы принимаются через Telegram. Наличие и цены уточняйте у менеджера.<br>🔥 <strong>Скидка 20% на первый заказ</strong> действует при первом обращении.",
+            orderBtn: "📲 ЗАКАЗАТЬ → TELEGRAM", all: "Все", cartTitle: "🛒 Корзина", emptyCart: "Корзина пуста", total: "Итого:", sendOrder: "📲 Отправить заказ в Telegram",
+            addToCart: "В корзину", buyNow: "Купить сейчас", back: "← Назад", categories: { "Firearms": "Огнестрельное", "Air Guns": "Пневматическое", "Less-Lethal": "Травматическое", "Hunting": "Охотничье", "Accessories": "Другое" }, 
+            subcategories: { "Pistols": "Пистолеты", "Rifles": "Винтовки", "Air Pistols": "Пистолеты", "Air Rifles": "Винтовки", "Less-Lethal Pistols": "Пистолеты", "Shotguns": "Карабины", "Ammunition": "Патроны", "Magazines": "Магазины", "Body Armor": "Бронежилеты", "Gear": "Снаряжение" } 
+        },
+        es: { 
+            logoSub: " | equipo táctico", discountBanner: "20% DE DESCUENTO EN PRIMER PEDIDO", discountSpan: "🔥 -20% 🔥", 
+            footer: "© KurbaShop — arsenal táctico y equipo.<br>Todos los pedidos se procesan vía Telegram. Consulte disponibilidad y precios con el gerente.<br>🔥 <strong>20% de descuento en primer pedido</strong> aplica a la primera compra.",
+            orderBtn: "📲 PEDIR → TELEGRAM", all: "Todo", cartTitle: "🛒 Carrito", emptyCart: "Carrito vacío", total: "Total:", sendOrder: "📲 Enviar pedido a Telegram",
+            addToCart: "Añadir", buyNow: "Comprar ahora", back: "← Atrás", categories: { "Firearms": "Armas de Fuego", "Air Guns": "Aire Comprimido", "Less-Lethal": "Menos Letales", "Hunting": "Caza", "Accessories": "Accesorios" }, 
+            subcategories: { "Pistols": "Pistolas", "Rifles": "Rifles", "Air Pistols": "Pistolas", "Air Rifles": "Rifles", "Less-Lethal Pistols": "Pistolas", "Shotguns": "Escopetas", "Ammunition": "Munición", "Magazines": "Cargadores", "Body Armor": "Chalecos", "Gear": "Equipo" } 
+        },
+        de: { 
+            logoSub: " | taktische Ausrüstung", discountBanner: "20% RABATT AUF ERSTBESTELLUNG", discountSpan: "🔥 -20% 🔥", 
+            footer: "© KurbaShop — taktisches Arsenal & Ausrüstung.<br>Alle Bestellungen werden über Telegram abgewickelt. Verfügbarkeit und Preise erfragen Sie bitte beim Manager.<br>🔥 <strong>20% Rabatt auf erste Bestellung</strong> gilt für den ersten Kauf.",
+            orderBtn: "📲 BESTELLEN → TELEGRAM", all: "Alle", cartTitle: "🛒 Warenkorb", emptyCart: "Warenkorb ist leer", total: "Gesamt:", sendOrder: "📲 Bestellung an Telegram senden",
+            addToCart: "In den Warenkorb", buyNow: "Jetzt kaufen", back: "← Zurück", categories: { "Firearms": "Schusswaffen", "Air Guns": "Druckluft", "Less-Lethal": "Weniger tödlich", "Hunting": "Jagd", "Accessories": "Zubehör" }, 
+            subcategories: { "Pistols": "Pistolen", "Rifles": "Gewehre", "Air Pistols": "Pistolen", "Air Rifles": "Gewehre", "Less-Lethal Pistols": "Pistolen", "Shotguns": "Flinten", "Ammunition": "Munition", "Magazines": "Magazine", "Body Armor": "Körperpanzerung", "Gear": "Ausrüstung" } 
+        },
+        fr: { 
+            logoSub: " | équipement tactique", discountBanner: "20% DE RÉDUCTION SUR PREMIÈRE COMMANDE", discountSpan: "🔥 -20% 🔥", 
+            footer: "© KurbaShop — arsenal tactique et équipement.<br>Toutes les commandes sont traitées via Telegram. Veuillez contacter le responsable pour disponibilité et prix.<br>🔥 <strong>20% de réduction sur première commande</strong> s'applique au premier achat.",
+            orderBtn: "📲 COMMANDER → TELEGRAM", all: "Tous", cartTitle: "🛒 Panier", emptyCart: "Votre panier est vide", total: "Total:", sendOrder: "📲 Envoyer la commande à Telegram",
+            addToCart: "Ajouter", buyNow: "Acheter maintenant", back: "← Retour", categories: { "Firearms": "Armes à feu", "Air Guns": "Armes à air", "Less-Lethal": "Moins létales", "Hunting": "Chasse", "Accessories": "Accessoires" }, 
+            subcategories: { "Pistols": "Pistolets", "Rifles": "Fusils", "Air Pistols": "Pistolets", "Air Rifles": "Fusils", "Less-Lethal Pistols": "Pistolets", "Shotguns": "Fusils de chasse", "Ammunition": "Munitions", "Magazines": "Chargeurs", "Body Armor": "Gilets pare-balles", "Gear": "Équipement" } 
+        }
     };
 
     function getCategoryName(cat) { return translations[currentLang].categories[cat] || cat; }
@@ -666,6 +704,7 @@
         
         const total = cart.reduce((sum, item) => sum + (item.price * (1 - DISCOUNT) * item.quantity), 0);
         document.getElementById('cartTotal').innerHTML = formatPrice(total);
+        document.getElementById('cartTotalLabel').innerHTML = getTranslation('total');
         
         const cartItemsDiv = document.getElementById('cartItemsList');
         if (cart.length === 0) {
@@ -721,8 +760,7 @@
             });
         }
         saveCart();
-        const t = translations[currentLang];
-        alert(t.addToCart + ": " + product.name);
+        alert(getTranslation('addToCart') + ": " + product.name);
     }
 
     function sendCartToTelegram() {
@@ -751,6 +789,10 @@
         document.getElementById('discountBanner').innerHTML = `${t.discountBanner} <span>${t.discountSpan}</span>`;
         document.getElementById('footerText').innerHTML = t.footer;
         document.getElementById('cartOrderBtn').innerHTML = t.sendOrder;
+        document.getElementById('cartTitle').innerHTML = t.cartTitle;
+        document.getElementById('modalAddToCart').innerHTML = `+ ${t.addToCart}`;
+        document.getElementById('modalOrderNow').innerHTML = `📲 ${t.buyNow}`;
+        document.getElementById('modalBackBtn').innerHTML = t.back;
         const flagMap = { en: '🇬🇧', ru: '🇷🇺', es: '🇪🇸', de: '🇩🇪', fr: '🇫🇷' };
         const langNameMap = { en: 'EN', ru: 'RU', es: 'ES', de: 'DE', fr: 'FR' };
         document.getElementById('currentLangFlag').innerHTML = flagMap[currentLang];
@@ -855,6 +897,7 @@
             document.getElementById("cartModal").classList.add('active');
             modal.classList.remove('active');
         };
+        document.getElementById("modalBackBtn").onclick = () => modal.classList.remove('active');
         modal.classList.add('active');
     }
 
