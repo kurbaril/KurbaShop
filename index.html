@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>KurbaShop | Tactical Arsenal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Courier New', system-ui, monospace;
+            background: #1a1e2a;
+            color: #e0e4f0;
+            line-height: 1.5;
+            background-image: repeating-linear-gradient(45deg, rgba(60, 70, 80, 0.1) 0px, rgba(60, 70, 80, 0.1) 2px, transparent 2px, transparent 8px);
+        }
+
+        .camouflage-border {
+            background: repeating-linear-gradient(45deg, #4a5b3c, #4a5b3c 20px, #5e6e4a 20px, #5e6e4a 40px);
+            height: 4px;
+        }
+
+        .discount-banner {
+            background: linear-gradient(135deg, #2c3e2b, #1f2a1e);
+            border-bottom: 1px solid #d4af37;
+            padding: 12px 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+        .discount-banner span {
+            color: #d4af37;
+            font-size: 1.2rem;
+            background: #0a0c12;
+            padding: 4px 12px;
+            border-radius: 40px;
+            margin-left: 12px;
+        }
+
+        .header {
+            background: #0f111f;
+            border-bottom: 2px solid #3a4a2f;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #b8c7a3, #6e854c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            font-family: 'Courier New', monospace;
+        }
+
+        .logo span {
+            color: #9eb67b;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            font-size: 14px;
+        }
+
+        .lang-selector {
+            position: relative;
+        }
+        .lang-btn {
+            background: #2c3e2b;
+            border: 1px solid #9eb67b;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #cddbc0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .lang-dropdown {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background: #1a1e2a;
+            border: 1px solid #4a5b48;
+            border-radius: 12px;
+            display: none;
+            z-index: 100;
+            min-width: 140px;
+        }
+        .lang-dropdown.active {
+            display: block;
+        }
+        .lang-option {
+            padding: 8px 16px;
+            font-size: 13px;
+            cursor: pointer;
+            color: #cddbc0;
+            transition: background 0.2s;
+        }
+        .lang-option:hover {
+            background: #2c3e2b;
+        }
+
+        .badge {
+            background: #2c3e2b;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 500;
+            border-left: 3px solid #9eb67b;
+        }
+
+        .categories {
+            background: #0b0d17;
+            border-top: 1px solid #2c3e2b;
+            border-bottom: 1px solid #2c3e2b;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: thin;
+            padding: 8px 0;
+        }
+
+        .categories-list {
+            display: inline-flex;
+            gap: 12px;
+            padding: 0 20px;
+        }
+
+        .cat-btn {
+            background: transparent;
+            border: 1px solid #4a5b48;
+            color: #cddbc0;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cat-btn.active {
+            background: #6e854c;
+            border-color: #b8c7a3;
+            color: #0a0c12;
+            box-shadow: 0 0 10px rgba(110,133,76,0.5);
+        }
+
+        .subcats {
+            background: #11141f;
+            padding: 12px 0;
+            border-bottom: 1px solid #2c3e2b;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .subcats-list {
+            display: inline-flex;
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .sub-btn {
+            background: #1e232f;
+            border: none;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #bcc7a8;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sub-btn.active {
+            background: #3e5a32;
+            color: #ffffff;
+            box-shadow: inset 0 1px 0 #6e854c;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 32px 0 56px;
+        }
+
+        @media (min-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 28px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 32px;
+            }
+        }
+
+        .product-card {
+            background: #131724;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border: 1px solid #2b3530;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            border-color: #9eb67b;
+            box-shadow: 0 16px 24px -8px rgba(0,0,0,0.5);
+        }
+
+        .product-img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background: #0d1020;
+            display: block;
+            filter: brightness(0.95);
+        }
+
+        .product-info {
+            padding: 16px 14px 20px;
+        }
+
+        .product-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+            color: #eef2e0;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 10px 0 6px;
+            flex-wrap: wrap;
+        }
+        .old-price {
+            font-size: 0.8rem;
+            color: #9daa8a;
+            text-decoration: line-through;
+        }
+        .new-price {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #d4af37;
+        }
+        .discount-badge {
+            background: #d4af37;
+            color: #0a0c12;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .product-desc {
+            font-size: 0.75rem;
+            color: #9daa8a;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 10, 18, 0.96);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(12px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #10131f;
+            max-width: 90vw;
+            width: 850px;
+            max-height: 90vh;
+            border-radius: 28px;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid #6e854c;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.6);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 16px;
+            right: 24px;
+            font-size: 36px;
+            background: none;
+            border: none;
+            color: #cddbc0;
+            cursor: pointer;
+            z-index: 10;
+            font-weight: 300;
+            transition: 0.2s;
+        }
+
+        .close-modal:hover {
+            color: #d4af37;
+            transform: scale(1.1);
+        }
+
+        .gallery-container {
+            position: relative;
+            background: #090c16;
+            border-bottom: 1px solid #2e3a2a;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            max-height: 48vh;
+            object-fit: contain;
+            background: #0b0e18;
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 12px;
+            padding: 16px;
+            overflow-x: auto;
+            background: #0e1120;
+        }
+
+        .thumbnail {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 2px solid #353d2c;
+            transition: 0.2s;
+            opacity: 0.7;
+        }
+
+        .thumbnail.active {
+            border-color: #b8c7a3;
+            opacity: 1;
+            transform: scale(1.02);
+        }
+
+        .modal-info {
+            padding: 24px 28px;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+            color: #e7efd3;
+        }
+
+        .modal-price {
+            margin: 16px 0;
+            font-size: 1.2rem;
+        }
+        .modal-old-price {
+            color: #9daa8a;
+            text-decoration: line-through;
+            margin-right: 16px;
+        }
+        .modal-new-price {
+            color: #d4af37;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .modal-description {
+            color: #b9c6a2;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+
+        .order-btn {
+            background: #5f7642;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 1rem;
+            color: #11161f;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .order-btn:hover {
+            background: #7e9f54;
+            transform: scale(0.99);
+            box-shadow: 0 0 12px #6e854c;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 28px 20px;
+            border-top: 1px solid #2b3530;
+            font-size: 0.75rem;
+            color: #7c8a6b;
+            background: #0a0d16;
+        }
+
+        @media (max-width: 640px) {
+            .modal-title {
+                font-size: 1.4rem;
+            }
+            .thumbnail {
+                width: 55px;
+                height: 55px;
+            }
+            .badge {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="camouflage-border"></div>
+<div class="discount-banner" id="discountBanner">
+    🎁 30% OFF ON FIRST ORDER 🎁 <span>🔥 -30% 🔥</span>
+</div>
+<div class="header">
+    <div class="container">
+        <div class="nav-bar">
+            <div class="logo">KURBASHOP<span id="logoSub"> | tactical gear</span></div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <div class="lang-selector">
+                    <button class="lang-btn" id="langBtn">
+                        <span id="currentLangFlag">🇬🇧</span> <span id="currentLangText">EN</span> ▼
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <div class="lang-option" data-lang="en">🇬🇧 English</div>
+                        <div class="lang-option" data-lang="ru">🇷🇺 Русский</div>
+                        <div class="lang-option" data-lang="es">🇪🇸 Español</div>
+                        <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
+                        <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
+                    </div>
+                </div>
+                <div class="badge" id="telegramBadge">📡 Telegram | 30% OFF</div>
+            </div>
+        </div>
+    </div>
+    <div class="categories" id="categoriesWrapper">
+        <div class="categories-list" id="categoriesList"></div>
+    </div>
+    <div class="subcats" id="subcatsWrapper">
+        <div class="subcats-list" id="subcatsList"></div>
+    </div>
+</div>
+
+<main class="container">
+    <div class="products-grid" id="productsGrid"></div>
+</main>
+
+<div class="footer" id="footerText">
+    <p>© KurbaShop — tactical arsenal & gear.<br>All orders are processed via Telegram. Please contact manager for availability and pricing.<br>🔥 <strong>30% discount on first order</strong> applies to first purchase.</p>
+</div>
+
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <button class="close-modal" id="closeModalBtn">✕</button>
+        <div class="gallery-container">
+            <img id="modalMainImage" class="main-image" src="" alt="Main photo">
+            <div id="thumbnailsContainer" class="thumbnails"></div>
+        </div>
+        <div class="modal-info">
+            <div id="modalTitle" class="modal-title"></div>
+            <div class="modal-price">
+                <span class="modal-old-price" id="modalOldPrice"></span>
+                <span class="modal-new-price" id="modalNewPrice"></span>
+            </div>
+            <div id="modalDescription" class="modal-description"></div>
+            <button id="orderTelegramBtn" class="order-btn">📲 ORDER → TELEGRAM</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ======================== SETTINGS ========================
+    const TG_USERNAME = "kurbaaX";
+    const DISCOUNT = 0.3;
+    const CURRENCY = "$";
+
+    function formatPrice(price) {
+        return price.toLocaleString('ru-RU') + " " + CURRENCY;
+    }
+
+    // ======================== PRODUCT DATA ========================
+    const products = [
+        // FIREARMS / PISTOLS
+        { id: 1, name: "Glock 17 Gen5", shortDesc: "9mm Austrian pistol, reliability standard", fullDesc: "Austrian service pistol 9x19 mm, 17-round magazine capacity. Polymer frame, improved ergonomics, interchangeable backstraps. Ideal for sport shooting, self-defense, and service use. Includes: holster, two magazines, safety lock, cleaning kit.", marketPrice: 850, category: "Firearms", subcategory: "Pistols", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Glock_17_Gen_4_Pistol_%28no_background%29.png/800px-Glock_17_Gen_4_Pistol_%28no_background%29.png"] },
+        { id: 2, name: "Beretta 92FS", shortDesc: "Legendary Italian classic", fullDesc: "9x19 mm, exposed hammer, high accuracy. Used by US Army and special forces worldwide. Features smooth trigger pull and exceptional reliability. Comes with case, two magazines, and holster.", marketPrice: 790, category: "Firearms", subcategory: "Pistols", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Beretta_92FS_pistol_%28no_background%29.png/800px-Beretta_92FS_pistol_%28no_background%29.png"] },
+        // FIREARMS / RIFLES
+        { id: 3, name: "AK-74M", shortDesc: "Kalashnikov, modern modification", fullDesc: "5.45x39 mm caliber, folding polymer stock, Picatinny rail for optics. Reliability tested for decades in all conditions. Includes: 30-round magazine, sling, oil can, cleaning rod.", marketPrice: 1250, category: "Firearms", subcategory: "Rifles", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/AK-74_%28no_background%29.png/800px-AK-74_%28no_background%29.png"] },
+        { id: 4, name: "M4 Carbine", shortDesc: "American AR-15 platform rifle", fullDesc: "5.56x45 mm, telescoping stock, aluminum M-LOK handguard. Lightweight and accurate, ideal for tactical shooting. Includes: PMAG 30 magazine, carry handle, sling.", marketPrice: 1450, category: "Firearms", subcategory: "Rifles", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/M4_Carbine_%28no_background%29.png/800px-M4_Carbine_%28no_background%29.png"] },
+        { id: 5, name: "Remington 700", shortDesc: "Precision bolt-action rifle", fullDesc: ".308 Win caliber, match-grade barrel, adjustable trigger. Accuracy standard for hunting and sniping. Includes: Weaver optics base, safety lock.", marketPrice: 1100, category: "Firearms", subcategory: "Rifles", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Remington_700_ADL_%28no_background%29.png/800px-Remington_700_ADL_%28no_background%29.png"] },
+        // AIR GUNS
+        { id: 6, name: "Umarex Walther CP88", shortDesc: "CO2 air pistol", fullDesc: "4.5 mm caliber, pellet shooting, exact Walther replica. 8-round magazine, muzzle energy up to 3 J. Suitable for training and recreational shooting.", marketPrice: 290, category: "Air Guns", subcategory: "Air Pistols", images: ["https://www.umarex.com/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/2/2/2253015_walther_cp88_competition_black_1.jpg"] },
+        { id: 7, name: "Hatsan 125", shortDesc: "Powerful spring-piston air rifle", fullDesc: "4.5 or 5.5 mm caliber, muzzle energy up to 30 J. Suitable for small game hunting and sport shooting. Includes: 4x32 scope, bipod.", marketPrice: 380, category: "Air Guns", subcategory: "Air Rifles", images: ["https://www.hatsan.com.tr/uploads/products/hatsan-125-sniper-vortex-1024x681.jpg"] },
+        // LESS-LETHAL
+        { id: 8, name: "MP-79-9TM", shortDesc: "Less-lethal Makarov pistol", fullDesc: "9 mm R.A. caliber, 10-round magazine, rubber bullet. Designed for self-defense. Includes: holster, two magazines, safety lock.", marketPrice: 320, category: "Less-Lethal", subcategory: "Less-Lethal Pistols", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/MP-79-9TM.jpg/800px-MP-79-9TM.jpg"] },
+        // HUNTING
+        { id: 9, name: "Saiga-MK", shortDesc: "Semi-auto shotgun based on AK", fullDesc: "12/76 caliber, 8-round magazine, semi-automatic. Excellent for hunting and outdoor activities. Includes: sling, case, interchangeable chokes.", marketPrice: 890, category: "Hunting", subcategory: "Shotguns", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Saiga_12K_%28no_background%29.png/800px-Saiga_12K_%28no_background%29.png"] },
+        // ACCESSORIES / AMMUNITION
+        { id: 10, name: "9x19 FMJ Ammo", shortDesc: "50 rounds, for Glock/Beretta", fullDesc: "9 mm Luger, FMJ bullet, 8 g bullet weight. 50-round box. Suitable for Glock, Beretta, CZ and other 9x19 pistols. Quality for training and competition.", marketPrice: 45, category: "Accessories", subcategory: "Ammunition", images: ["https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&h=400&fit=crop"] },
+        { id: 11, name: "5.45x39 FMJ Ammo", shortDesc: "120 rounds, for AK-74", fullDesc: "Standard ammunition for AK-74, 5.45x39 mm. Quality ammunition, 120-round box. Suitable for sport shooting and training.", marketPrice: 89, category: "Accessories", subcategory: "Ammunition", images: ["https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&h=400&fit=crop"] },
+        { id: 12, name: "5.56x45 NATO Ammo", shortDesc: "100 rounds, for M4/AR-15", fullDesc: "5.56x45 mm, FMJ bullet. Perfect for M4, AR-15 and other NATO platform rifles. 100-round box.", marketPrice: 110, category: "Accessories", subcategory: "Ammunition", images: ["https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&h=400&fit=crop"] },
+        { id: 13, name: ".308 Win Ammo", shortDesc: "50 rounds, for Remington 700", fullDesc: ".308 Winchester caliber, FMJ bullet. Suitable for Remington 700 and other bolt-action rifles. High accuracy, 50-round box.", marketPrice: 95, category: "Accessories", subcategory: "Ammunition", images: ["https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&h=400&fit=crop"] },
+        { id: 14, name: "12 Gauge Ammo", shortDesc: "25 rounds, for Saiga and shotguns", fullDesc: "Hunting ammunition 12 gauge, shot #7. Suitable for Saiga-MK, MP-153 and other smoothbore weapons. 25-round box.", marketPrice: 65, category: "Accessories", subcategory: "Ammunition", images: ["https://images.pexels.com/photos/1644926/pexels-photo-1644926.jpeg?w=600&h=400&fit=crop"] },
+        // ACCESSORIES / MAGAZINES
+        { id: 15, name: "Glock 17 Magazine", shortDesc: "17 rounds, original", fullDesc: "Original magazine for Glock 17, 9x19 caliber. 17-round capacity, steel body with polymer coating. Reliability and durability.", marketPrice: 42, category: "Accessories", subcategory: "Magazines", images: ["https://images.pexels.com/photos/1644926/pexels-photo-1644926.jpeg?w=600&h=400&fit=crop"] },
+        { id: 16, name: "Beretta 92 Magazine", shortDesc: "15 rounds, steel", fullDesc: "Magazine for Beretta 92FS, 9x19 mm. 15-round capacity, steel construction. Compatible with all 92 series models.", marketPrice: 38, category: "Accessories", subcategory: "Magazines", images: ["https://images.pexels.com/photos/1644926/pexels-photo-1644926.jpeg?w=600&h=400&fit=crop"] },
+        { id: 17, name: "AK-74 Magazine", shortDesc: "30 rounds, polymer", fullDesc: "Magazine for AK-74, 5.45x39 caliber. Polymer body, reinforced spring. 30-round capacity. Compatible with all AK-74 variants.", marketPrice: 28, category: "Accessories", subcategory: "Magazines", images: ["https://images.pexels.com/photos/1644926/pexels-photo-1644926.jpeg?w=600&h=400&fit=crop"] },
+        { id: 18, name: "PMAG 30 AR-15", shortDesc: "30 rounds, polymer, window", fullDesc: "Impact-resistant polymer magazine for M4/AR-15, 5.56x45 caliber. Transparent window for round count. 30-round capacity.", marketPrice: 35, category: "Accessories", subcategory: "Magazines", images: ["https://images.pexels.com/photos/1644926/pexels-photo-1644926.jpeg?w=600&h=400&fit=crop"] },
+        // ACCESSORIES / BODY ARMOR
+        { id: 19, name: "6B45 Body Armor", shortDesc: "Level 3 protection, tactical", fullDesc: "Military body armor, Kevlar inserts, quick-release system. Weight 8.5 kg, adjustable fit. Color: olive, protection level 3.", marketPrice: 550, category: "Accessories", subcategory: "Body Armor", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/6B45_body_armor.jpg/800px-6B45_body_armor.jpg"] },
+        { id: 20, name: "TacTec Plate Carrier", shortDesc: "Lightweight, concealed carry", fullDesc: "Tactical plate carrier with armor plate capability. Weight 2.2 kg, Cordura nylon, adjustable fit. Color: black, coyote.", marketPrice: 390, category: "Accessories", subcategory: "Body Armor", images: ["https://images.unsplash.com/photo-1587293852726-70cdffb7c2f5?w=600&h=400&fit=crop"] },
+        // ACCESSORIES / GEAR
+        { id: 21, name: "Tactical Belt", shortDesc: "MOLLE, adjustable, khaki", fullDesc: "Load-bearing belt, reinforced webbing, metal buckle. Width 5 cm, length up to 120 cm. Suitable for attaching pouches and holsters.", marketPrice: 55, category: "Accessories", subcategory: "Gear", images: ["https://images.pexels.com/photos/1644926/pexels-photo-1644926.jpeg?w=600&h=400&fit=crop"] },
+        { id: 22, name: "Magazine Pouch", shortDesc: "MOLLE, 2 compartments, khaki", fullDesc: "Tactical magazine pouch for two magazines. MOLLE attachment, adjustable flaps, quick access. Color: khaki, olive.", marketPrice: 32, category: "Accessories", subcategory: "Gear", images: ["https://images.pexels.com/photos/1644926/pexels-photo-1644926.jpeg?w=600&h=400&fit=crop"] }
+    ];
+
+    // ======================== TRANSLATIONS ========================
+    const translations = {
+        en: {
+            logoSub: " | tactical gear",
+            telegramBadge: "📡 Telegram | 30% OFF",
+            discountBanner: "🎁 30% OFF ON FIRST ORDER 🎁",
+            discountSpan: "🔥 -30% 🔥",
+            footer: "© KurbaShop — tactical arsenal & gear.<br>All orders are processed via Telegram. Please contact manager for availability and pricing.<br>🔥 <strong>30% discount on first order</strong> applies to first purchase.",
+            orderBtn: "📲 ORDER → TELEGRAM",
+            all: "All",
+            categories: {
+                "Firearms": "Firearms",
+                "Air Guns": "Air Guns",
+                "Less-Lethal": "Less-Lethal",
+                "Hunting": "Hunting",
+                "Accessories": "Accessories"
+            },
+            subcategories: {
+                "Pistols": "Pistols",
+                "Rifles": "Rifles",
+                "Air Pistols": "Air Pistols",
+                "Air Rifles": "Air Rifles",
+                "Less-Lethal Pistols": "Less-Lethal Pistols",
+                "Shotguns": "Shotguns",
+                "Ammunition": "Ammunition",
+                "Magazines": "Magazines",
+                "Body Armor": "Body Armor",
+                "Gear": "Gear"
+            }
+        },
+        ru: {
+            logoSub: " | тактический арсенал",
+            telegramBadge: "📡 Telegram | скидка 30%",
+            discountBanner: "🎁 СКИДКА НА ПЕРВЫЙ ЗАКАЗ — 30% 🎁",
+            discountSpan: "🔥 -30% 🔥",
+            footer: "© KurbaShop — тактический арсенал и снаряжение.<br>Все заказы принимаются через Telegram. Наличие и цены уточняйте у менеджера.<br>🔥 <strong>Скидка 30% на первый заказ</strong> действует при первом обращении.",
+            orderBtn: "📲 ЗАКАЗАТЬ → TELEGRAM",
+            all: "Все",
+            categories: {
+                "Firearms": "Огнестрельное",
+                "Air Guns": "Пневматическое",
+                "Less-Lethal": "Травматическое",
+                "Hunting": "Охотничье",
+                "Accessories": "Другое"
+            },
+            subcategories: {
+                "Pistols": "Пистолеты",
+                "Rifles": "Винтовки",
+                "Air Pistols": "Пистолеты",
+                "Air Rifles": "Винтовки",
+                "Less-Lethal Pistols": "Пистолеты",
+                "Shotguns": "Карабины",
+                "Ammunition": "Патроны",
+                "Magazines": "Магазины",
+                "Body Armor": "Бронежилеты",
+                "Gear": "Расходники"
+            }
+        },
+        es: {
+            logoSub: " | arsenal táctico",
+            telegramBadge: "📡 Telegram | 30% DTO",
+            discountBanner: "🎁 30% DE DESCUENTO EN PRIMER PEDIDO 🎁",
+            discountSpan: "🔥 -30% 🔥",
+            footer: "© KurbaShop — arsenal táctico y equipo.<br>Todos los pedidos se procesan vía Telegram. Consulte disponibilidad y precios con el gerente.<br>🔥 <strong>30% de descuento en primer pedido</strong> aplica a la primera compra.",
+            orderBtn: "📲 PEDIR → TELEGRAM",
+            all: "Todo",
+            categories: {
+                "Firearms": "Armas de Fuego",
+                "Air Guns": "Aire Comprimido",
+                "Less-Lethal": "Menos Letales",
+                "Hunting": "Caza",
+                "Accessories": "Accesorios"
+            },
+            subcategories: {
+                "Pistols": "Pistolas",
+                "Rifles": "Rifles",
+                "Air Pistols": "Pistolas",
+                "Air Rifles": "Rifles",
+                "Less-Lethal Pistols": "Pistolas",
+                "Shotguns": "Escopetas",
+                "Ammunition": "Munición",
+                "Magazines": "Cargadores",
+                "Body Armor": "Chalecos",
+                "Gear": "Equipo"
+            }
+        },
+        de: {
+            logoSub: " | taktische Ausrüstung",
+            telegramBadge: "📡 Telegram | 30% RABATT",
+            discountBanner: "🎁 30% RABATT AUF ERSTBESTELLUNG 🎁",
+            discountSpan: "🔥 -30% 🔥",
+            footer: "© KurbaShop — taktisches Arsenal & Ausrüstung.<br>Alle Bestellungen werden über Telegram abgewickelt. Verfügbarkeit und Preise erfragen Sie bitte beim Manager.<br>🔥 <strong>30% Rabatt auf erste Bestellung</strong> gilt für den ersten Kauf.",
+            orderBtn: "📲 BESTELLEN → TELEGRAM",
+            all: "Alle",
+            categories: {
+                "Firearms": "Schusswaffen",
+                "Air Guns": "Druckluft",
+                "Less-Lethal": "Weniger tödlich",
+                "Hunting": "Jagd",
+                "Accessories": "Zubehör"
+            },
+            subcategories: {
+                "Pistols": "Pistolen",
+                "Rifles": "Gewehre",
+                "Air Pistols": "Pistolen",
+                "Air Rifles": "Gewehre",
+                "Less-Lethal Pistols": "Pistolen",
+                "Shotguns": "Flinten",
+                "Ammunition": "Munition",
+                "Magazines": "Magazine",
+                "Body Armor": "Körperpanzerung",
+                "Gear": "Ausrüstung"
+            }
+        },
+        fr: {
+            logoSub: " | équipement tactique",
+            telegramBadge: "📡 Telegram | 30% DE RÉDUCTION",
+            discountBanner: "🎁 30% DE RÉDUCTION SUR PREMIÈRE COMMANDE 🎁",
+            discountSpan: "🔥 -30% 🔥",
+            footer: "© KurbaShop — arsenal tactique et équipement.<br>Toutes les commandes sont traitées via Telegram. Veuillez contacter le responsable pour disponibilité et prix.<br>🔥 <strong>30% de réduction sur première commande</strong> s'applique au premier achat.",
+            orderBtn: "📲 COMMANDER → TELEGRAM",
+            all: "Tous",
+            categories: {
+                "Firearms": "Armes à feu",
+                "Air Guns": "Armes à air",
+                "Less-Lethal": "Moins létales",
+                "Hunting": "Chasse",
+                "Accessories": "Accessoires"
+            },
+            subcategories: {
+                "Pistols": "Pistolets",
+                "Rifles": "Fusils",
+                "Air Pistols": "Pistolets",
+                "Air Rifles": "Fusils",
+                "Less-Lethal Pistols": "Pistolets",
+                "Shotguns": "Fusils de chasse",
+                "Ammunition": "Munitions",
+                "Magazines": "Chargeurs",
+                "Body Armor": "Gilets pare-balles",
+                "Gear": "Équipement"
+            }
+        }
+    };
+
+    let currentLang = localStorage.getItem('kurbashop_lang') || 'en';
+    let activeCategory = "Firearms";
+    let activeSubcategory = null;
+
+    // Get translated category name
+    function getCategoryName(cat) {
+        return translations[currentLang].categories[cat] || cat;
+    }
+
+    function getSubcategoryName(sub) {
+        return translations[currentLang].subcategories[sub] || sub;
+    }
+
+    function updateUIForLanguage() {
+        const t = translations[currentLang];
+        document.getElementById('logoSub').innerHTML = t.logoSub;
+        document.getElementById('telegramBadge').innerHTML = t.telegramBadge;
+        document.getElementById('discountBanner').innerHTML = `🎁 ${t.discountBanner.split('🎁')[1] || t.discountBanner} 🎁 <span>${t.discountSpan}</span>`;
+        document.getElementById('footerText').innerHTML = t.footer;
+        document.getElementById('orderTelegramBtn').innerHTML = t.orderBtn;
+        
+        const flagMap = { en: '🇬🇧', ru: '🇷🇺', es: '🇪🇸', de: '🇩🇪', fr: '🇫🇷' };
+        const langNameMap = { en: 'EN', ru: 'RU', es: 'ES', de: 'DE', fr: 'FR' };
+        document.getElementById('currentLangFlag').innerHTML = flagMap[currentLang] || '🇬🇧';
+        document.getElementById('currentLangText').innerHTML = langNameMap[currentLang] || 'EN';
+        
+        renderCategories();
+        updateSubcategories();
+        renderProducts();
+    }
+
+    function updateSubcategories() {
+        const subs = Array.from(subcategoriesMap.get(activeCategory) || new Set());
+        const container = document.getElementById("subcatsList");
+        if (!container) return;
+        container.innerHTML = '';
+        
+        const allBtn = document.createElement('button');
+        allBtn.textContent = translations[currentLang].all;
+        allBtn.className = `sub-btn ${!activeSubcategory ? 'active' : ''}`;
+        allBtn.onclick = () => {
+            activeSubcategory = null;
+            renderProducts();
+            highlightSubcategory(null);
+        };
+        container.appendChild(allBtn);
+        
+        subs.forEach(sub => {
+            const btn = document.createElement('button');
+            btn.textContent = getSubcategoryName(sub);
+            btn.className = `sub-btn ${activeSubcategory === sub ? 'active' : ''}`;
+            btn.onclick = () => {
+                activeSubcategory = sub;
+                renderProducts();
+                highlightSubcategory(sub);
+            };
+            container.appendChild(btn);
+        });
+    }
+
+    function highlightSubcategory(selected) {
+        const btns = document.querySelectorAll('#subcatsList .sub-btn');
+        btns.forEach(btn => {
+            if (btn.textContent === (selected ? getSubcategoryName(selected) : translations[currentLang].all)) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
+
+    function renderProducts() {
+        const grid = document.getElementById("productsGrid");
+        if (!grid) return;
+        let filtered = products.filter(p => p.category === activeCategory);
+        if (activeSubcategory) {
+            filtered = filtered.filter(p => p.subcategory === activeSubcategory);
+        }
+        if (filtered.length === 0) {
+            const noItemsText = currentLang === 'en' ? 'No items in this category' : 
+                               currentLang === 'ru' ? 'Нет товаров в выбранной категории' :
+                               currentLang === 'es' ? 'No hay artículos en esta categoría' :
+                               currentLang === 'de' ? 'Keine Artikel in dieser Kategorie' : 'Aucun article dans cette catégorie';
+            grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:50px;">${noItemsText}</div>`;
+            return;
+        }
+        grid.innerHTML = filtered.map(product => {
+            const discountPrice = product.marketPrice * (1 - DISCOUNT);
+            return `
+            <div class="product-card" data-id="${product.id}">
+                <img class="product-img" src="${product.images[0]}" alt="${escapeHtml(product.name)}" loading="lazy">
+                <div class="product-info">
+                    <div class="product-name">${escapeHtml(product.name)}</div>
+                    <div class="product-price">
+                        <span class="old-price">${formatPrice(product.marketPrice)}</span>
+                        <span class="new-price">${formatPrice(discountPrice)}</span>
+                        <span class="discount-badge">-30%</span>
+                    </div>
+                    <div class="product-desc">${escapeHtml(product.shortDesc)}</div>
+                </div>
+            </div>
+        `}).join('');
+        document.querySelectorAll('.product-card').forEach(card => {
+            const id = parseInt(card.getAttribute('data-id'));
+            card.addEventListener('click', () => openProductModal(id));
+        });
+    }
+
+    function openProductModal(productId) {
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+        const discountPrice = product.marketPrice * (1 - DISCOUNT);
+        const modal = document.getElementById("productModal");
+        const mainImg = document.getElementById("modalMainImage");
+        const titleSpan = document.getElementById("modalTitle");
+        const descSpan = document.getElementById("modalDescription");
+        const oldPriceSpan = document.getElementById("modalOldPrice");
+        const newPriceSpan = document.getElementById("modalNewPrice");
+        const thumbContainer = document.getElementById("thumbnailsContainer");
+
+        titleSpan.innerText = product.name;
+        descSpan.innerText = product.fullDesc;
+        oldPriceSpan.innerText = formatPrice(product.marketPrice);
+        newPriceSpan.innerText = formatPrice(discountPrice);
+        mainImg.src = product.images[0];
+        mainImg.alt = product.name;
+
+        thumbContainer.innerHTML = '';
+        product.images.forEach((img, idx) => {
+            const thumb = document.createElement('img');
+            thumb.src = img;
+            thumb.classList.add('thumbnail');
+            if (idx === 0) thumb.classList.add('active');
+            thumb.addEventListener('click', () => {
+                mainImg.src = img;
+                document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+            });
+            thumbContainer.appendChild(thumb);
+        });
+
+        const orderBtn = document.getElementById("orderTelegramBtn");
+        const orderText = currentLang === 'en' ? 'I want to order' : 
+                         currentLang === 'ru' ? 'Хочу заказать' :
+                         currentLang === 'es' ? 'Quiero pedir' :
+                         currentLang === 'de' ? 'Ich möchte bestellen' : 'Je souhaite commander';
+        const tgLink = `https://t.me/${TG_USERNAME}?text=${encodeURIComponent(`${orderText}: ${product.name} (30% off). Price: ${formatPrice(discountPrice)}. Details: ${product.fullDesc.substring(0, 300)}`)}`;
+        orderBtn.onclick = () => window.open(tgLink, '_blank');
+        modal.classList.add('active');
+    }
+
+    function closeModal() {
+        document.getElementById("productModal").classList.remove('active');
+    }
+
+    function renderCategories() {
+        const container = document.getElementById("categoriesList");
+        if (!container) return;
+        const categoriesArray = Array.from(categoriesSet);
+        container.innerHTML = categoriesArray.map(cat => `
+            <button class="cat-btn ${activeCategory === cat ? 'active' : ''}" data-cat="${cat}">${getCategoryName(cat)}</button>
+        `).join('');
+        document.querySelectorAll('.cat-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                activeCategory = btn.getAttribute('data-cat');
+                activeSubcategory = null;
+                document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                updateSubcategories();
+                renderProducts();
+            });
+        });
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    // Build categories and subcategories
+    const categoriesSet = new Set();
+    const subcategoriesMap = new Map();
+    products.forEach(p => {
+        categoriesSet.add(p.category);
+        if (!subcategoriesMap.has(p.category)) {
+            subcategoriesMap.set(p.category, new Set());
+        }
+        subcategoriesMap.get(p.category).add(p.subcategory);
+    });
+
+    // Language selector
+    function toggleLangDropdown() {
+        document.getElementById('langDropdown').classList.toggle('active');
+    }
+    document.getElementById('langBtn').addEventListener('click', toggleLangDropdown);
+    document.querySelectorAll('.lang-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+            currentLang = opt.getAttribute('data-lang');
+            localStorage.setItem('kurbashop_lang', currentLang);
+            updateUIForLanguage();
+            document.getElementById('langDropdown').classList.remove('active');
+        });
+    });
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.lang-selector')) {
+            document.getElementById('langDropdown').classList.remove('active');
+        }
+    });
+
+    function init() {
+        updateUIForLanguage();
+        const modal = document.getElementById("productModal");
+        const closeBtn = document.getElementById("closeModalBtn");
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    }
+
+    init();
+</script>
+</body>
+</html>
