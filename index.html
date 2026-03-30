@@ -12,13 +12,12 @@
     
     <!-- SECURITY HEADERS -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta name="format-detection" content="telephone=no, email=no, address=no">
     
-    <!-- Favicon - ЗАМЕНИТЕ ССЫЛКУ НА ВАШ НОВЫЙ ЛОГОТИП -->
-    <link rel="icon" type="image/jpeg" href="https://s10.iimage.su/s/30/gm40IcoxUk4TOznydW4AWPoUgZmiLVFjInPqcDGTC.jpg">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://s10.iimage.su/s/30/gm40IcoxUk4TOznydW4AWPoUgZmiLVFjInPqcDGTC.jpg">
     <link rel="apple-touch-icon" href="https://s10.iimage.su/s/30/gm40IcoxUk4TOznydW4AWPoUgZmiLVFjInPqcDGTC.jpg">
     
     <title>KurbaShop | Tactical Arsenal & Gear</title>
@@ -27,7 +26,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Segoe UI', 'Roboto', 'Courier New', system-ui, monospace;
+            font-family: 'Segoe UI', 'Roboto', system-ui, monospace;
             background: #1a1e2a;
             color: #e0e4f0;
             line-height: 1.5;
@@ -46,14 +45,20 @@
             text-align: center;
             font-weight: bold;
             font-size: 1rem;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        @media (max-width: 480px) {
+            .discount-banner { white-space: normal; font-size: 0.85rem; }
         }
         .discount-banner span {
             color: #d4af37;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             background: #0a0c12;
             padding: 4px 12px;
             border-radius: 40px;
-            margin-left: 12px;
+            margin-left: 8px;
+            display: inline-block;
         }
         
         .header {
@@ -71,7 +76,7 @@
             align-items: center;
             padding: 12px 0;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 12px;
         }
         .logo {
             display: flex;
@@ -84,16 +89,17 @@
             border-radius: 8px;
         }
         .logo-text {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 800;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             background: linear-gradient(135deg, #b8c7a3, #6e854c);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             text-transform: uppercase;
         }
-        .logo-text span { color: #9eb67b; font-size: 14px; background: none; }
+        .logo-text span { color: #9eb67b; font-size: 12px; background: none; }
+        @media (max-width: 600px) { .logo-text { font-size: 18px; } .logo-img { height: 35px; } }
         
         .cart-btn {
             background: #2c3e2b;
@@ -107,12 +113,8 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.2s;
         }
-        .cart-btn:hover {
-            background: #3e5a32;
-            transform: scale(1.02);
-        }
+        .cart-btn:hover { background: #3e5a32; }
         .cart-count {
             background: #d4af37;
             color: #0a0c12;
@@ -129,8 +131,6 @@
             padding: 6px 12px;
             border-radius: 20px;
             font-size: 13px;
-            font-weight: 500;
-            color: #cddbc0;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -145,18 +145,17 @@
             border-radius: 12px;
             display: none;
             z-index: 100;
-            min-width: 140px;
+            min-width: 150px;
         }
         .lang-dropdown.active { display: block; }
         .lang-option {
             padding: 8px 16px;
             font-size: 13px;
             cursor: pointer;
-            color: #cddbc0;
-            transition: background 0.2s;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            transition: background 0.2s;
         }
         .lang-option:hover { background: #2c3e2b; }
         
@@ -175,17 +174,14 @@
             color: #cddbc0;
             padding: 8px 24px;
             border-radius: 40px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
-            text-transform: uppercase;
         }
         .cat-btn.active {
             background: #6e854c;
             border-color: #b8c7a3;
             color: #0a0c12;
-            box-shadow: 0 0 10px rgba(110,133,76,0.5);
         }
         
         .subcats {
@@ -202,14 +198,11 @@
             padding: 6px 20px;
             border-radius: 30px;
             font-size: 13px;
-            font-weight: 500;
-            color: #bcc7a8;
             cursor: pointer;
         }
         .sub-btn.active {
             background: #3e5a32;
             color: #ffffff;
-            box-shadow: inset 0 1px 0 #6e854c;
         }
         
         .products-grid {
@@ -228,52 +221,34 @@
             cursor: pointer;
             transition: all 0.25s ease;
             border: 1px solid #2b3530;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-            position: relative;
         }
         .product-card:hover {
             transform: translateY(-6px);
             border-color: #9eb67b;
-            box-shadow: 0 16px 24px -8px rgba(0,0,0,0.5);
         }
         .product-img {
             width: 100%;
             aspect-ratio: 1 / 1;
             object-fit: cover;
             background: #0d1020;
-            display: block;
         }
         .product-info { padding: 16px 14px 20px; }
-        .product-name {
-            font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 8px;
-            color: #eef2e0;
-        }
+        .product-name { font-weight: 700; font-size: 1rem; margin-bottom: 8px; color: #eef2e0; }
         .product-price {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             margin: 10px 0 6px;
             flex-wrap: wrap;
         }
-        .old-price {
-            font-size: 0.8rem;
-            color: #9daa8a;
-            text-decoration: line-through;
-        }
-        .new-price {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #d4af37;
-        }
+        .old-price { font-size: 0.8rem; color: #9daa8a; text-decoration: line-through; }
+        .new-price { font-size: 1rem; font-weight: 800; color: #d4af37; }
         .discount-badge {
             background: #d4af37;
             color: #0a0c12;
             font-size: 0.7rem;
             padding: 2px 8px;
             border-radius: 20px;
-            font-weight: bold;
         }
         .product-desc {
             font-size: 0.75rem;
@@ -294,13 +269,9 @@
             cursor: pointer;
             margin-top: 12px;
             width: 100%;
-            transition: 0.2s;
         }
-        .add-to-cart-btn:hover {
-            background: #7e9f54;
-        }
+        .add-to-cart-btn:hover { background: #7e9f54; }
         
-        /* Cart Modal */
         .cart-modal {
             display: none;
             position: fixed;
@@ -323,39 +294,14 @@
             align-items: center;
         }
         .cart-header h2 { color: #eef2e0; }
-        .close-cart {
-            background: none;
-            border: none;
-            font-size: 28px;
-            color: #cddbc0;
-            cursor: pointer;
-        }
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-        }
-        .cart-item {
-            display: flex;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid #2b3530;
-        }
-        .cart-item-img {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
+        .close-cart { background: none; border: none; font-size: 28px; color: #cddbc0; cursor: pointer; }
+        .cart-items { flex: 1; overflow-y: auto; padding: 20px; }
+        .cart-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #2b3530; }
+        .cart-item-img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; }
         .cart-item-info { flex: 1; }
         .cart-item-name { font-weight: 600; margin-bottom: 4px; }
         .cart-item-price { color: #d4af37; font-size: 0.9rem; }
-        .cart-item-quantity {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 8px;
-        }
+        .cart-item-quantity { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
         .cart-item-quantity button {
             background: #2c3e2b;
             border: none;
@@ -365,23 +311,9 @@
             color: white;
             cursor: pointer;
         }
-        .cart-item-remove {
-            background: none;
-            border: none;
-            color: #dc2626;
-            cursor: pointer;
-            font-size: 18px;
-        }
-        .cart-footer {
-            padding: 20px;
-            border-top: 1px solid #2c3e2b;
-        }
-        .cart-total {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 16px;
-            text-align: right;
-        }
+        .cart-item-remove { background: none; border: none; color: #dc2626; cursor: pointer; font-size: 18px; }
+        .cart-footer { padding: 20px; border-top: 1px solid #2c3e2b; }
+        .cart-total { font-size: 1.2rem; font-weight: bold; margin-bottom: 16px; text-align: right; }
         .cart-total span { color: #d4af37; }
         .cart-order-btn {
             background: #5f7642;
@@ -394,7 +326,6 @@
             width: 100%;
             cursor: pointer;
         }
-        .cart-order-btn:hover { background: #7e9f54; }
         
         .modal {
             display: none;
@@ -424,7 +355,7 @@
             position: absolute;
             top: 16px;
             right: 24px;
-            font-size: 36px;
+            font-size: 32px;
             background: none;
             border: none;
             color: #cddbc0;
@@ -458,21 +389,14 @@
             border: 2px solid #353d2c;
             opacity: 0.7;
         }
-        .thumbnail.active {
-            border-color: #b8c7a3;
-            opacity: 1;
-        }
+        .thumbnail.active { border-color: #b8c7a3; opacity: 1; }
         .modal-info { padding: 24px 28px; }
-        .modal-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; color: #e7efd3; }
+        .modal-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; color: #e7efd3; }
         .modal-price { margin: 16px 0; }
         .modal-old-price { color: #9daa8a; text-decoration: line-through; margin-right: 16px; }
-        .modal-new-price { color: #d4af37; font-size: 1.8rem; font-weight: 800; }
-        .modal-description { color: #b9c6a2; margin-bottom: 20px; line-height: 1.5; }
-        .modal-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 16px;
-        }
+        .modal-new-price { color: #d4af37; font-size: 1.6rem; font-weight: 800; }
+        .modal-description { color: #b9c6a2; margin-bottom: 20px; line-height: 1.5; max-height: 200px; overflow-y: auto; }
+        .modal-buttons { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
         .modal-add-cart, .modal-order-btn, .modal-back-btn {
             background: #5f7642;
             border: none;
@@ -481,6 +405,7 @@
             font-weight: 600;
             cursor: pointer;
             flex: 1;
+            min-width: 100px;
             text-align: center;
         }
         .modal-order-btn { background: #d4af37; color: #0a0c12; }
@@ -493,13 +418,12 @@
             color: #7c8a6b;
             background: #0a0d16;
         }
-        .privacy-note { font-size: 0.7rem; color: #6c7a6b; margin-top: 16px; text-align: center; }
+        .privacy-note { font-size: 0.7rem; color: #6c7a6b; margin-top: 16px; }
         
         @media (max-width: 640px) {
-            .modal-title { font-size: 1.4rem; }
+            .modal-title { font-size: 1.3rem; }
             .thumbnail { width: 55px; height: 55px; }
-            .logo-text { font-size: 20px; }
-            .logo-img { height: 35px; }
+            .modal-buttons { flex-direction: column; }
         }
     </style>
 </head>
@@ -512,70 +436,43 @@
     <div class="container">
         <div class="nav-bar">
             <div class="logo">
-                <!-- ЗАМЕНИТЕ ССЫЛКУ НА ВАШ НОВЫЙ ЛОГОТИП -->
                 <img class="logo-img" src="https://s10.iimage.su/s/30/gm40IcoxUk4TOznydW4AWPoUgZmiLVFjInPqcDGTC.jpg" alt="KurbaShop Logo">
                 <div class="logo-text">KURBASHOP<span id="logoSub"> | tactical gear</span></div>
             </div>
             <div style="display: flex; gap: 12px; align-items: center;">
-                <button class="cart-btn" id="cartBtn">
-                    🛒 CART <span id="cartCount" class="cart-count">0</span>
-                </button>
+                <button class="cart-btn" id="cartBtn">🛒 CART <span id="cartCount" class="cart-count">0</span></button>
                 <div class="lang-selector">
-                    <button class="lang-btn" id="langBtn">
-                        <span id="currentLangFlag">🇬🇧</span> <span id="currentLangText">EN</span> ▼
-                    </button>
+                    <button class="lang-btn" id="langBtn"><span id="currentLangFlag">🇬🇧</span> <span id="currentLangText">EN</span> ▼</button>
                     <div class="lang-dropdown" id="langDropdown">
-                        <div class="lang-option" data-lang="en"><span class="flag-icon">🇬🇧</span> English</div>
-                        <div class="lang-option" data-lang="ru"><span class="flag-icon">🇷🇺</span> Русский</div>
-                        <div class="lang-option" data-lang="es"><span class="flag-icon">🇪🇸</span> Español</div>
-                        <div class="lang-option" data-lang="de"><span class="flag-icon">🇩🇪</span> Deutsch</div>
-                        <div class="lang-option" data-lang="fr"><span class="flag-icon">🇫🇷</span> Français</div>
+                        <div class="lang-option" data-lang="en">🇬🇧 English</div>
+                        <div class="lang-option" data-lang="ru">🇷🇺 Русский</div>
+                        <div class="lang-option" data-lang="es">🇪🇸 Español</div>
+                        <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
+                        <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="categories" id="categoriesWrapper">
-        <div class="categories-list" id="categoriesList"></div>
-    </div>
-    <div class="subcats" id="subcatsWrapper">
-        <div class="subcats-list" id="subcatsList"></div>
-    </div>
+    <div class="categories" id="categoriesWrapper"><div class="categories-list" id="categoriesList"></div></div>
+    <div class="subcats" id="subcatsWrapper"><div class="subcats-list" id="subcatsList"></div></div>
 </div>
 
-<main class="container">
-    <div class="products-grid" id="productsGrid"></div>
-</main>
+<main class="container"><div class="products-grid" id="productsGrid"></div></main>
 
-<!-- Cart Modal -->
 <div id="cartModal" class="cart-modal">
-    <div class="cart-header">
-        <h2 id="cartTitle">🛒 Shopping Cart</h2>
-        <button class="close-cart" id="closeCartBtn">✕</button>
-    </div>
-    <div class="cart-items" id="cartItemsList">
-        <div style="text-align: center; padding: 40px;" id="emptyCartMsg">Your cart is empty</div>
-    </div>
-    <div class="cart-footer">
-        <div class="cart-total"><span id="cartTotalLabel">Total:</span> <span id="cartTotal">$0.00</span></div>
-        <button class="cart-order-btn" id="cartOrderBtn">📲 Send Order to Telegram</button>
-    </div>
+    <div class="cart-header"><h2 id="cartTitle">🛒 Shopping Cart</h2><button class="close-cart" id="closeCartBtn">✕</button></div>
+    <div class="cart-items" id="cartItemsList"><div style="text-align:center; padding:40px;" id="emptyCartMsg">Your cart is empty</div></div>
+    <div class="cart-footer"><div class="cart-total"><span id="cartTotalLabel">Total:</span> <span id="cartTotal">$0.00</span></div><button class="cart-order-btn" id="cartOrderBtn">📲 Send Order to Telegram</button></div>
 </div>
 
-<!-- Product Modal -->
 <div id="productModal" class="modal">
     <div class="modal-content">
         <button class="close-modal" id="closeModalBtn">✕</button>
-        <div class="gallery-container">
-            <img id="modalMainImage" class="main-image" src="" alt="Main photo">
-            <div id="thumbnailsContainer" class="thumbnails"></div>
-        </div>
+        <div class="gallery-container"><img id="modalMainImage" class="main-image" src="" alt=""><div id="thumbnailsContainer" class="thumbnails"></div></div>
         <div class="modal-info">
             <div id="modalTitle" class="modal-title"></div>
-            <div class="modal-price">
-                <span class="modal-old-price" id="modalOldPrice"></span>
-                <span class="modal-new-price" id="modalNewPrice"></span>
-            </div>
+            <div class="modal-price"><span class="modal-old-price" id="modalOldPrice"></span><span class="modal-new-price" id="modalNewPrice"></span></div>
             <div id="modalDescription" class="modal-description"></div>
             <div class="modal-buttons">
                 <button id="modalAddToCart" class="modal-add-cart">+ Add to Cart</button>
@@ -587,67 +484,146 @@
 </div>
 
 <div class="footer" id="footerText">
-    <p>© KurbaShop — tactical arsenal & gear.<br>All orders are processed via Telegram. Please contact manager for availability and pricing.<br>🔥 <strong>20% discount on first order</strong> applies to first purchase.</p>
-    <div class="privacy-note">🔒 Secure connection | No personal data stored | All communication via Telegram</div>
+    <p>© KurbaShop — tactical arsenal & gear.<br>All orders via Telegram. 20% discount on first order.</p>
+    <div class="privacy-note">🔒 Secure | No data stored | Contact: Telegram</div>
 </div>
 
 <script>
-    // ======================== SETTINGS ========================
     const TG_USERNAME = "kurbaaX";
     const DISCOUNT = 0.2;
     const CURRENCY = "$";
+    function formatPrice(p) { return p.toLocaleString('ru-RU') + " " + CURRENCY; }
 
-    function formatPrice(price) {
-        return price.toLocaleString('ru-RU') + " " + CURRENCY;
-    }
+    // ======================== PRODUCTS WITH MULTI-LANGUAGE DESCRIPTIONS ========================
+    const productNames = {
+        en: ["Glock 17 Gen5", "Beretta 92FS", "Sig Sauer P320", "CZ P-10C", "Walther PDP", "AK-74M", "M4 Carbine", "HK416", "FN SCAR-17", "Remington 700", "Savage 110", "Umarex Walther CP88", "Sig Sauer P226 Air", "Hatsan 125", "Gamo Swarm Magnum", "MP-79-9TM", "Byrna HD", "Saiga-MK", "Mossberg 500", "Benelli M4", "9x19 FMJ Ammo", "5.45x39 FMJ Ammo", "5.56x45 NATO Ammo", ".308 Win Ammo", "Glock 17 Magazine", "AK-74 Magazine", "PMAG 30 AR-15", "HK416 Magazine", "6B45 Body Armor", "TacTec Plate Carrier", "AR500 Armor Plates", "Tactical Belt", "Magazine Pouch", "Tactical Dump Pouch", "Shooting Glasses"],
+        ru: ["Glock 17 Gen5", "Beretta 92FS", "Sig Sauer P320", "CZ P-10C", "Walther PDP", "АК-74М", "M4 Carbine", "HK416", "FN SCAR-17", "Remington 700", "Savage 110", "Umarex Walther CP88", "Sig Sauer P226 Air", "Hatsan 125", "Gamo Swarm Magnum", "МР-79-9ТМ", "Byrna HD", "Сайга-МК", "Mossberg 500", "Benelli M4", "Патроны 9x19 FMJ", "Патроны 5.45x39 FMJ", "Патроны 5.56x45 NATO", "Патроны .308 Win", "Магазин Glock 17", "Магазин АК-74", "PMAG 30 AR-15", "Магазин HK416", "Бронежилет 6Б45", "Бронежилет TacTec", "Пластины AR500", "Тактический пояс", "Подсумок для магазинов", "Тактическая сумка", "Защитные очки"],
+        es: ["Glock 17 Gen5", "Beretta 92FS", "Sig Sauer P320", "CZ P-10C", "Walther PDP", "AK-74M", "M4 Carbine", "HK416", "FN SCAR-17", "Remington 700", "Savage 110", "Umarex Walther CP88", "Sig Sauer P226 Air", "Hatsan 125", "Gamo Swarm Magnum", "MP-79-9TM", "Byrna HD", "Saiga-MK", "Mossberg 500", "Benelli M4", "Munición 9x19 FMJ", "Munición 5.45x39 FMJ", "Munición 5.56x45 NATO", "Munición .308 Win", "Cargador Glock 17", "Cargador AK-74", "PMAG 30 AR-15", "Cargador HK416", "Chaleco 6B45", "Portaplacas TacTec", "Placas AR500", "Cinturón táctico", "Funda para cargadores", "Bolsa táctica", "Gafas de tiro"],
+        de: ["Glock 17 Gen5", "Beretta 92FS", "Sig Sauer P320", "CZ P-10C", "Walther PDP", "AK-74M", "M4 Carbine", "HK416", "FN SCAR-17", "Remington 700", "Savage 110", "Umarex Walther CP88", "Sig Sauer P226 Air", "Hatsan 125", "Gamo Swarm Magnum", "MP-79-9TM", "Byrna HD", "Saiga-MK", "Mossberg 500", "Benelli M4", "9x19 FMJ Munition", "5.45x39 FMJ Munition", "5.56x45 NATO Munition", ".308 Win Munition", "Glock 17 Magazin", "AK-74 Magazin", "PMAG 30 AR-15", "HK416 Magazin", "6B45 Körperpanzerung", "TacTec Plattenhalter", "AR500 Panzerplatten", "Taktischer Gürtel", "Magazintasche", "Taktische Dump-Tasche", "Schutzbrille"],
+        fr: ["Glock 17 Gen5", "Beretta 92FS", "Sig Sauer P320", "CZ P-10C", "Walther PDP", "AK-74M", "M4 Carbine", "HK416", "FN SCAR-17", "Remington 700", "Savage 110", "Umarex Walther CP88", "Sig Sauer P226 Air", "Hatsan 125", "Gamo Swarm Magnum", "MP-79-9TM", "Byrna HD", "Saiga-MK", "Mossberg 500", "Benelli M4", "Munition 9x19 FMJ", "Munition 5.45x39 FMJ", "Munition 5.56x45 NATO", "Munition .308 Win", "Chargeur Glock 17", "Chargeur AK-74", "PMAG 30 AR-15", "Chargeur HK416", "Gilet pare-balles 6B45", "Porte-plaques TacTec", "Plaques AR500", "Ceinture tactique", "Poche à chargeurs", "Poche tactique", "Lunettes de tir"]
+    };
 
-    // ======================== PRODUCT DATA (with working images) ========================
-    const products = [
-        { id: 1, name: "Glock 17 Gen5", shortDesc: "9mm Austrian pistol, reliability standard", fullDesc: "Austrian service pistol 9x19 mm, 17-round magazine capacity. Polymer frame, improved ergonomics.", marketPrice: 850, category: "Firearms", subcategory: "Pistols", images: ["https://www.glock.com/sites/default/files/2019-10/Glock-17-Gen5-Pistol.png"] },
-        { id: 2, name: "Beretta 92FS", shortDesc: "Legendary Italian classic", fullDesc: "9x19 mm, exposed hammer, high accuracy. Used by US Army and special forces worldwide.", marketPrice: 790, category: "Firearms", subcategory: "Pistols", images: ["https://www.beretta.com/sites/default/files/styles/product_detail/public/2021-03/92FS_1.png"] },
-        { id: 3, name: "Sig Sauer P320", shortDesc: "Modular striker-fired pistol", fullDesc: "9mm caliber, modular grip system, 17-round magazine. US Army's M17/M18 service pistol.", marketPrice: 680, category: "Firearms", subcategory: "Pistols", images: ["https://www.sigsauer.com/media/catalog/product/p/3/p320-full_1.png"] },
-        { id: 4, name: "CZ P-10C", shortDesc: "Czech striker-fired compact", fullDesc: "9x19 mm, 15-round magazine, ergonomic grip. Superior trigger and reliability.", marketPrice: 550, category: "Firearms", subcategory: "Pistols", images: ["https://www.czub.cz/en/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/1/p10c_1.jpg"] },
-        { id: 5, name: "Walther PDP", shortDesc: "Performance Duty Pistol", fullDesc: "9mm caliber, 18-round magazine, advanced ergonomics. Superior grip texture and trigger system.", marketPrice: 720, category: "Firearms", subcategory: "Pistols", images: ["https://www.waltherarms.com/wp-content/uploads/2020/12/PDP_1.png"] },
-        { id: 6, name: "AK-74M", shortDesc: "Kalashnikov, modern modification", fullDesc: "5.45x39 mm caliber, folding polymer stock, Picatinny rail for optics.", marketPrice: 1250, category: "Firearms", subcategory: "Rifles", images: ["https://kalashnikov.ru/wp-content/uploads/2018/03/ak74m_1.png"] },
-        { id: 7, name: "M4 Carbine", shortDesc: "American AR-15 platform rifle", fullDesc: "5.56x45 mm, telescoping stock, aluminum M-LOK handguard. Lightweight and accurate.", marketPrice: 1450, category: "Firearms", subcategory: "Rifles", images: ["https://www.colt.com/Portals/0/Images/Firearms/M4Carbine.png"] },
-        { id: 8, name: "HK416", shortDesc: "German premium assault rifle", fullDesc: "5.56x45 mm, gas piston system, cold hammer-forged barrel.", marketPrice: 2800, category: "Firearms", subcategory: "Rifles", images: ["https://www.heckler-koch.com/en/products/military/assault-rifles/hk416/hk416-14-5.png"] },
-        { id: 9, name: "FN SCAR-17", shortDesc: "Special Operations Forces rifle", fullDesc: "7.62x51 mm NATO, folding stock, fully ambidextrous controls.", marketPrice: 3400, category: "Firearms", subcategory: "Rifles", images: ["https://www.fnamerica.com/media/catalog/product/s/c/scar-17s_1.png"] },
-        { id: 10, name: "Remington 700", shortDesc: "Precision bolt-action rifle", fullDesc: ".308 Win caliber, match-grade barrel, adjustable trigger.", marketPrice: 1100, category: "Firearms", subcategory: "Rifles", images: ["https://www.remington.com/sites/default/files/styles/product_detail/public/2020-05/Model700.png"] },
-        { id: 11, name: "Savage 110", shortDesc: "Accurate bolt-action rifle", fullDesc: ".308 Win caliber, AccuTrigger system, user-adjustable.", marketPrice: 950, category: "Firearms", subcategory: "Rifles", images: ["https://www.savagearms.com/sites/default/files/styles/product_detail/public/2020-03/110_1.png"] },
-        { id: 12, name: "Umarex Walther CP88", shortDesc: "CO2 air pistol", fullDesc: "4.5 mm caliber, pellet shooting, exact Walther replica.", marketPrice: 290, category: "Air Guns", subcategory: "Air Pistols", images: ["https://www.umarex.com/media/catalog/product/2/2/2253015_walther_cp88_competition_black_1.jpg"] },
-        { id: 13, name: "Sig Sauer P226 Air", shortDesc: "CO2 air pistol replica", fullDesc: "4.5 mm caliber, blowback action, realistic weight and feel.", marketPrice: 210, category: "Air Guns", subcategory: "Air Pistols", images: ["https://www.sigsauer.com/media/catalog/product/p/2/p226-air_1.png"] },
-        { id: 14, name: "Hatsan 125", shortDesc: "Powerful spring-piston air rifle", fullDesc: "4.5 or 5.5 mm caliber, muzzle energy up to 30 J.", marketPrice: 380, category: "Air Guns", subcategory: "Air Rifles", images: ["https://www.hatsan.com.tr/uploads/products/hatsan-125-sniper-vortex.jpg"] },
-        { id: 15, name: "Gamo Swarm Magnum", shortDesc: "10-shot multi-shot air rifle", fullDesc: ".22 caliber, IGT gas piston, 10-shot magazine system.", marketPrice: 420, category: "Air Guns", subcategory: "Air Rifles", images: ["https://www.gamo.com/media/catalog/product/s/w/swarm-magnum-10x-gen2_1.jpg"] },
-        { id: 16, name: "MP-79-9TM", shortDesc: "Less-lethal Makarov pistol", fullDesc: "9 mm R.A. caliber, 10-round magazine, rubber bullet.", marketPrice: 320, category: "Less-Lethal", subcategory: "Less-Lethal Pistols", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/MP-79-9TM.jpg/800px-MP-79-9TM.jpg"] },
-        { id: 17, name: "Byrna HD", shortDesc: "Kinetic self-defense launcher", fullDesc: ".68 caliber, CO2-powered, fires kinetic and chemical projectiles.", marketPrice: 380, category: "Less-Lethal", subcategory: "Less-Lethal Pistols", images: ["https://byrna.com/cdn/shop/products/Byrna_HD_Black_01_1024x.png"] },
-        { id: 18, name: "Saiga-MK", shortDesc: "Semi-auto shotgun based on AK", fullDesc: "12/76 caliber, 8-round magazine, semi-automatic.", marketPrice: 890, category: "Hunting", subcategory: "Shotguns", images: ["https://kalashnikov.ru/wp-content/uploads/2019/05/saiga-mk-03.png"] },
-        { id: 19, name: "Mossberg 500", shortDesc: "Pump-action shotgun", fullDesc: "12 gauge, 5+1 capacity, dual extractors.", marketPrice: 480, category: "Hunting", subcategory: "Shotguns", images: ["https://www.mossberg.com/media/catalog/product/5/0/500_1.png"] },
-        { id: 20, name: "Benelli M4", shortDesc: "Semi-auto tactical shotgun", fullDesc: "12 gauge, 5+1 capacity, ARGO gas system.", marketPrice: 1850, category: "Hunting", subcategory: "Shotguns", images: ["https://www.benelliusa.com/media/catalog/product/m/4/m4_1.png"] },
-        { id: 21, name: "9x19 FMJ Ammo", shortDesc: "50 rounds, for Glock/Beretta", fullDesc: "9 mm Luger, FMJ bullet. 50-round box.", marketPrice: 45, category: "Accessories", subcategory: "Ammunition", images: ["https://www.sgammo.com/sites/default/files/styles/product_image/public/9mm-ammo-box.jpg"] },
-        { id: 22, name: "5.45x39 FMJ Ammo", shortDesc: "120 rounds, for AK-74", fullDesc: "Standard ammunition for AK-74, 5.45x39 mm. 120-round box.", marketPrice: 89, category: "Accessories", subcategory: "Ammunition", images: ["https://www.sgammo.com/sites/default/files/styles/product_image/public/545x39-ammo.jpg"] },
-        { id: 23, name: "5.56x45 NATO Ammo", shortDesc: "100 rounds, for M4/AR-15", fullDesc: "5.56x45 mm, FMJ bullet. 100-round box.", marketPrice: 110, category: "Accessories", subcategory: "Ammunition", images: ["https://www.sgammo.com/sites/default/files/styles/product_image/public/556x45-ammo-box.jpg"] },
-        { id: 24, name: ".308 Win Ammo", shortDesc: "50 rounds, for Remington 700", fullDesc: ".308 Winchester caliber, FMJ bullet. 50-round box.", marketPrice: 95, category: "Accessories", subcategory: "Ammunition", images: ["https://www.sgammo.com/sites/default/files/styles/product_image/public/308-win-ammo.jpg"] },
-        { id: 25, name: "Glock 17 Magazine", shortDesc: "17 rounds, original", fullDesc: "Original magazine for Glock 17, 9x19 caliber. 17-round capacity.", marketPrice: 42, category: "Accessories", subcategory: "Magazines", images: ["https://us.glock.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/f/mf23001_1.jpg"] },
-        { id: 26, name: "AK-74 Magazine", shortDesc: "30 rounds, polymer", fullDesc: "Magazine for AK-74, 5.45x39 caliber. 30-round capacity.", marketPrice: 28, category: "Accessories", subcategory: "Magazines", images: ["https://kalashnikov.ru/wp-content/uploads/2018/05/ak74-magazine.jpg"] },
-        { id: 27, name: "PMAG 30 AR-15", shortDesc: "30 rounds, polymer, window", fullDesc: "Impact-resistant polymer magazine for M4/AR-15, 5.56x45 caliber.", marketPrice: 35, category: "Accessories", subcategory: "Magazines", images: ["https://www.magpul.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/m/pmag30_black_1.jpg"] },
-        { id: 28, name: "HK416 Magazine", shortDesc: "30 rounds, steel", fullDesc: "Original magazine for HK416, 5.56x45 mm. 30-round capacity.", marketPrice: 55, category: "Accessories", subcategory: "Magazines", images: ["https://www.hkparts.net/shop/pc/catalog/HK416-magazine_1.jpg"] },
-        { id: 29, name: "6B45 Body Armor", shortDesc: "Level 3 protection, tactical", fullDesc: "Military body armor, Kevlar inserts, quick-release system.", marketPrice: 550, category: "Accessories", subcategory: "Body Armor", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/6B45_body_armor.jpg/800px-6B45_body_armor.jpg"] },
-        { id: 30, name: "TacTec Plate Carrier", shortDesc: "Lightweight, concealed carry", fullDesc: "Tactical plate carrier with armor plate capability.", marketPrice: 390, category: "Accessories", subcategory: "Body Armor", images: ["https://www.511tactical.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/8/58180_01_1.jpg"] },
-        { id: 31, name: "AR500 Armor Plates", shortDesc: "Level III+ steel plates", fullDesc: "Two plates, Level III+ protection, multi-hit capability.", marketPrice: 280, category: "Accessories", subcategory: "Body Armor", images: ["https://www.ar500armor.com/media/catalog/product/a/r/ar500-plates_1.jpg"] },
-        { id: 32, name: "Tactical Belt", shortDesc: "MOLLE, adjustable, khaki", fullDesc: "Load-bearing belt, reinforced webbing, metal buckle.", marketPrice: 55, category: "Accessories", subcategory: "Gear", images: ["https://www.511tactical.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/9/59501_01_1.jpg"] },
-        { id: 33, name: "Magazine Pouch", shortDesc: "MOLLE, 2 compartments, khaki", fullDesc: "Tactical magazine pouch for two magazines. MOLLE attachment.", marketPrice: 32, category: "Accessories", subcategory: "Gear", images: ["https://www.511tactical.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/8/58007_01_1.jpg"] },
-        { id: 34, name: "Tactical Dump Pouch", shortDesc: "Collapsible utility pouch", fullDesc: "Large capacity dump pouch for empty magazines and gear.", marketPrice: 38, category: "Accessories", subcategory: "Gear", images: ["https://www.condor.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/a/map-001_1.jpg"] },
-        { id: 35, name: "Shooting Glasses", shortDesc: "Impact-resistant protective eyewear", fullDesc: "ANSI Z87.1 rated, UV protection, interchangeable lenses.", marketPrice: 45, category: "Accessories", subcategory: "Gear", images: ["https://www.wileyx.com/media/catalog/product/w/x/wx-valor_1.jpg"] }
+    const productDesc = {
+        en: [
+            "9mm Austrian pistol, 17-round capacity, polymer frame, improved ergonomics. Ideal for sport shooting and self-defense. Includes holster, two magazines, safety lock.",
+            "9x19 mm Italian classic, exposed hammer, high accuracy. Used by US Army. Includes case, two magazines, holster.",
+            "9mm modular pistol, 17-round magazine. US Army's M17 service pistol. Excellent trigger and accuracy. Includes two magazines, interchangeable grips.",
+            "9x19 mm Czech striker-fired compact, 15-round magazine. Superior trigger and reliability. Includes two magazines, cleaning kit.",
+            "9mm performance pistol, 18-round magazine, advanced ergonomics. Superior grip texture and trigger system. Includes two magazines, optics-ready slide.",
+            "5.45x39 mm Kalashnikov, folding polymer stock, Picatinny rail. Legendary reliability. Includes 30-round magazine, sling, oil can.",
+            "5.56x45 mm American AR-15 platform, telescoping stock, M-LOK handguard. Lightweight and accurate. Includes PMAG 30, carry handle, sling.",
+            "5.56x45 mm German premium rifle, gas piston system, cold hammer-forged barrel. Used by special forces. Includes 30-round magazine, sling.",
+            "7.62x51 mm NATO battle rifle, folding stock, fully ambidextrous. Battle-proven reliability. Includes 20-round magazine, sling, cleaning kit.",
+            ".308 Win bolt-action rifle, match-grade barrel, adjustable trigger. Accuracy standard for hunting and sniping. Includes Weaver optics base.",
+            ".308 Win bolt-action rifle, AccuTrigger system, user-adjustable. Exceptional accuracy out of the box. Includes scope bases, sling swivels.",
+            "4.5 mm CO2 air pistol, exact Walther replica, 8-round magazine. Suitable for training and recreational shooting.",
+            "4.5 mm CO2 air pistol replica, blowback action, realistic weight. 18-round magazine. Perfect for training.",
+            "4.5/5.5 mm spring-piston air rifle, up to 30 J muzzle energy. Suitable for small game hunting. Includes 4x32 scope, bipod.",
+            ".22 caliber IGT gas piston air rifle, 10-shot magazine system. High power and accuracy. Includes 3-9x40 scope.",
+            "9 mm R.A. less-lethal pistol, 10-round magazine, rubber bullet. Designed for self-defense. Includes holster, two magazines.",
+            ".68 caliber CO2-powered launcher, kinetic and chemical projectiles. Effective range up to 60 ft. Includes CO2 cartridges, holster.",
+            "12/76 semi-auto shotgun based on AK, 8-round magazine. Excellent for hunting. Includes sling, case, interchangeable chokes.",
+            "12 gauge pump-action shotgun, 5+1 capacity, dual extractors. The most reliable pump-action. Includes sling, choke tubes.",
+            "12 gauge semi-auto tactical shotgun, 5+1 capacity, ARGO gas system. Used by US Marine Corps. Includes sling, choke kit.",
+            "9 mm Luger FMJ ammunition, 50-round box. Suitable for Glock, Beretta, CZ and other 9x19 pistols.",
+            "5.45x39 mm FMJ ammunition, 120-round box. Standard ammunition for AK-74 and variants.",
+            "5.56x45 mm FMJ ammunition, 100-round box. Perfect for M4, AR-15 and other NATO platform rifles.",
+            ".308 Winchester FMJ ammunition, 50-round box. High accuracy for Remington 700 and other bolt-action rifles.",
+            "Original 17-round magazine for Glock 17, 9x19 caliber. Steel body with polymer coating.",
+            "30-round polymer magazine for AK-74, 5.45x39 caliber. Reinforced spring, reliable feeding.",
+            "30-round polymer magazine for AR-15/M4, 5.56x45 caliber. Transparent window for round count.",
+            "30-round steel magazine for HK416, 5.56x45 mm. Anti-tilt follower, original quality.",
+            "Level 3 military body armor, Kevlar inserts, quick-release system. Weight 8.5 kg, olive color.",
+            "Lightweight tactical plate carrier, Cordura nylon, adjustable fit. Accepts armor plates.",
+            "Two Level III+ steel armor plates, multi-hit capability. Includes anti-spall coating.",
+            "MOLLE load-bearing belt, reinforced webbing, metal buckle. Width 5 cm, length up to 120 cm.",
+            "Tactical magazine pouch for two magazines, MOLLE attachment, adjustable flaps, quick access.",
+            "Large capacity collapsible dump pouch for empty magazines and gear, MOLLE attachment.",
+            "ANSI Z87.1 rated protective eyewear, UV protection, interchangeable lenses. Rubberized temples."
+        ]
+    };
+    for (let lang of ['ru','es','de','fr']) productDesc[lang] = productDesc.en; // fallback, then override with translations
+    // Russian descriptions
+    productDesc.ru = [
+        "9-мм австрийский пистолет, 17 патронов, полимерная рамка. Идеален для спорта и самообороны. В комплекте: кобура, два магазина.",
+        "9x19 мм итальянская классика, открытый курок. Используется армией США. В комплекте: кейс, два магазина, кобура.",
+        "9-мм модульный пистолет, 17 патронов. Армейский M17. Отличный спуск и точность. Два магазина, сменные накладки.",
+        "9x19 мм чешский компакт, 15 патронов. Отличный спуск и надёжность. Два магазина, набор для чистки.",
+        "9-мм пистолет, 18 патронов, улучшенная эргономика. Два магазина, подготовка под коллиматор.",
+        "5.45x39 мм Калашников, складной приклад, планка Пикатинни. Надёжность легенды. Магазин на 30, ремень, маслёнка.",
+        "5.56x45 мм американская винтовка, телескопический приклад, M-LOK цевьё. Лёгкая и точная. PMAG 30, ручка переноски.",
+        "5.56x45 мм немецкая винтовка, газовый поршень, кованый ствол. Используется спецназом. Магазин на 30, ремень.",
+        "7.62x51 мм боевая винтовка, складной приклад, полностью амбидекстрия. Проверенная надёжность. Магазин на 20, ремень.",
+        ".308 Win болтовая винтовка, матчевый ствол, регулируемый спуск. Эталон точности. Оптическая база Weaver.",
+        ".308 Win болтовая винтовка, AccuTrigger, регулируемый спуск. Исключительная точность. Базы под оптику, антабки.",
+        "4.5 мм CO2 пистолет, точная копия Walther, 8-зарядный магазин. Для тренировок и развлечения.",
+        "4.5 мм CO2 пистолет-копия, blowback, реалистичный вес. 18-зарядный магазин. Идеален для тренировок.",
+        "4.5/5.5 мм пружинно-поршневая винтовка, до 30 Дж. Для охоты на мелкую дичь. Оптический прицел 4x32, сошки.",
+        ".22 калибра газопоршневая винтовка, 10-зарядная система. Высокая мощность и точность. Прицел 3-9x40.",
+        "9 мм Р.А. травматический пистолет, 10 патронов, резиновая пуля. Для самообороны. Кобура, два магазина.",
+        ".68 калибра CO2-привод, кинетические и химические снаряды. Дальность до 18 м. Баллоны CO2, кобура.",
+        "12/76 самозарядный карабин на базе АК, магазин на 8 патронов. Отлично для охоты. Ремень, чехол, сменные чоки.",
+        "12-й калибр помповое ружьё, 5+1 патрон, двойные экстракторы. Надёжнейшая помпа. Ремень, сменные чоки.",
+        "12-й калибр самозарядное тактическое ружьё, 5+1, система ARGO. Используется морской пехотой США. Ремень, набор чоков.",
+        "9 мм Luger FMJ патроны, 50 шт. Подходят для Glock, Beretta, CZ и других пистолетов 9x19.",
+        "5.45x39 мм FMJ патроны, 120 шт. Стандартные боеприпасы для АК-74 и его модификаций.",
+        "5.56x45 мм FMJ патроны, 100 шт. Идеальны для M4, AR-15 и других винтовок стандарта НАТО.",
+        ".308 Winchester FMJ патроны, 50 шт. Высокая точность для Remington 700 и других болтовых винтовок.",
+        "Оригинальный магазин Glock 17, 17 патронов, 9x19. Стальной корпус с полимерным покрытием.",
+        "Полимерный магазин АК-74, 30 патронов, 5.45x39. Усиленная пружина, надёжная подача.",
+        "Полимерный магазин AR-15/M4, 30 патронов, 5.56x45. Прозрачное окно для контроля остатка.",
+        "Стальной магазин HK416, 30 патронов, 5.56x45. Оригинальное качество, антифрикционный толкатель.",
+        "Армейский бронежилет 3-го класса защиты, кевларовые вставки, система быстрого сброса. Вес 8.5 кг, олива.",
+        "Лёгкий тактический плитник, нейлон Cordura, регулируемая посадка. Принимает бронепластины.",
+        "Две стальные бронепластины Level III+, многоударная стойкость. Включает анти-осколочное покрытие.",
+        "Разгрузочный пояс MOLLE, усиленная стропа, металлическая пряжка. Ширина 5 см, длина до 120 см.",
+        "Тактический подсумок на два магазина, крепление MOLLE, регулируемые клапаны, быстрый доступ.",
+        "Большая складная сумка для сброса пустых магазинов и снаряжения, крепление MOLLE.",
+        "Защитные очки ANSI Z87.1, UV защита, сменные линзы. Прорезиненные дужки для фиксации."
     ];
+    for (let lang of ['es','de','fr']) productDesc[lang] = productDesc.ru; // use Russian as base for others to avoid empty
 
-    // Build categories
-    const categoriesSet = new Set();
-    const subcategoriesMap = new Map();
-    products.forEach(p => {
-        categoriesSet.add(p.category);
-        if (!subcategoriesMap.has(p.category)) subcategoriesMap.set(p.category, new Set());
-        subcategoriesMap.get(p.category).add(p.subcategory);
-    });
+    const products = [
+        { id: 1, shortDesc: "9mm Austrian pistol, reliability standard", marketPrice: 850, category: "Firearms", subcategory: "Pistols", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Glock_17_Gen_4_Pistol_%28no_background%29.png/800px-Glock_17_Gen_4_Pistol_%28no_background%29.png"] },
+        { id: 2, shortDesc: "Legendary Italian classic", marketPrice: 790, category: "Firearms", subcategory: "Pistols", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Beretta_92FS_pistol_%28no_background%29.png/800px-Beretta_92FS_pistol_%28no_background%29.png"] },
+        { id: 3, shortDesc: "Modular striker-fired pistol", marketPrice: 680, category: "Firearms", subcategory: "Pistols", images: ["https://www.sigsauer.com/media/catalog/product/p/3/p320-full_1.png"] },
+        { id: 4, shortDesc: "Czech striker-fired compact", marketPrice: 550, category: "Firearms", subcategory: "Pistols", images: ["https://www.czub.cz/en/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/1/p10c_1.jpg"] },
+        { id: 5, shortDesc: "Performance Duty Pistol", marketPrice: 720, category: "Firearms", subcategory: "Pistols", images: ["https://www.waltherarms.com/wp-content/uploads/2020/12/PDP_1.png"] },
+        { id: 6, shortDesc: "Kalashnikov, modern modification", marketPrice: 1250, category: "Firearms", subcategory: "Rifles", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/AK-74_%28no_background%29.png/800px-AK-74_%28no_background%29.png"] },
+        { id: 7, shortDesc: "American AR-15 platform rifle", marketPrice: 1450, category: "Firearms", subcategory: "Rifles", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/M4_Carbine_%28no_background%29.png/800px-M4_Carbine_%28no_background%29.png"] },
+        { id: 8, shortDesc: "German premium assault rifle", marketPrice: 2800, category: "Firearms", subcategory: "Rifles", images: ["https://www.heckler-koch.com/en/products/military/assault-rifles/hk416/hk416-14-5.png"] },
+        { id: 9, shortDesc: "Special Operations Forces rifle", marketPrice: 3400, category: "Firearms", subcategory: "Rifles", images: ["https://www.fnamerica.com/media/catalog/product/s/c/scar-17s_1.png"] },
+        { id: 10, shortDesc: "Precision bolt-action rifle", marketPrice: 1100, category: "Firearms", subcategory: "Rifles", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Remington_700_ADL_%28no_background%29.png/800px-Remington_700_ADL_%28no_background%29.png"] },
+        { id: 11, shortDesc: "Accurate bolt-action rifle", marketPrice: 950, category: "Firearms", subcategory: "Rifles", images: ["https://www.savagearms.com/sites/default/files/styles/product_detail/public/2020-03/110_1.png"] },
+        { id: 12, shortDesc: "CO2 air pistol", marketPrice: 290, category: "Air Guns", subcategory: "Air Pistols", images: ["https://www.umarex.com/media/catalog/product/2/2/2253015_walther_cp88_competition_black_1.jpg"] },
+        { id: 13, shortDesc: "CO2 air pistol replica", marketPrice: 210, category: "Air Guns", subcategory: "Air Pistols", images: ["https://www.sigsauer.com/media/catalog/product/p/2/p226-air_1.png"] },
+        { id: 14, shortDesc: "Powerful spring-piston air rifle", marketPrice: 380, category: "Air Guns", subcategory: "Air Rifles", images: ["https://www.hatsan.com.tr/uploads/products/hatsan-125-sniper-vortex.jpg"] },
+        { id: 15, shortDesc: "10-shot multi-shot air rifle", marketPrice: 420, category: "Air Guns", subcategory: "Air Rifles", images: ["https://www.gamo.com/media/catalog/product/s/w/swarm-magnum-10x-gen2_1.jpg"] },
+        { id: 16, shortDesc: "Less-lethal Makarov pistol", marketPrice: 320, category: "Less-Lethal", subcategory: "Less-Lethal Pistols", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/MP-79-9TM.jpg/800px-MP-79-9TM.jpg"] },
+        { id: 17, shortDesc: "Kinetic self-defense launcher", marketPrice: 380, category: "Less-Lethal", subcategory: "Less-Lethal Pistols", images: ["https://byrna.com/cdn/shop/products/Byrna_HD_Black_01_1024x.png"] },
+        { id: 18, shortDesc: "Semi-auto shotgun based on AK", marketPrice: 890, category: "Hunting", subcategory: "Shotguns", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Saiga_12K_%28no_background%29.png/800px-Saiga_12K_%28no_background%29.png"] },
+        { id: 19, shortDesc: "Pump-action shotgun", marketPrice: 480, category: "Hunting", subcategory: "Shotguns", images: ["https://www.mossberg.com/media/catalog/product/5/0/500_1.png"] },
+        { id: 20, shortDesc: "Semi-auto tactical shotgun", marketPrice: 1850, category: "Hunting", subcategory: "Shotguns", images: ["https://www.benelliusa.com/media/catalog/product/m/4/m4_1.png"] },
+        { id: 21, shortDesc: "50 rounds, for Glock/Beretta", marketPrice: 45, category: "Accessories", subcategory: "Ammunition", images: ["https://www.sgammo.com/sites/default/files/styles/product_image/public/9mm-ammo-box.jpg"] },
+        { id: 22, shortDesc: "120 rounds, for AK-74", marketPrice: 89, category: "Accessories", subcategory: "Ammunition", images: ["https://www.sgammo.com/sites/default/files/styles/product_image/public/545x39-ammo.jpg"] },
+        { id: 23, shortDesc: "100 rounds, for M4/AR-15", marketPrice: 110, category: "Accessories", subcategory: "Ammunition", images: ["https://www.sgammo.com/sites/default/files/styles/product_image/public/556x45-ammo-box.jpg"] },
+        { id: 24, shortDesc: "50 rounds, for Remington 700", marketPrice: 95, category: "Accessories", subcategory: "Ammunition", images: ["https://www.sgammo.com/sites/default/files/styles/product_image/public/308-win-ammo.jpg"] },
+        { id: 25, shortDesc: "17 rounds, original", marketPrice: 42, category: "Accessories", subcategory: "Magazines", images: ["https://us.glock.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/f/mf23001_1.jpg"] },
+        { id: 26, shortDesc: "30 rounds, polymer", marketPrice: 28, category: "Accessories", subcategory: "Magazines", images: ["https://kalashnikov.ru/wp-content/uploads/2018/05/ak74-magazine.jpg"] },
+        { id: 27, shortDesc: "30 rounds, polymer, window", marketPrice: 35, category: "Accessories", subcategory: "Magazines", images: ["https://www.magpul.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/m/pmag30_black_1.jpg"] },
+        { id: 28, shortDesc: "30 rounds, steel", marketPrice: 55, category: "Accessories", subcategory: "Magazines", images: ["https://www.hkparts.net/shop/pc/catalog/HK416-magazine_1.jpg"] },
+        { id: 29, shortDesc: "Level 3 protection, tactical", marketPrice: 550, category: "Accessories", subcategory: "Body Armor", images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/6B45_body_armor.jpg/800px-6B45_body_armor.jpg"] },
+        { id: 30, shortDesc: "Lightweight, concealed carry", marketPrice: 390, category: "Accessories", subcategory: "Body Armor", images: ["https://www.511tactical.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/8/58180_01_1.jpg"] },
+        { id: 31, shortDesc: "Level III+ steel plates", marketPrice: 280, category: "Accessories", subcategory: "Body Armor", images: ["https://www.ar500armor.com/media/catalog/product/a/r/ar500-plates_1.jpg"] },
+        { id: 32, shortDesc: "MOLLE, adjustable, khaki", marketPrice: 55, category: "Accessories", subcategory: "Gear", images: ["https://www.511tactical.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/9/59501_01_1.jpg"] },
+        { id: 33, shortDesc: "MOLLE, 2 compartments, khaki", marketPrice: 32, category: "Accessories", subcategory: "Gear", images: ["https://www.511tactical.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/8/58007_01_1.jpg"] },
+        { id: 34, shortDesc: "Collapsible utility pouch", marketPrice: 38, category: "Accessories", subcategory: "Gear", images: ["https://www.condor.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/a/map-001_1.jpg"] },
+        { id: 35, shortDesc: "Impact-resistant protective eyewear", marketPrice: 45, category: "Accessories", subcategory: "Gear", images: ["https://www.wileyx.com/media/catalog/product/w/x/wx-valor_1.jpg"] }
+    ];
+    for (let i=0; i<products.length; i++) { products[i].name = productNames.en[i]; }
+
+    const categoriesSet = new Set(), subcategoriesMap = new Map();
+    products.forEach(p => { categoriesSet.add(p.category); if (!subcategoriesMap.has(p.category)) subcategoriesMap.set(p.category, new Set()); subcategoriesMap.get(p.category).add(p.subcategory); });
 
     let currentLang = localStorage.getItem('kurbashop_lang') || 'en';
     let activeCategory = "Firearms";
@@ -655,300 +631,98 @@
     let cart = JSON.parse(localStorage.getItem('kurbashop_cart')) || [];
 
     const translations = {
-        en: { 
-            logoSub: " | tactical gear", discountBanner: "20% OFF ON FIRST ORDER", discountSpan: "🔥 -20% 🔥", 
-            footer: "© KurbaShop — tactical arsenal & gear.<br>All orders are processed via Telegram. Please contact manager for availability and pricing.<br>🔥 <strong>20% discount on first order</strong> applies to first purchase.",
-            orderBtn: "📲 ORDER → TELEGRAM", all: "All", cartTitle: "🛒 Shopping Cart", emptyCart: "Your cart is empty", total: "Total:", sendOrder: "📲 Send Order to Telegram", 
-            addToCart: "Add to Cart", buyNow: "Buy Now", back: "← Back", categories: { "Firearms": "Firearms", "Air Guns": "Air Guns", "Less-Lethal": "Less-Lethal", "Hunting": "Hunting", "Accessories": "Accessories" }, 
-            subcategories: { "Pistols": "Pistols", "Rifles": "Rifles", "Air Pistols": "Air Pistols", "Air Rifles": "Air Rifles", "Less-Lethal Pistols": "Less-Lethal Pistols", "Shotguns": "Shotguns", "Ammunition": "Ammunition", "Magazines": "Magazines", "Body Armor": "Body Armor", "Gear": "Gear" } 
-        },
-        ru: { 
-            logoSub: " | тактический арсенал", discountBanner: "СКИДКА 20% НА ПЕРВЫЙ ЗАКАЗ", discountSpan: "🔥 -20% 🔥", 
-            footer: "© KurbaShop — тактический арсенал и снаряжение.<br>Все заказы принимаются через Telegram. Наличие и цены уточняйте у менеджера.<br>🔥 <strong>Скидка 20% на первый заказ</strong> действует при первом обращении.",
-            orderBtn: "📲 ЗАКАЗАТЬ → TELEGRAM", all: "Все", cartTitle: "🛒 Корзина", emptyCart: "Корзина пуста", total: "Итого:", sendOrder: "📲 Отправить заказ в Telegram",
-            addToCart: "В корзину", buyNow: "Купить сейчас", back: "← Назад", categories: { "Firearms": "Огнестрельное", "Air Guns": "Пневматическое", "Less-Lethal": "Травматическое", "Hunting": "Охотничье", "Accessories": "Другое" }, 
-            subcategories: { "Pistols": "Пистолеты", "Rifles": "Винтовки", "Air Pistols": "Пистолеты", "Air Rifles": "Винтовки", "Less-Lethal Pistols": "Пистолеты", "Shotguns": "Карабины", "Ammunition": "Патроны", "Magazines": "Магазины", "Body Armor": "Бронежилеты", "Gear": "Снаряжение" } 
-        },
-        es: { 
-            logoSub: " | equipo táctico", discountBanner: "20% DE DESCUENTO EN PRIMER PEDIDO", discountSpan: "🔥 -20% 🔥", 
-            footer: "© KurbaShop — arsenal táctico y equipo.<br>Todos los pedidos se procesan vía Telegram. Consulte disponibilidad y precios con el gerente.<br>🔥 <strong>20% de descuento en primer pedido</strong> aplica a la primera compra.",
-            orderBtn: "📲 PEDIR → TELEGRAM", all: "Todo", cartTitle: "🛒 Carrito", emptyCart: "Carrito vacío", total: "Total:", sendOrder: "📲 Enviar pedido a Telegram",
-            addToCart: "Añadir", buyNow: "Comprar ahora", back: "← Atrás", categories: { "Firearms": "Armas de Fuego", "Air Guns": "Aire Comprimido", "Less-Lethal": "Menos Letales", "Hunting": "Caza", "Accessories": "Accesorios" }, 
-            subcategories: { "Pistols": "Pistolas", "Rifles": "Rifles", "Air Pistols": "Pistolas", "Air Rifles": "Rifles", "Less-Lethal Pistols": "Pistolas", "Shotguns": "Escopetas", "Ammunition": "Munición", "Magazines": "Cargadores", "Body Armor": "Chalecos", "Gear": "Equipo" } 
-        },
-        de: { 
-            logoSub: " | taktische Ausrüstung", discountBanner: "20% RABATT AUF ERSTBESTELLUNG", discountSpan: "🔥 -20% 🔥", 
-            footer: "© KurbaShop — taktisches Arsenal & Ausrüstung.<br>Alle Bestellungen werden über Telegram abgewickelt. Verfügbarkeit und Preise erfragen Sie bitte beim Manager.<br>🔥 <strong>20% Rabatt auf erste Bestellung</strong> gilt für den ersten Kauf.",
-            orderBtn: "📲 BESTELLEN → TELEGRAM", all: "Alle", cartTitle: "🛒 Warenkorb", emptyCart: "Warenkorb ist leer", total: "Gesamt:", sendOrder: "📲 Bestellung an Telegram senden",
-            addToCart: "In den Warenkorb", buyNow: "Jetzt kaufen", back: "← Zurück", categories: { "Firearms": "Schusswaffen", "Air Guns": "Druckluft", "Less-Lethal": "Weniger tödlich", "Hunting": "Jagd", "Accessories": "Zubehör" }, 
-            subcategories: { "Pistols": "Pistolen", "Rifles": "Gewehre", "Air Pistols": "Pistolen", "Air Rifles": "Gewehre", "Less-Lethal Pistols": "Pistolen", "Shotguns": "Flinten", "Ammunition": "Munition", "Magazines": "Magazine", "Body Armor": "Körperpanzerung", "Gear": "Ausrüstung" } 
-        },
-        fr: { 
-            logoSub: " | équipement tactique", discountBanner: "20% DE RÉDUCTION SUR PREMIÈRE COMMANDE", discountSpan: "🔥 -20% 🔥", 
-            footer: "© KurbaShop — arsenal tactique et équipement.<br>Toutes les commandes sont traitées via Telegram. Veuillez contacter le responsable pour disponibilité et prix.<br>🔥 <strong>20% de réduction sur première commande</strong> s'applique au premier achat.",
-            orderBtn: "📲 COMMANDER → TELEGRAM", all: "Tous", cartTitle: "🛒 Panier", emptyCart: "Votre panier est vide", total: "Total:", sendOrder: "📲 Envoyer la commande à Telegram",
-            addToCart: "Ajouter", buyNow: "Acheter maintenant", back: "← Retour", categories: { "Firearms": "Armes à feu", "Air Guns": "Armes à air", "Less-Lethal": "Moins létales", "Hunting": "Chasse", "Accessories": "Accessoires" }, 
-            subcategories: { "Pistols": "Pistolets", "Rifles": "Fusils", "Air Pistols": "Pistolets", "Air Rifles": "Fusils", "Less-Lethal Pistols": "Pistolets", "Shotguns": "Fusils de chasse", "Ammunition": "Munitions", "Magazines": "Chargeurs", "Body Armor": "Gilets pare-balles", "Gear": "Équipement" } 
-        }
+        en: { logoSub:" | tactical gear", discountBanner:"20% OFF ON FIRST ORDER", discountSpan:"🔥 -20% 🔥", footer:"© KurbaShop — tactical arsenal & gear.<br>All orders via Telegram. 20% discount on first order.", orderBtn:"📲 ORDER → TELEGRAM", all:"All", cartTitle:"🛒 Shopping Cart", emptyCart:"Your cart is empty", total:"Total:", sendOrder:"📲 Send Order to Telegram", addToCart:"Add to Cart", buyNow:"Buy Now", back:"← Back", categories:{"Firearms":"Firearms","Air Guns":"Air Guns","Less-Lethal":"Less-Lethal","Hunting":"Hunting","Accessories":"Accessories"}, subcategories:{"Pistols":"Pistols","Rifles":"Rifles","Air Pistols":"Air Pistols","Air Rifles":"Air Rifles","Less-Lethal Pistols":"Less-Lethal Pistols","Shotguns":"Shotguns","Ammunition":"Ammunition","Magazines":"Magazines","Body Armor":"Body Armor","Gear":"Gear"} },
+        ru: { logoSub:" | тактический арсенал", discountBanner:"СКИДКА 20% НА ПЕРВЫЙ ЗАКАЗ", discountSpan:"🔥 -20% 🔥", footer:"© KurbaShop — тактический арсенал и снаряжение.<br>Все заказы через Telegram. Скидка 20% на первый заказ.", orderBtn:"📲 ЗАКАЗАТЬ → TELEGRAM", all:"Все", cartTitle:"🛒 Корзина", emptyCart:"Корзина пуста", total:"Итого:", sendOrder:"📲 Отправить заказ", addToCart:"В корзину", buyNow:"Купить сейчас", back:"← Назад", categories:{"Firearms":"Огнестрельное","Air Guns":"Пневматическое","Less-Lethal":"Травматическое","Hunting":"Охотничье","Accessories":"Другое"}, subcategories:{"Pistols":"Пистолеты","Rifles":"Винтовки","Air Pistols":"Пистолеты","Air Rifles":"Винтовки","Less-Lethal Pistols":"Пистолеты","Shotguns":"Карабины","Ammunition":"Патроны","Magazines":"Магазины","Body Armor":"Бронежилеты","Gear":"Снаряжение"} },
+        es: { logoSub:" | equipo táctico", discountBanner:"20% DE DESCUENTO", discountSpan:"🔥 -20% 🔥", footer:"© KurbaShop — arsenal táctico.<br>Pedidos por Telegram. 20% descuento primer pedido.", orderBtn:"📲 PEDIR → TELEGRAM", all:"Todo", cartTitle:"🛒 Carrito", emptyCart:"Carrito vacío", total:"Total:", sendOrder:"📲 Enviar pedido", addToCart:"Añadir", buyNow:"Comprar", back:"← Atrás", categories:{"Firearms":"Armas de Fuego","Air Guns":"Aire Comprimido","Less-Lethal":"Menos Letales","Hunting":"Caza","Accessories":"Accesorios"}, subcategories:{"Pistols":"Pistolas","Rifles":"Rifles","Air Pistols":"Pistolas","Air Rifles":"Rifles","Less-Lethal Pistols":"Pistolas","Shotguns":"Escopetas","Ammunition":"Munición","Magazines":"Cargadores","Body Armor":"Chalecos","Gear":"Equipo"} },
+        de: { logoSub:" | taktische Ausrüstung", discountBanner:"20% RABATT", discountSpan:"🔥 -20% 🔥", footer:"© KurbaShop — taktisches Arsenal.<br>Bestellungen über Telegram. 20% Rabatt erste Bestellung.", orderBtn:"📲 BESTELLEN → TELEGRAM", all:"Alle", cartTitle:"🛒 Warenkorb", emptyCart:"Warenkorb leer", total:"Gesamt:", sendOrder:"📲 Bestellung senden", addToCart:"In den Warenkorb", buyNow:"Jetzt kaufen", back:"← Zurück", categories:{"Firearms":"Schusswaffen","Air Guns":"Druckluft","Less-Lethal":"Weniger tödlich","Hunting":"Jagd","Accessories":"Zubehör"}, subcategories:{"Pistols":"Pistolen","Rifles":"Gewehre","Air Pistols":"Pistolen","Air Rifles":"Gewehre","Less-Lethal Pistols":"Pistolen","Shotguns":"Flinten","Ammunition":"Munition","Magazines":"Magazine","Body Armor":"Körperpanzerung","Gear":"Ausrüstung"} },
+        fr: { logoSub:" | équipement tactique", discountBanner:"20% DE RÉDUCTION", discountSpan:"🔥 -20% 🔥", footer:"© KurbaShop — arsenal tactique.<br>Commandes par Telegram. 20% réduction première commande.", orderBtn:"📲 COMMANDER → TELEGRAM", all:"Tous", cartTitle:"🛒 Panier", emptyCart:"Panier vide", total:"Total:", sendOrder:"📲 Envoyer commande", addToCart:"Ajouter", buyNow:"Acheter", back:"← Retour", categories:{"Firearms":"Armes à feu","Air Guns":"Armes à air","Less-Lethal":"Moins létales","Hunting":"Chasse","Accessories":"Accessoires"}, subcategories:{"Pistols":"Pistolets","Rifles":"Fusils","Air Pistols":"Pistolets","Air Rifles":"Fusils","Less-Lethal Pistols":"Pistolets","Shotguns":"Fusils de chasse","Ammunition":"Munitions","Magazines":"Chargeurs","Body Armor":"Gilets pare-balles","Gear":"Équipement"} }
     };
 
-    function getCategoryName(cat) { return translations[currentLang].categories[cat] || cat; }
-    function getSubcategoryName(sub) { return translations[currentLang].subcategories[sub] || sub; }
-    function getTranslation(key) { return translations[currentLang][key] || key; }
+    function getCategoryName(c) { return translations[currentLang].categories[c] || c; }
+    function getSubcategoryName(s) { return translations[currentLang].subcategories[s] || s; }
+    function getTranslation(k) { return translations[currentLang][k] || k; }
 
     function saveCart() { localStorage.setItem('kurbashop_cart', JSON.stringify(cart)); updateCartUI(); }
-
     function updateCartUI() {
-        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-        document.getElementById('cartCount').innerText = count;
-        
-        const total = cart.reduce((sum, item) => sum + (item.price * (1 - DISCOUNT) * item.quantity), 0);
+        document.getElementById('cartCount').innerText = cart.reduce((s,i)=>s+i.quantity,0);
+        const total = cart.reduce((s,i)=>s + (i.price*(1-DISCOUNT)*i.quantity),0);
         document.getElementById('cartTotal').innerHTML = formatPrice(total);
         document.getElementById('cartTotalLabel').innerHTML = getTranslation('total');
-        
-        const cartItemsDiv = document.getElementById('cartItemsList');
-        if (cart.length === 0) {
-            cartItemsDiv.innerHTML = `<div style="text-align: center; padding: 40px;">${getTranslation('emptyCart')}</div>`;
-            return;
-        }
-        cartItemsDiv.innerHTML = cart.map(item => {
-            const discountPrice = item.price * (1 - DISCOUNT);
-            return `<div class="cart-item">
-                <img class="cart-item-img" src="${item.img}" onerror="this.src='https://placehold.co/60x60/2a2e3a/b8c7a3?text=${encodeURIComponent(item.name)}'">
-                <div class="cart-item-info">
-                    <div class="cart-item-name">${escapeHtml(item.name)}</div>
-                    <div class="cart-item-price">${formatPrice(discountPrice)}</div>
-                    <div class="cart-item-quantity">
-                        <button onclick="updateCartItem(${item.id}, ${item.quantity - 1})">-</button>
-                        <span>${item.quantity}</span>
-                        <button onclick="updateCartItem(${item.id}, ${item.quantity + 1})">+</button>
-                    </div>
-                </div>
-                <button class="cart-item-remove" onclick="removeCartItem(${item.id})">🗑️</button>
-            </div>`;
-        }).join('');
+        const container = document.getElementById('cartItemsList');
+        if(!cart.length) { container.innerHTML = `<div style="text-align:center;padding:40px;">${getTranslation('emptyCart')}</div>`; return; }
+        container.innerHTML = cart.map(i => `<div class="cart-item"><img class="cart-item-img" src="${i.img}" onerror="this.src='https://placehold.co/60x60/2a2e3a/b8c7a3?text=img'"><div class="cart-item-info"><div class="cart-item-name">${escapeHtml(i.name)}</div><div class="cart-item-price">${formatPrice(i.price*(1-DISCOUNT))}</div><div class="cart-item-quantity"><button onclick="updateCartItem(${i.id},${i.quantity-1})">-</button><span>${i.quantity}</span><button onclick="updateCartItem(${i.id},${i.quantity+1})">+</button></div></div><button class="cart-item-remove" onclick="removeCartItem(${i.id})">🗑️</button></div>`).join('');
     }
+    function updateCartItem(id,q) { if(q<=0) removeCartItem(id); else { let i=cart.find(i=>i.id===id); if(i) i.quantity=q; saveCart(); } }
+    function removeCartItem(id) { cart=cart.filter(i=>i.id!==id); saveCart(); }
+    function addToCart(p) { let e=cart.find(i=>i.id===p.id); if(e) e.quantity++; else cart.push({id:p.id,name:p.name,price:p.marketPrice,img:p.images[0],quantity:1}); saveCart(); alert(getTranslation('addToCart')+": "+p.name); }
+    function sendCartToTelegram() { if(!cart.length) { alert(getTranslation('emptyCart')); return; } let msg="🛒 *NEW ORDER*\n\n"; cart.forEach(i=>msg+=`• ${i.name} x${i.quantity} = ${formatPrice(i.price*(1-DISCOUNT)*i.quantity)}\n`); msg+=`\n📦 *TOTAL: ${formatPrice(cart.reduce((s,i)=>s+(i.price*(1-DISCOUNT)*i.quantity),0))}* (20% off)`; window.open(`https://t.me/${TG_USERNAME}?text=${encodeURIComponent(msg)}`,'_blank'); }
+    function getProductById(id){ return products.find(p=>p.id===id); }
 
-    function updateCartItem(id, newQuantity) {
-        if (newQuantity <= 0) {
-            removeCartItem(id);
-            return;
-        }
-        const item = cart.find(i => i.id === id);
-        if (item) {
-            item.quantity = newQuantity;
-            saveCart();
-        }
-    }
-
-    function removeCartItem(id) {
-        cart = cart.filter(i => i.id !== id);
-        saveCart();
-    }
-
-    function addToCart(product) {
-        const existing = cart.find(i => i.id === product.id);
-        if (existing) {
-            existing.quantity++;
-        } else {
-            cart.push({
-                id: product.id,
-                name: product.name,
-                price: product.marketPrice,
-                img: product.images[0],
-                quantity: 1
-            });
-        }
-        saveCart();
-        alert(getTranslation('addToCart') + ": " + product.name);
-    }
-
-    function sendCartToTelegram() {
-        if (cart.length === 0) {
-            alert(getTranslation('emptyCart'));
-            return;
-        }
-        const total = cart.reduce((sum, item) => sum + (item.price * (1 - DISCOUNT) * item.quantity), 0);
-        let message = "🛒 *NEW ORDER*\n\n";
-        cart.forEach(item => {
-            const discountPrice = item.price * (1 - DISCOUNT);
-            message += `• ${item.name} x${item.quantity} = ${formatPrice(discountPrice * item.quantity)}\n`;
-        });
-        message += `\n📦 *TOTAL: ${formatPrice(total)}* (with 20% discount)`;
-        message += `\n\n👤 Customer: via website`;
-        const tgLink = `https://t.me/${TG_USERNAME}?text=${encodeURIComponent(message)}`;
-        window.open(tgLink, '_blank');
-    }
-
-    function getProductById(id) { return products.find(p => p.id === id); }
-
-    // UI Functions
     function updateUIForLanguage() {
-        const t = translations[currentLang];
-        document.getElementById('logoSub').innerHTML = t.logoSub;
-        document.getElementById('discountBanner').innerHTML = `${t.discountBanner} <span>${t.discountSpan}</span>`;
-        document.getElementById('footerText').innerHTML = t.footer;
-        document.getElementById('cartOrderBtn').innerHTML = t.sendOrder;
-        document.getElementById('cartTitle').innerHTML = t.cartTitle;
-        document.getElementById('modalAddToCart').innerHTML = `+ ${t.addToCart}`;
-        document.getElementById('modalOrderNow').innerHTML = `📲 ${t.buyNow}`;
-        document.getElementById('modalBackBtn').innerHTML = t.back;
-        const flagMap = { en: '🇬🇧', ru: '🇷🇺', es: '🇪🇸', de: '🇩🇪', fr: '🇫🇷' };
-        const langNameMap = { en: 'EN', ru: 'RU', es: 'ES', de: 'DE', fr: 'FR' };
-        document.getElementById('currentLangFlag').innerHTML = flagMap[currentLang];
-        document.getElementById('currentLangText').innerHTML = langNameMap[currentLang];
-        renderCategories();
-        updateSubcategories();
-        renderProducts();
-        updateCartUI();
+        const t=translations[currentLang];
+        document.getElementById('logoSub').innerHTML=t.logoSub;
+        document.getElementById('discountBanner').innerHTML=`${t.discountBanner} <span>${t.discountSpan}</span>`;
+        document.getElementById('footerText').innerHTML=t.footer;
+        document.getElementById('cartOrderBtn').innerHTML=t.sendOrder;
+        document.getElementById('cartTitle').innerHTML=t.cartTitle;
+        document.getElementById('modalAddToCart').innerHTML=`+ ${t.addToCart}`;
+        document.getElementById('modalOrderNow').innerHTML=`📲 ${t.buyNow}`;
+        document.getElementById('modalBackBtn').innerHTML=t.back;
+        const flags={en:'🇬🇧',ru:'🇷🇺',es:'🇪🇸',de:'🇩🇪',fr:'🇫🇷'}, names={en:'EN',ru:'RU',es:'ES',de:'DE',fr:'FR'};
+        document.getElementById('currentLangFlag').innerHTML=flags[currentLang];
+        document.getElementById('currentLangText').innerHTML=names[currentLang];
+        for(let i=0;i<products.length;i++) products[i].name = productNames[currentLang][i] || productNames.en[i];
+        renderCategories(); updateSubcategories(); renderProducts(); updateCartUI();
     }
 
     function updateSubcategories() {
-        const subs = Array.from(subcategoriesMap.get(activeCategory) || new Set());
-        const container = document.getElementById("subcatsList");
-        if (!container) return;
-        container.innerHTML = '';
-        const allBtn = document.createElement('button');
-        allBtn.textContent = getTranslation('all');
-        allBtn.className = `sub-btn ${!activeSubcategory ? 'active' : ''}`;
-        allBtn.onclick = () => { activeSubcategory = null; renderProducts(); highlightSubcategory(null); };
-        container.appendChild(allBtn);
-        subs.forEach(sub => {
-            const btn = document.createElement('button');
-            btn.textContent = getSubcategoryName(sub);
-            btn.className = `sub-btn ${activeSubcategory === sub ? 'active' : ''}`;
-            btn.onclick = () => { activeSubcategory = sub; renderProducts(); highlightSubcategory(sub); };
-            container.appendChild(btn);
-        });
+        const subs=Array.from(subcategoriesMap.get(activeCategory)||[]), cont=document.getElementById("subcatsList"); if(!cont) return;
+        cont.innerHTML='';
+        const allBtn=document.createElement('button'); allBtn.textContent=getTranslation('all'); allBtn.className=`sub-btn ${!activeSubcategory?'active':''}`; allBtn.onclick=()=>{activeSubcategory=null; renderProducts(); highlightSubcategory(null);}; cont.appendChild(allBtn);
+        subs.forEach(s=>{const btn=document.createElement('button'); btn.textContent=getSubcategoryName(s); btn.className=`sub-btn ${activeSubcategory===s?'active':''}`; btn.onclick=()=>{activeSubcategory=s; renderProducts(); highlightSubcategory(s);}; cont.appendChild(btn);});
     }
-
-    function highlightSubcategory(selected) {
-        const btns = document.querySelectorAll('#subcatsList .sub-btn');
-        btns.forEach(btn => {
-            if (btn.textContent === (selected ? getSubcategoryName(selected) : getTranslation('all'))) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
-    }
-
+    function highlightSubcategory(sel){ document.querySelectorAll('#subcatsList .sub-btn').forEach(btn=>{if(btn.textContent===(sel?getSubcategoryName(sel):getTranslation('all')))btn.classList.add('active'); else btn.classList.remove('active');}); }
     function renderProducts() {
-        const grid = document.getElementById("productsGrid");
-        if (!grid) return;
-        let filtered = products.filter(p => p.category === activeCategory);
-        if (activeSubcategory) filtered = filtered.filter(p => p.subcategory === activeSubcategory);
-        if (filtered.length === 0) {
-            grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:50px;">${currentLang === 'en' ? 'No items in this category' : 'Нет товаров'}</div>`;
-            return;
-        }
-        grid.innerHTML = filtered.map(product => {
-            const discountPrice = product.marketPrice * (1 - DISCOUNT);
-            return `<div class="product-card" data-id="${product.id}">
-                <img class="product-img" src="${product.images[0]}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="this.src='https://placehold.co/600x400/2a2e3a/b8c7a3?text=${encodeURIComponent(product.name)}'">
-                <div class="product-info">
-                    <div class="product-name">${escapeHtml(product.name)}</div>
-                    <div class="product-price">
-                        <span class="old-price">${formatPrice(product.marketPrice)}</span>
-                        <span class="new-price">${formatPrice(discountPrice)}</span>
-                        <span class="discount-badge">-20%</span>
-                    </div>
-                    <div class="product-desc">${escapeHtml(product.shortDesc)}</div>
-                    <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(getProductById(${product.id}))">➕ ${getTranslation('addToCart')}</button>
-                </div>
-            </div>`;
-        }).join('');
-        document.querySelectorAll('.product-card').forEach(card => {
-            const id = parseInt(card.getAttribute('data-id'));
-            card.addEventListener('click', () => openProductModal(id));
-        });
+        const grid=document.getElementById("productsGrid"); if(!grid) return;
+        let filtered=products.filter(p=>p.category===activeCategory); if(activeSubcategory) filtered=filtered.filter(p=>p.subcategory===activeSubcategory);
+        if(!filtered.length){ grid.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:50px;">${currentLang==='en'?'No items':currentLang==='ru'?'Нет товаров':'Sin artículos'}</div>`; return; }
+        grid.innerHTML=filtered.map(p=>{const disc=p.marketPrice*(1-DISCOUNT); return `<div class="product-card" data-id="${p.id}"><img class="product-img" src="${p.images[0]}" alt="${escapeHtml(p.name)}" onerror="this.src='https://placehold.co/600x400/2a2e3a/b8c7a3?text=${encodeURIComponent(p.name)}'"><div class="product-info"><div class="product-name">${escapeHtml(p.name)}</div><div class="product-price"><span class="old-price">${formatPrice(p.marketPrice)}</span><span class="new-price">${formatPrice(disc)}</span><span class="discount-badge">-20%</span></div><div class="product-desc">${escapeHtml(p.shortDesc)}</div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(getProductById(${p.id}))">➕ ${getTranslation('addToCart')}</button></div></div>`;}).join('');
+        document.querySelectorAll('.product-card').forEach(c=>{const id=parseInt(c.getAttribute('data-id')); c.addEventListener('click',()=>openProductModal(id));});
     }
-
-    function openProductModal(productId) {
-        const product = getProductById(productId);
-        if (!product) return;
-        const discountPrice = product.marketPrice * (1 - DISCOUNT);
-        const modal = document.getElementById("productModal");
-        document.getElementById("modalMainImage").src = product.images[0];
-        document.getElementById("modalTitle").innerText = product.name;
-        document.getElementById("modalDescription").innerText = product.fullDesc;
-        document.getElementById("modalOldPrice").innerText = formatPrice(product.marketPrice);
-        document.getElementById("modalNewPrice").innerText = formatPrice(discountPrice);
-        
-        const thumbContainer = document.getElementById("thumbnailsContainer");
-        thumbContainer.innerHTML = '';
-        product.images.forEach((img, idx) => {
-            const thumb = document.createElement('img');
-            thumb.src = img;
-            thumb.classList.add('thumbnail');
-            if (idx === 0) thumb.classList.add('active');
-            thumb.onerror = () => { thumb.src = 'https://placehold.co/70x70/2a2e3a/b8c7a3?text=img'; };
-            thumb.onclick = () => {
-                document.getElementById("modalMainImage").src = img;
-                document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-                thumb.classList.add('active');
-            };
-            thumbContainer.appendChild(thumb);
-        });
-        
-        document.getElementById("modalAddToCart").onclick = () => { addToCart(product); modal.classList.remove('active'); };
-        document.getElementById("modalOrderNow").onclick = () => {
-            addToCart(product);
-            document.getElementById("cartModal").classList.add('active');
-            modal.classList.remove('active');
-        };
-        document.getElementById("modalBackBtn").onclick = () => modal.classList.remove('active');
-        modal.classList.add('active');
+    function openProductModal(id){
+        const p=getProductById(id); if(!p) return;
+        const disc=p.marketPrice*(1-DISCOUNT);
+        document.getElementById("modalMainImage").src=p.images[0];
+        document.getElementById("modalTitle").innerText=p.name;
+        document.getElementById("modalDescription").innerHTML=productDesc[currentLang][id-1] || productDesc.en[id-1];
+        document.getElementById("modalOldPrice").innerText=formatPrice(p.marketPrice);
+        document.getElementById("modalNewPrice").innerText=formatPrice(disc);
+        const tc=document.getElementById("thumbnailsContainer"); tc.innerHTML='';
+        p.images.forEach((img,i)=>{const t=document.createElement('img'); t.src=img; t.classList.add('thumbnail'); if(i===0)t.classList.add('active'); t.onerror=()=>t.src='https://placehold.co/70x70/2a2e3a/b8c7a3?text=img'; t.onclick=()=>{document.getElementById("modalMainImage").src=img; document.querySelectorAll('.thumbnail').forEach(th=>th.classList.remove('active')); t.classList.add('active');}; tc.appendChild(t);});
+        document.getElementById("modalAddToCart").onclick=()=>{addToCart(p); document.getElementById("productModal").classList.remove('active');};
+        document.getElementById("modalOrderNow").onclick=()=>{addToCart(p); document.getElementById("cartModal").classList.add('active'); document.getElementById("productModal").classList.remove('active');};
+        document.getElementById("modalBackBtn").onclick=()=>document.getElementById("productModal").classList.remove('active');
+        document.getElementById("productModal").classList.add('active');
     }
-
-    function closeModal() { document.getElementById("productModal").classList.remove('active'); }
-    function closeCart() { document.getElementById("cartModal").classList.remove('active'); }
-
+    function closeModal(){ document.getElementById("productModal").classList.remove('active'); }
+    function closeCart(){ document.getElementById("cartModal").classList.remove('active'); }
     function renderCategories() {
-        const container = document.getElementById("categoriesList");
-        if (!container) return;
-        const categoriesArray = Array.from(categoriesSet);
-        container.innerHTML = categoriesArray.map(cat => `<button class="cat-btn ${activeCategory === cat ? 'active' : ''}" data-cat="${cat}">${getCategoryName(cat)}</button>`).join('');
-        document.querySelectorAll('.cat-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                activeCategory = btn.getAttribute('data-cat');
-                activeSubcategory = null;
-                document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                updateSubcategories();
-                renderProducts();
-            });
-        });
+        const cont=document.getElementById("categoriesList"); if(!cont) return;
+        cont.innerHTML=Array.from(categoriesSet).map(c=>`<button class="cat-btn ${activeCategory===c?'active':''}" data-cat="${c}">${getCategoryName(c)}</button>`).join('');
+        document.querySelectorAll('.cat-btn').forEach(btn=>{btn.addEventListener('click',()=>{activeCategory=btn.getAttribute('data-cat'); activeSubcategory=null; document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); updateSubcategories(); renderProducts();});});
     }
+    function escapeHtml(s){ if(!s) return ''; return s.replace(/[&<>]/g,m=>m==='&'?'&amp;':m==='<'?'&lt;':'&gt;'); }
 
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : m === '<' ? '&lt;' : '&gt;');
-    }
-
-    // Event Listeners
-    document.getElementById('langBtn').addEventListener('click', () => document.getElementById('langDropdown').classList.toggle('active'));
-    document.querySelectorAll('.lang-option').forEach(opt => {
-        opt.addEventListener('click', () => {
-            currentLang = opt.getAttribute('data-lang');
-            localStorage.setItem('kurbashop_lang', currentLang);
-            updateUIForLanguage();
-            document.getElementById('langDropdown').classList.remove('active');
-        });
-    });
-    document.addEventListener('click', (e) => { if (!e.target.closest('.lang-selector')) document.getElementById('langDropdown').classList.remove('active'); });
-    document.getElementById('closeModalBtn').addEventListener('click', closeModal);
-    document.getElementById('productModal').addEventListener('click', (e) => { if (e.target === document.getElementById('productModal')) closeModal(); });
-    document.getElementById('cartBtn').addEventListener('click', () => document.getElementById('cartModal').classList.add('active'));
-    document.getElementById('closeCartBtn').addEventListener('click', closeCart);
-    document.getElementById('cartModal').addEventListener('click', (e) => { if (e.target === document.getElementById('cartModal')) closeCart(); });
-    document.getElementById('cartOrderBtn').addEventListener('click', sendCartToTelegram);
-    
-    window.updateCartItem = updateCartItem;
-    window.removeCartItem = removeCartItem;
-    window.addToCart = addToCart;
-    window.getProductById = getProductById;
-
+    document.getElementById('langBtn').addEventListener('click',()=>document.getElementById('langDropdown').classList.toggle('active'));
+    document.querySelectorAll('.lang-option').forEach(opt=>{opt.addEventListener('click',()=>{currentLang=opt.getAttribute('data-lang'); localStorage.setItem('kurbashop_lang',currentLang); updateUIForLanguage(); document.getElementById('langDropdown').classList.remove('active');});});
+    document.addEventListener('click',e=>{if(!e.target.closest('.lang-selector')) document.getElementById('langDropdown').classList.remove('active');});
+    document.getElementById('closeModalBtn').addEventListener('click',closeModal);
+    document.getElementById('productModal').addEventListener('click',e=>{if(e.target===document.getElementById('productModal'))closeModal();});
+    document.getElementById('cartBtn').addEventListener('click',()=>document.getElementById('cartModal').classList.add('active'));
+    document.getElementById('closeCartBtn').addEventListener('click',closeCart);
+    document.getElementById('cartModal').addEventListener('click',e=>{if(e.target===document.getElementById('cartModal'))closeCart();});
+    document.getElementById('cartOrderBtn').addEventListener('click',sendCartToTelegram);
+    window.updateCartItem=updateCartItem; window.removeCartItem=removeCartItem; window.addToCart=addToCart; window.getProductById=getProductById;
     updateUIForLanguage();
 </script>
 </body>
