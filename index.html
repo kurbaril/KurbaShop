@@ -11,7 +11,6 @@
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta name="format-detection" content="telephone=no, email=no, address=no">
     
-    <!-- Open Graph мета-теги для соцсетей -->
     <meta property="og:title" content="KurbaShop | Tactical Arsenal & Gear">
     <meta property="og:description" content="Premium tactical gear, firearms, air guns, hunting equipment, body armor, and ammunition. 20% off first order!">
     <meta property="og:image" content="https://s10.iimage.su/s/30/gm40IcoxUk4TOznydW4AWPoUgZmiLVFjInPqcDGTC.jpg">
@@ -19,7 +18,6 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="KurbaShop">
     
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="KurbaShop | Tactical Arsenal & Gear">
     <meta name="twitter:description" content="Premium tactical gear, firearms, air guns, hunting equipment, body armor, and ammunition. 20% off first order!">
@@ -32,20 +30,17 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
             font-family: 'Segoe UI', 'Roboto', system-ui, sans-serif;
             background: #1a1e2a;
             color: #e0e4f0;
             line-height: 1.5;
-            background-image: repeating-linear-gradient(45deg, rgba(60, 70, 80, 0.1) 0px, rgba(60, 70, 80, 0.1) 2px, transparent 2px, transparent 8px);
+            background-image: repeating-linear-gradient(45deg, rgba(60,70,80,0.1) 0px, rgba(60,70,80,0.1) 2px, transparent 2px, transparent 8px);
         }
-        
         .camouflage-border {
             background: repeating-linear-gradient(45deg, #4a5b3c, #4a5b3c 20px, #5e6e4a 20px, #5e6e4a 40px);
             height: 4px;
         }
-        
         .discount-banner {
             background: linear-gradient(135deg, #2c3e2b, #1f2a1e);
             border-bottom: 1px solid #d4af37;
@@ -54,11 +49,7 @@
             font-weight: bold;
             font-size: 1rem;
         }
-        @media (max-width: 480px) {
-            .discount-banner { font-size: 0.85rem; white-space: normal; line-height: 1.4; }
-            .discount-banner span { display: inline-block; margin-top: 4px; }
-        }
-        
+        @media (max-width:480px){ .discount-banner{ font-size:0.85rem; } }
         .header {
             background: #0f111f;
             border-bottom: 2px solid #3a4a2f;
@@ -81,7 +72,6 @@
         .logo-text {
             font-size: 22px;
             font-weight: 800;
-            letter-spacing: 1px;
             background: linear-gradient(135deg, #b8c7a3, #6e854c);
             -webkit-background-clip: text;
             background-clip: text;
@@ -89,15 +79,14 @@
             text-transform: uppercase;
         }
         .logo-text span { color: #9eb67b; font-size: 11px; background: none; }
-        @media (max-width: 600px) {
-            .logo-text { font-size: 16px; }
-            .logo-img { height: 32px; }
-            .logo-text span { font-size: 9px; }
-            .nav-bar { flex-direction: column; align-items: stretch; }
-            .logo { justify-content: center; }
-            .top-actions { justify-content: center; }
+        @media (max-width:600px){
+            .logo-text{ font-size:16px; }
+            .logo-img{ height:32px; }
+            .logo-text span{ font-size:9px; }
+            .nav-bar{ flex-direction:column; align-items:stretch; }
+            .logo{ justify-content:center; }
+            .top-actions{ justify-content:center; }
         }
-        
         .top-actions {
             display: flex;
             gap: 8px;
@@ -105,7 +94,6 @@
             flex-wrap: wrap;
             justify-content: flex-end;
         }
-        
         .sort-selector { position: relative; }
         .sort-btn {
             background: #2c3e2b;
@@ -140,7 +128,6 @@
             color: #cddbc0;
         }
         .sort-option:hover { background: #2c3e2b; }
-        
         .cart-btn {
             background: #2c3e2b;
             border: 1px solid #9eb67b;
@@ -163,7 +150,6 @@
             font-size: 11px;
             font-weight: bold;
         }
-        
         .lang-selector { position: relative; }
         .lang-btn {
             background: #2c3e2b;
@@ -201,7 +187,6 @@
         }
         .lang-option:hover { background: #2c3e2b; }
         .lang-option span { font-size: 18px; }
-        
         .search-box {
             background: #2c3e2b;
             border: 1px solid #9eb67b;
@@ -219,9 +204,7 @@
             outline: none;
             width: 120px;
         }
-        .search-box input::placeholder {
-            color: #9eb67b;
-        }
+        .search-box input::placeholder { color: #9eb67b; }
         .search-box button {
             background: none;
             border: none;
@@ -229,10 +212,7 @@
             cursor: pointer;
             font-size: 14px;
         }
-        @media (max-width: 600px) {
-            .search-box input { width: 80px; }
-        }
-        
+        @media (max-width:600px){ .search-box input{ width:80px; } }
         .categories {
             background: #0b0d17;
             border-top: 1px solid #2c3e2b;
@@ -257,7 +237,6 @@
             border-color: #b8c7a3;
             color: #0a0c12;
         }
-        
         .subcats {
             background: #11141f;
             padding: 10px 0;
@@ -276,16 +255,14 @@
             color: #bcc7a8;
         }
         .sub-btn.active { background: #6e854c; color: white; }
-        
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 16px;
             padding: 24px 0 48px;
         }
-        @media (min-width: 768px) { .products-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
-        @media (min-width: 1024px) { .products-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; } }
-        
+        @media (min-width:768px){ .products-grid{ grid-template-columns:repeat(3,1fr); gap:20px; } }
+        @media (min-width:1024px){ .products-grid{ grid-template-columns:repeat(4,1fr); gap:24px; } }
         .product-card {
             background: #131724;
             border-radius: 16px;
@@ -383,7 +360,6 @@
             cursor: pointer;
             flex: 1;
         }
-        
         .cart-modal {
             display: none;
             position: fixed;
@@ -438,7 +414,6 @@
             width: 100%;
             cursor: pointer;
         }
-        
         .modal {
             display: none;
             position: fixed;
@@ -446,7 +421,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(8, 10, 18, 0.96);
+            background: rgba(8,10,18,0.96);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -523,7 +498,6 @@
         .modal-add-cart { background: #5f7642; color: white; }
         .modal-order-btn { background: #d4af37; color: #0a0c12; }
         .modal-back-btn { background: #2c3e2b; color: #cddbc0; }
-        
         .quantity-selector {
             display: flex;
             align-items: center;
@@ -550,7 +524,6 @@
             min-width: 40px;
             text-align: center;
         }
-        
         .footer {
             text-align: center;
             padding: 20px;
@@ -560,19 +533,16 @@
             background: #0a0d16;
         }
         .privacy-note { font-size: 0.65rem; color: #6c7a6b; margin-top: 12px; }
-        
-        @media (max-width: 640px) {
-            .modal-title { font-size: 1.2rem; }
-            .thumbnail { width: 50px; height: 50px; }
-            .modal-buttons { flex-direction: column; }
+        @media (max-width:640px){
+            .modal-title{ font-size:1.2rem; }
+            .thumbnail{ width:50px; height:50px; }
+            .modal-buttons{ flex-direction:column; }
         }
     </style>
 </head>
 <body>
 <div class="camouflage-border"></div>
-<div class="discount-banner" id="discountBanner">
-    20% OFF ON FIRST ORDER <span>🔥 -20% 🔥</span>
-</div>
+<div class="discount-banner" id="discountBanner">20% OFF ON FIRST ORDER <span>🔥 -20% 🔥</span></div>
 <div class="header">
     <div class="container">
         <div class="nav-bar">
@@ -586,9 +556,7 @@
                     <button onclick="filterProductsBySearch()">🔍</button>
                 </div>
                 <div class="sort-selector">
-                    <button class="sort-btn" id="sortBtn">
-                        <span id="sortBtnText">Sort</span> ▼
-                    </button>
+                    <button class="sort-btn" id="sortBtn"><span id="sortBtnText">Sort</span> ▼</button>
                     <div class="sort-dropdown" id="sortDropdown">
                         <div class="sort-option" data-sort="name-asc">Name A-Z</div>
                         <div class="sort-option" data-sort="name-desc">Name Z-A</div>
@@ -598,9 +566,7 @@
                 </div>
                 <button class="cart-btn" id="cartBtn">🛒 <span id="cartBtnText">CART</span> <span id="cartCount" class="cart-count">0</span></button>
                 <div class="lang-selector">
-                    <button class="lang-btn" id="langBtn">
-                        <span id="currentLangFlag">🇬🇧</span> <span id="currentLangText">EN</span> ▼
-                    </button>
+                    <button class="lang-btn" id="langBtn"><span id="currentLangFlag">🇬🇧</span> <span id="currentLangText">EN</span> ▼</button>
                     <div class="lang-dropdown" id="langDropdown">
                         <div class="lang-option" data-lang="en"><span>🇬🇧</span> English</div>
                         <div class="lang-option" data-lang="ru"><span>🇷🇺</span> Русский</div>
@@ -612,64 +578,33 @@
             </div>
         </div>
     </div>
-    <div class="categories" id="categoriesWrapper">
-        <div class="categories-list" id="categoriesList"></div>
-    </div>
-    <div class="subcats" id="subcatsWrapper">
-        <div class="subcats-list" id="subcatsList"></div>
-    </div>
+    <div class="categories" id="categoriesWrapper"><div class="categories-list" id="categoriesList"></div></div>
+    <div class="subcats" id="subcatsWrapper"><div class="subcats-list" id="subcatsList"></div></div>
 </div>
 
-<main class="container">
-    <div class="products-grid" id="productsGrid"></div>
-</main>
+<main class="container"><div class="products-grid" id="productsGrid"></div></main>
 
 <div id="cartModal" class="cart-modal">
-    <div class="cart-header">
-        <h2 id="cartTitle">🛒 Shopping Cart</h2>
-        <button class="close-cart" id="closeCartBtn">✕</button>
-    </div>
-    <div class="cart-items" id="cartItemsList">
-        <div style="text-align:center; padding:40px;">Your cart is empty</div>
-    </div>
-    <div class="cart-footer">
-        <div class="cart-total"><span id="cartTotalLabel">Total:</span> <span id="cartTotal">$0.00</span></div>
-        <button class="cart-order-btn" id="cartOrderBtn">📲 Send Order to Telegram</button>
-    </div>
+    <div class="cart-header"><h2 id="cartTitle">🛒 Shopping Cart</h2><button class="close-cart" id="closeCartBtn">✕</button></div>
+    <div class="cart-items" id="cartItemsList"><div style="text-align:center;padding:40px;">Your cart is empty</div></div>
+    <div class="cart-footer"><div class="cart-total"><span id="cartTotalLabel">Total:</span> <span id="cartTotal">$0.00</span></div><button class="cart-order-btn" id="cartOrderBtn">Send Order to Telegram</button></div>
 </div>
 
 <div id="productModal" class="modal">
     <div class="modal-content">
         <button class="close-modal" id="closeModalBtn">✕</button>
-        <div class="gallery-container">
-            <img id="modalMainImage" class="main-image" src="" alt="Product image">
-            <div id="thumbnailsContainer" class="thumbnails"></div>
-        </div>
+        <div class="gallery-container"><img id="modalMainImage" class="main-image" src="" alt="Product image"><div id="thumbnailsContainer" class="thumbnails"></div></div>
         <div class="modal-info">
             <div id="modalTitle" class="modal-title"></div>
-            <div class="modal-price">
-                <span class="modal-old-price" id="modalOldPrice"></span>
-                <span class="modal-new-price" id="modalNewPrice"></span>
-            </div>
+            <div class="modal-price"><span class="modal-old-price" id="modalOldPrice"></span><span class="modal-new-price" id="modalNewPrice"></span></div>
             <div id="modalDescription" class="modal-description"></div>
-            <div class="quantity-selector">
-                <button onclick="modalQuantity = Math.max(1, modalQuantity - 1); updateModalQuantityDisplay()">-</button>
-                <span id="modalQuantityDisplay">1</span>
-                <button onclick="modalQuantity = modalQuantity + 1; updateModalQuantityDisplay()">+</button>
-            </div>
-            <div class="modal-buttons">
-                <button id="modalAddToCart" class="modal-add-cart">+ Add to Cart</button>
-                <button id="modalOrderNow" class="modal-order-btn">📲 Buy Now</button>
-                <button id="modalBackBtn" class="modal-back-btn">← Back</button>
-            </div>
+            <div class="quantity-selector"><button onclick="modalQuantity = Math.max(1, modalQuantity - 1); updateModalQuantityDisplay()">-</button><span id="modalQuantityDisplay">1</span><button onclick="modalQuantity = modalQuantity + 1; updateModalQuantityDisplay()">+</button></div>
+            <div class="modal-buttons"><button id="modalAddToCart" class="modal-add-cart">+ Add to Cart</button><button id="modalOrderNow" class="modal-order-btn">Buy Now</button><button id="modalBackBtn" class="modal-back-btn">← Back</button></div>
         </div>
     </div>
 </div>
 
-<div class="footer" id="footerText">
-    <p>© KurbaShop — tactical arsenal & gear.<br>All orders via Telegram. 20% discount on first order.</p>
-    <div class="privacy-note">🔒 Secure | No data stored | Contact: Telegram</div>
-</div>
+<div class="footer" id="footerText"><p>© KurbaShop — tactical arsenal & gear.<br>All orders via Telegram. 20% discount on first order.</p><div class="privacy-note">🔒 Secure | No data stored | Contact: Telegram</div></div>
 
 <script>
     const TG_USERNAME = "kurbaaX";
@@ -677,8 +612,9 @@
     const CURRENCY = "$";
     function formatPrice(p) { return p.toLocaleString('ru-RU') + " " + CURRENCY; }
 
-    // ======================== ALL 35 PRODUCTS WITH UPDATED IMAGES ========================
+    // ======================== ALL 35 PRODUCTS WITH FULL TRANSLATIONS ========================
     const products = [
+        // 1. Glock 17 Gen5
         { id:1, category:"Firearms", subcategory:"Pistols", marketPrice:850, 
           images:["https://i.pinimg.com/originals/a1/f8/e5/a1f8e52b3f84f2d83355021716727d8c.jpg", "https://essai-armes.fr/wp-content/uploads/2024/08/pistolet_semi_automatique_moderne_8968.jpg", "https://calibersusa.wordpress.com/wp-content/uploads/2017/09/glock_17_gen5_2.jpg"],
           nameEn:"Glock 17 Gen5", nameRu:"Glock 17 Gen5", nameEs:"Glock 17 Gen5", nameDe:"Glock 17 Gen5", nameFr:"Glock 17 Gen5",
@@ -689,6 +625,7 @@
           fullDe:"Die Glock 17 Gen5 ist die fünfte Generation der legendären österreichischen Dienstpistole. Merkmale: Kaliber 9x19 mm, 17-Schuss-Magazinkapazität, Polymerrahmen mit verbesserter Ergonomie, austauschbare Griffrücken, Glock Marksman Barrel für verbesserte Genauigkeit. Ideal für Sportschießen, Selbstverteidigung und Dienstgebrauch. Im Lieferumfang: Holster, zwei Magazine, Sicherheitsschloss, Reinigungsset.",
           fullFr:"Le Glock 17 Gen5 est la cinquième génération du légendaire pistolet de service autrichien. Caractéristiques: calibre 9x19 mm, capacité de 17 coups, cadre en polymère avec ergonomie améliorée, dosserets interchangeables, canon Glock Marksman pour une précision accrue. Parfait pour le tir sportif, la légitime défense et l'utilisation professionnelle. Comprend: étui, deux chargeurs, verrou de sécurité, kit de nettoyage." },
         
+        // 2. Beretta 92FS
         { id:2, category:"Firearms", subcategory:"Pistols", marketPrice:790,
           images:["https://lastday.club/wp-content/uploads/2022/10/2-Beretta-92FS-Legendarnye-pistolety-populyarnost-kotoryh-i-ne-snilas-novym-modelyam-Last-Day-Club-696x475.jpg", "https://guns.club/upload/iblock/eb6/y2r7wu803esf43xl1bymjcx3bfkw47t8/beretta-92.png", "https://www.pyramydair.com/airgun-experience/wp-content/uploads/2016/08/4-Beretta-92-A1-post.jpg"],
           nameEn:"Beretta 92FS", nameRu:"Beretta 92FS", nameEs:"Beretta 92FS", nameDe:"Beretta 92FS", nameFr:"Beretta 92FS",
@@ -699,6 +636,7 @@
           fullDe:"Die Beretta 92FS ist eine legendäre italienische Pistole im Kaliber 9x19 mm. Merkmale: sichtbarer Hahn, hohe Genauigkeit, offenes Schlittendesign für Zuverlässigkeit, 15-Schuss-Magazin. Wird von der US-Armee und Spezialeinheiten weltweit eingesetzt. Sanfter Abzug, außergewöhnliche Zuverlässigkeit, ergonomischer Griff. Im Lieferumfang: Hartschalenkoffer, zwei 15-Schuss-Magazine, Reinigungsset, Holster.",
           fullFr:"Le Beretta 92FS est un légendaire pistolet italien chambré en 9x19 mm. Caractéristiques: chien exposé, haute précision, conception à glissière ouverte pour la fiabilité, chargeur de 15 coups. Utilisé par l'armée américaine et les forces spéciales du monde entier. Détente douce, fiabilité exceptionnelle, poignée ergonomique. Comprend: mallette rigide, deux chargeurs de 15 coups, kit de nettoyage, étui." },
         
+        // 3. Sig Sauer P320
         { id:3, category:"Firearms", subcategory:"Pistols", marketPrice:680,
           images:["https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_68705e0a3b57ac4065a205e8_68705fc16d1a2c6483bcb7f4/scale_1200", "https://upload.wikimedia.org/wikipedia/commons/7/7a/Sig_Sauer_P320_Modular_Handgun_System.jpg", "https://i.ytimg.com/vi/7JhQxYpwQHw/maxresdefault.jpg"],
           nameEn:"Sig Sauer P320", nameRu:"Sig Sauer P320", nameEs:"Sig Sauer P320", nameDe:"Sig Sauer P320", nameFr:"Sig Sauer P320",
@@ -709,6 +647,7 @@
           fullDe:"Die Sig Sauer P320 ist die M17/M18-Dienstpistole der US-Armee. Merkmale: Kaliber 9 mm, modulares Griffsystem ermöglicht Rahmenwechsel, 17-Schuss-Magazin, Striker-Abzug, ausgezeichneter Abzug, hohe Genauigkeit. Im Lieferumfang: zwei Magazine, austauschbare Griffmodule.",
           fullFr:"Le Sig Sauer P320 est le pistolet de service M17/M18 de l'armée américaine. Caractéristiques: calibre 9mm, système de poignée modulaire permettant de changer la taille du cadre, chargeur de 17 coups, action à percuteur, excellente détente, haute précision. Comprend: deux chargeurs, modules de poignée interchangeables." },
         
+        // 4. CZ P-10C
         { id:4, category:"Firearms", subcategory:"Pistols", marketPrice:550,
           images:["https://i.ytimg.com/vi/bybVZcR0nYk/maxresdefault.jpg", "https://i.ytimg.com/vi/50lm-E-MZIw/maxresdefault.jpg", "https://avatars.mds.yandex.net/i?id=4ee1d279d7036aff72ce4588f661c66b_l-5263756-images-thumbs&n=13"],
           nameEn:"CZ P-10C", nameRu:"CZ P-10C", nameEs:"CZ P-10C", nameDe:"CZ P-10C", nameFr:"CZ P-10C",
@@ -719,6 +658,7 @@
           fullDe:"Die CZ P-10C ist eine tschechische Striker-Compact-Pistole. Merkmale: 9x19 mm, 15-Schuss-Magazin, ergonomischer Griff mit ausgezeichneter Textur, überlegener Abzug mit kurzem Reset, hohe Zuverlässigkeit. Ideal für verdecktes Tragen und Dienstgebrauch. Im Lieferumfang: zwei Magazine, Reinigungsset, austauschbare Griffrücken.",
           fullFr:"Le CZ P-10C est un pistolet compact tchèque à percuteur. Caractéristiques: 9x19 mm, chargeur de 15 coups, poignée ergonomique avec excellente texture, détente supérieure à réinitialisation courte, haute fiabilité. Idéal pour le port dissimulé et l'utilisation professionnelle. Comprend: deux chargeurs, kit de nettoyage, dosserets interchangeables." },
         
+        // 5. Walther PDP
         { id:5, category:"Firearms", subcategory:"Pistols", marketPrice:720,
           images:["https://fieldethos.com/wp-content/uploads/2024/11/IMG_0125-1536x1024.jpg", "https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_6825fe3bc49d2f29a42ad385_6825fed77d21f9196c1ac91c/scale_1200", "https://fieldethos.com/wp-content/uploads/2025/04/Walther-PDP-F-Series-1.jpg"],
           nameEn:"Walther PDP", nameRu:"Walther PDP", nameEs:"Walther PDP", nameDe:"Walther PDP", nameFr:"Walther PDP",
@@ -729,6 +669,7 @@
           fullDe:"Die Walther PDP (Performance Duty Pistol) verfügt über: Kaliber 9 mm, 18-Schuss-Magazin, fortschrittliche Ergonomie mit überlegener Grifftextur, Performance Duty Abzugssystem, optikbereiter Schlitten. Im Lieferumfang: zwei Magazine, austauschbare Griffrücken.",
           fullFr:"Le Walther PDP (Performance Duty Pistol) présente: calibre 9mm, chargeur de 18 coups, ergonomie avancée avec texture de poignée supérieure, système de détente Performance Duty, glissière prête pour l'optique. Comprend: deux chargeurs, dosserets interchangeables." },
         
+        // 6. AK-74M
         { id:6, category:"Firearms", subcategory:"Rifles", marketPrice:1250,
           images:["https://popadiv10.ru/image/catalog/files/signalnoe/izhmash/signalnyjizhmash4.jpg", "https://cdnb.artstation.com/p/marketplace/presentation_assets/002/326/785/large/file.jpg?1673462201", "https://cdnn1.inosmi.ru/img/24590/59/245905942_0:0:0:0_1240x0_80_0_0_743aaacb0a3c89ec1fe79e3f7d933fbc.jpg"],
           nameEn:"AK-74M", nameRu:"АК-74М", nameEs:"AK-74M", nameDe:"AK-74M", nameFr:"AK-74M",
@@ -739,6 +680,7 @@
           fullDe:"Das AK-74M ist die modernisierte Version des legendären Kalaschnikow-Gewehrs. Merkmale: Kaliber 5.45x39 mm, klappbarer Polymerkolben, seitliche Schiene für Optik, verbesserte Ergonomie. Legendäre Zuverlässigkeit, unter allen Bedingungen getestet. Im Lieferumfang: 30-Schuss-Magazin, Trageriemen, Ölkanne, Reinigungsstab, Handbuch.",
           fullFr:"L'AK-74M est la version modernisée du légendaire fusil Kalachnikov. Caractéristiques: calibre 5.45x39 mm, crosse pliante en polymère, rail latéral pour optique, ergonomie améliorée. Fiabilité légendaire testée dans toutes les conditions. Comprend: chargeur de 30 coups, sangle, huilier, tige de nettoyage, manuel." },
         
+        // 7. M4 Carbine
         { id:7, category:"Firearms", subcategory:"Rifles", marketPrice:1450,
           images:["https://i0.wp.com/uploads.tapatalk-cdn.com/20170423/c70f2f5612e4efeaaca40b7d1788507e.jpg?ssl=1", "https://media.istockphoto.com/id/2150270605/tr/foto%C4%9Fraf/m4-carbine-and-5-56mm-shells-and-magazine-with-bullets.jpg?s=612x612&w=0&k=20&c=ERpzDQ6ksOV-Fas2K1qrK6lBNB95-CZjz9-F0htv-u4=", "https://nationalinterest.org/wp-content/uploads/2018/07/1280px-Marineshooting.jpg"],
           nameEn:"M4 Carbine", nameRu:"M4 Carbine", nameEs:"M4 Carbine", nameDe:"M4 Carbine", nameFr:"M4 Carbine",
@@ -749,6 +691,7 @@
           fullDe:"Das M4 Carbine ist das amerikanische Standardgewehr. Merkmale: 5.56x45 mm, Teleskopkolben, M-LOK-Handschutz aus Aluminium, flacher oberer Verschluss für Optik. Leicht, genau und zuverlässig. Im Lieferumfang: PMAG 30-Magazin, Tragegriff, Trageriemen, Reinigungsset.",
           fullFr:"Le M4 Carbine est le fusil standard américain. Caractéristiques: 5.56x45 mm, crosse télescopique, garde-main M-LOK en aluminium, récepteur supérieur plat pour optique. Léger, précis et fiable. Comprend: chargeur PMAG 30, poignée de transport, sangle, kit de nettoyage." },
         
+        // 8. HK416
         { id:8, category:"Firearms", subcategory:"Rifles", marketPrice:2800,
           images:["https://i.pinimg.com/originals/bf/4d/9b/bf4d9b0997150233ebacacca5099e7ad.jpg", "https://avatars.mds.yandex.net/i?id=ef638b90ad52ffac194a719528cd3674_l-4338558-images-thumbs&n=13", "https://www.kalashnikov.ru/wp-content/uploads/2022/12/hk-416-frantsiya.jpg"],
           nameEn:"HK416", nameRu:"HK416", nameEs:"HK416", nameDe:"HK416", nameFr:"HK416",
@@ -759,6 +702,7 @@
           fullDe:"Das HK416 ist ein deutsches Premium-Sturmgewehr, das weltweit von Spezialeinheiten verwendet wird. Merkmale: 5.56x45 mm, Gasdrucklader für überlegene Zuverlässigkeit, kaltgeschmiedeter Lauf, freischwebender Handschutz. Außergewöhnliche Genauigkeit und Haltbarkeit. Im Lieferumfang: 30-Schuss-Magazin, Trageriemen, Hartschalenkoffer.",
           fullFr:"Le HK416 est un fusil d'assaut allemand premium utilisé par les forces spéciales du monde entier. Caractéristiques: 5.56x45 mm, système à piston à gaz pour une fiabilité supérieure, canon forgé à froid, garde-main flottant. Précision et durabilité exceptionnelles. Comprend: chargeur de 30 coups, sangle, mallette rigide." },
         
+        // 9. FN SCAR-17
         { id:9, category:"Firearms", subcategory:"Rifles", marketPrice:3400,
           images:["https://avatars.mds.yandex.net/i?id=9258ccc09529b8e0f2f07fd95829abfd_l-10246546-images-thumbs&n=13", "https://avatars.mds.yandex.net/i?id=439983972cb5963257c4454ce0a3c749_l-5234784-images-thumbs&n=13", "https://i.pinimg.com/736x/4c/f7/4d/4cf74d5c411520e0ff352c4a622a097e.jpg"],
           nameEn:"FN SCAR-17", nameRu:"FN SCAR-17", nameEs:"FN SCAR-17", nameDe:"FN SCAR-17", nameFr:"FN SCAR-17",
@@ -769,6 +713,7 @@
           fullDe:"Das FN SCAR-17 ist ein kampferprobtes Gewehr, das vom US Special Operations Command verwendet wird. Merkmale: 7.62x51 mm NATO, klappbarer Kolben, vollständig ambidextrous Bedienelemente, kaltgeschmiedeter Lauf. Kampferprobte Zuverlässigkeit und Genauigkeit. Im Lieferumfang: 20-Schuss-Magazin, Trageriemen, Reinigungsset, Hartschalenkoffer.",
           fullFr:"Le FN SCAR-17 est un fusil éprouvé au combat utilisé par le Commandement des opérations spéciales américain. Caractéristiques: 7.62x51 mm OTAN, crosse pliante, commandes entièrement ambidextres, canon forgé à froid. Fiabilité et précision éprouvées au combat. Comprend: chargeur de 20 coups, sangle, kit de nettoyage, mallette rigide." },
         
+        // 10. Remington 700
         { id:10, category:"Firearms", subcategory:"Rifles", marketPrice:1100,
           images:["https://sportingshooter.com.au/wp-content/uploads/2024/09/Remington-700-Long-Range-HS-5_1800p.jpg", "https://i.pinimg.com/originals/8a/ba/4f/8aba4feef76973eaf9146a59072d5f69.jpg", "https://avatars.mds.yandex.net/i?id=a5ccfb14b777179b9d9f39845a89f644_sr-4524149-images-thumbs&n=13"],
           nameEn:"Remington 700", nameRu:"Remington 700", nameEs:"Remington 700", nameDe:"Remington 700", nameFr:"Remington 700",
@@ -779,6 +724,7 @@
           fullDe:"Das Remington 700 ist der Goldstandard für Repetiergewehre. Merkmale: Kaliber .308 Win, Match-Lauf, einstellbarer Abzug, legendäre Genauigkeit. Ideal für Jagd und Präzisionsschießen. Im Lieferumfang: Weaver-Optikbasis, Sicherheitsschloss, Handbuch.",
           fullFr:"Le Remington 700 est l'étalon-or des fusils à verrou. Caractéristiques: calibre .308 Win, canon de qualité compétition, détente réglable, précision légendaire. Idéal pour la chasse et le tir de précision. Comprend: base Weaver pour optique, verrou de sécurité, manuel." },
         
+        // 11. Savage 110
         { id:11, category:"Firearms", subcategory:"Rifles", marketPrice:950,
           images:["https://gunsmagazine.com/wp-content/uploads/2023/10/savagearms110trailhunter-e1697647536165.jpg", "https://avatars.mds.yandex.net/i?id=d7d46664ec2784f66ac92ee7d533eed2_l-5477018-images-thumbs&n=13", "https://gunsweek.com/sites/default/files/styles/content_sm/public/archive/contents/rifles/news/savage-arms-110-ppr-pro-pursuit-rifle/SavageArms-110PPR-2.jpg?itok=RHuE7otc"],
           nameEn:"Savage 110", nameRu:"Savage 110", nameEs:"Savage 110", nameDe:"Savage 110", nameFr:"Savage 110",
@@ -789,6 +735,7 @@
           fullDe:"Das Savage 110 verfügt über das revolutionäre AccuTrigger-System für einen knackigen, benutzereinstellbaren Abzug. Merkmale: Kaliber .308 Win, außergewöhnliche Genauigkeit ab Werk, benutzereinstellbarer Abzug, schwimmender Verschlusskopf für Präzision. Im Lieferumfang: Optikbasen, Trageriemenösen, Handbuch.",
           fullFr:"Le Savage 110 est doté du système AccuTrigger révolutionnaire pour une détente nette et réglable par l'utilisateur. Caractéristiques: calibre .308 Win, précision exceptionnelle dès la sortie de la boîte, détente réglable par l'utilisateur, tête de verrou flottante pour la précision. Comprend: bases pour optique, anneaux de sangle, manuel." },
         
+        // 12. Umarex Walther CP88 (обновлённые изображения)
         { id:12, category:"Air Guns", subcategory:"Air Pistols", marketPrice:290,
           images:["https://www.air-gun.ru/social/picturs/0/26/69/20_opt.jpg", "https://avatars.mds.yandex.net/i?id=42c6c05d28c243428e962d5e9a608b19_l-5876970-images-thumbs&n=33&w=1311&h=1080", "https://avatars.mds.yandex.net/i?id=db9c6ee020408498099b46a8883f38a7_sr-4286590-images-thumbs&n=13"],
           nameEn:"Umarex Walther CP88", nameRu:"Umarex Walther CP88", nameEs:"Umarex Walther CP88", nameDe:"Umarex Walther CP88", nameFr:"Umarex Walther CP88",
@@ -799,6 +746,7 @@
           fullDe:"Die Umarex Walther CP88 ist eine exakte Nachbildung des legendären Walther CP88. Merkmale: Kaliber 4.5 mm, CO2-betrieben, 8-Schuss-Drehmagazin, realistisches Gewicht und Gefühl. Perfekt für Training und Freizeitschießen. Im Lieferumfang: 4 CO2-Kartuschen, 100 Diabolo, Handbuch.",
           fullFr:"L'Umarex Walther CP88 est une réplique exacte du légendaire Walther CP88. Caractéristiques: calibre 4.5 mm, CO2, chargeur rotatif de 8 coups, poids et sensations réalistes. Parfait pour l'entraînement et le tir récréatif. Comprend: 4 cartouches CO2, 100 plombs, manuel." },
         
+        // 13. Sig Sauer P226 Air (обновлённое 3-е фото)
         { id:13, category:"Air Guns", subcategory:"Air Pistols", marketPrice:210,
           images:["https://avatars.mds.yandex.net/i?id=4cab61f7755da8dedefb1dafdba42b3b_l-4011872-images-thumbs&n=13", "https://www.kalashnikov.ru/wp-content/uploads/2024/09/1343-6.jpg", "https://avatars.mds.yandex.net/get-vthumb/3924252/ffa12f75623f5666ea1bb497b2fd925b/564x318_1"],
           nameEn:"Sig Sauer P226 Air", nameRu:"Sig Sauer P226 Air", nameEs:"Sig Sauer P226 Air", nameDe:"Sig Sauer P226 Air", nameFr:"Sig Sauer P226 Air",
@@ -809,6 +757,7 @@
           fullDe:"Die Sig Sauer P226 Air ist eine CO2-betriebene Replik der ikonischen P226-Pistole. Merkmale: Kaliber 4.5 mm, Blowback-Aktion für realistischen Rückstoß, 18-Schuss-Magazin, realistisches Gewicht und Gefühl. Ideal für Training und Plinking. Im Lieferumfang: CO2-Kartuschen, Diabolo, Handbuch.",
           fullFr:"Le Sig Sauer P226 Air est une réplique CO2 de l'emblématique pistolet P226. Caractéristiques: calibre 4.5 mm, action blowback pour un recul réaliste, chargeur de 18 coups, poids et sensations réalistes. Idéal pour l'entraînement et le plinking. Comprend: cartouches CO2, plombs, manuel." },
         
+        // 14. Hatsan 125
         { id:14, category:"Air Guns", subcategory:"Air Rifles", marketPrice:380,
           images:["https://avatars.mds.yandex.net/i?id=0c69175cac4b7104fa2393e261d1cb66_sr-16491951-images-thumbs&n=13", "https://avatars.mds.yandex.net/i?id=dfe745507f0998b1bb481554ebe4433c_l-5587986-images-thumbs&n=13"],
           nameEn:"Hatsan 125", nameRu:"Hatsan 125", nameEs:"Hatsan 125", nameDe:"Hatsan 125", nameFr:"Hatsan 125",
@@ -819,6 +768,7 @@
           fullDe:"Das Hatsan 125 ist ein leistungsstarkes Federkolben-Luftgewehr. Merkmale: Kaliber 4.5 oder 5.5 mm, Mündungsenergie bis 30 J, präzisionsgezogener Lauf, Quattro-Abzugsystem. Geeignet für die Jagd auf Kleinwild und Sportschießen. Im Lieferumfang: 4x32-Zielfernrohr, Zweibein, Handbuch.",
           fullFr:"La Hatsan 125 est une carabine à air à piston à ressort puissante. Caractéristiques: calibre 4.5 ou 5.5 mm, énergie initiale jusqu'à 30 J, canon rayé de précision, système de détente Quattro. Adapté à la chasse au petit gibier et au tir sportif. Comprend: lunette 4x32, bipied, manuel." },
         
+        // 15. Gamo Swarm Magnum
         { id:15, category:"Air Guns", subcategory:"Air Rifles", marketPrice:420,
           images:["https://i0.wp.com/mountainsportairguns.com/wp-content/uploads/2021/11/Snapshot_36-1.png?w=600&ssl=1", "https://cdn.airgundepot.com/customer_imgs/large-5272_19d6b76b_a40a_40e0_b212_07f88bfb6a90.jpg", "https://gamousa.com/wp-content/uploads/2020/04/Capture.jpg"],
           nameEn:"Gamo Swarm Magnum", nameRu:"Gamo Swarm Magnum", nameEs:"Gamo Swarm Magnum", nameDe:"Gamo Swarm Magnum", nameFr:"Gamo Swarm Magnum",
@@ -829,6 +779,7 @@
           fullDe:"Das Gamo Swarm Magnum verfügt über das innovative 10-Schuss-Magazinsystem. Merkmale: .22 Kaliber, IGT-Gaskolben-Technologie, 10-Schuss-Mehrmunitionssystem, Whisper Fusion-Geräuschunterdrückung. Hohe Leistung und Genauigkeit. Im Lieferumfang: 3-9x40-Zielfernrohr, 10-Schuss-Magazin, Handbuch.",
           fullFr:"Le Gamo Swarm Magnum est doté du système de chargeur innovant à 10 coups. Caractéristiques: calibre .22, technologie à piston à gaz IGT, système multi-coups 10 coups, suppression sonore Whisper Fusion. Haute puissance et précision. Comprend: lunette 3-9x40, chargeur de 10 coups, manuel." },
         
+        // 16. MP-79-9TM (обновлённые изображения)
         { id:16, category:"Less-Lethal", subcategory:"Less-Lethal Pistols", marketPrice:320,
           images:["https://s.gunsbroker.ru/adv/pm-9-m_1707680694.jpg", "https://www.12kolibr.ru/sites/default/files/img_5160_0.jpg"],
           nameEn:"MP-79-9TM", nameRu:"МР-79-9ТМ", nameEs:"MP-79-9TM", nameDe:"MP-79-9TM", nameFr:"MP-79-9TM",
@@ -839,6 +790,7 @@
           fullDe:"Die MP-79-9TM ist eine weniger tödliche Pistole nach dem Makarov-Design. Merkmale: Kaliber 9 mm R.A., 10-Schuss-Magazin, Gummigeschoss, für Selbstverteidigung ausgelegt. Im Lieferumfang: Holster, zwei Magazine, Sicherheitsschloss, Handbuch.",
           fullFr:"Le MP-79-9TM est un pistolet moins létal basé sur le design Makarov. Caractéristiques: calibre 9 mm R.A., chargeur de 10 coups, balle en caoutchouc, conçu pour la légitime défense. Comprend: étui, deux chargeurs, verrou de sécurité, manuel." },
         
+        // 17. Byrna HD (обновлённое 2-е фото)
         { id:17, category:"Less-Lethal", subcategory:"Less-Lethal Pistols", marketPrice:380,
           images:["https://avatars.mds.yandex.net/i?id=00923260208e54e159500b0abc7a69e5_l-5291569-images-thumbs&n=13", "https://www.quikset.cz/upload/1206833-1502006451_s.jpg", "https://static.wixstatic.com/media/d25c36_342587181baa4b99bb9df6c457a34b92~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg"],
           nameEn:"Byrna HD", nameRu:"Byrna HD", nameEs:"Byrna HD", nameDe:"Byrna HD", nameFr:"Byrna HD",
@@ -849,6 +801,7 @@
           fullDe:"Der Byrna HD ist ein CO2-betriebener Kinetic-Selbstverteidigungswerfer. Merkmale: .68 Kaliber, verschießt kinetische und chemische Projektile, effektive Reichweite bis 18 m, leichte Polymerkonstruktion. Im Lieferumfang: CO2-Kartuschen, Holster, Handbuch.",
           fullFr:"Le Byrna HD est un lanceur cinétique de légitime défense au CO2. Caractéristiques: calibre .68, tire des projectiles cinétiques et chimiques, portée effective jusqu'à 18 m, construction en polymère léger. Comprend: cartouches CO2, étui, manuel." },
         
+        // 18. Saiga-MK (обновлённые изображения)
         { id:18, category:"Hunting", subcategory:"Shotguns", marketPrice:890,
           images:["https://tempgun.ru/upload/resize_cache/iblock/685/400_400_140cd750bba9870f18aada2478b24840a/7y6r3lmrji2891hlg2ai6tyg1kefjxxk.jpg", "https://avatars.mds.yandex.net/i?id=cb0f17bde37f77cea3fdd66995e220f3_l-4825199-images-thumbs&n=33&w=1636&h=1080", "https://mafia-guns.ru/image/cache/catalog/direct/20241211_175424-1920x1080-product_popup.jpg"],
           nameEn:"Saiga-MK", nameRu:"Сайга-МК", nameEs:"Saiga-MK", nameDe:"Saiga-MK", nameFr:"Saiga-MK",
@@ -859,6 +812,7 @@
           fullDe:"Die Saiga-MK ist eine halbautomatische Flinte basierend auf der AK-Plattform. Merkmale: Kaliber 12/76, 8-Schuss-Magazin, halbautomatische Aktion, zuverlässiger AK-basierter Mechanismus. Ausgezeichnet für Jagd und Outdoor-Aktivitäten. Im Lieferumfang: Trageriemen, Tasche, austauschbare Chokes, Handbuch.",
           fullFr:"La Saiga-MK est un fusil semi-automatique basé sur la plateforme AK. Caractéristiques: calibre 12/76, chargeur de 8 coups, action semi-automatique, mécanisme fiable basé sur AK. Excellent pour la chasse et les activités de plein air. Comprend: sangle, étui, chokes interchangeables, manuel." },
         
+        // 19. Mossberg 500
         { id:19, category:"Hunting", subcategory:"Shotguns", marketPrice:480,
           images:["https://avatars.mds.yandex.net/i?id=77e728b459f3889077bb8c58cafc6ab1_l-4988204-images-thumbs&n=13", "https://s.gunsbroker.ru/adv/pompovoe-ruje-mossberg-500-a-kalibr-1276-pompa-drobovik-obrez_1740668598.jpg", "https://blog.gritrsports.com/wp-content/uploads/2024/05/tactical-shotgun.webp"],
           nameEn:"Mossberg 500", nameRu:"Mossberg 500", nameEs:"Mossberg 500", nameDe:"Mossberg 500", nameFr:"Mossberg 500",
@@ -869,6 +823,7 @@
           fullDe:"Die Mossberg 500 ist die zuverlässigste Pump-Action-Flinte. Merkmale: Kaliber 12, 5+1 Kapazität, duale Auszieher, positives Stahl-auf-Stahl-Verriegelung, ambidextrous Sicherung. Im Lieferumfang: Trageriemen, Chokes, Kabelschloss, Handbuch.",
           fullFr:"Le Mossberg 500 est le fusil à pompe le plus fiable. Caractéristiques: calibre 12, capacité 5+1, extracteurs doubles, verrouillage positif acier-sur-acier, sécurité ambidextre. Comprend: sangle, chokes, câble de sécurité, manuel." },
         
+        // 20. Benelli M4 (обновлённое 2-е фото)
         { id:20, category:"Hunting", subcategory:"Shotguns", marketPrice:1850,
           images:["https://avatars.mds.yandex.net/i?id=c5016a40df3937b252d3e5cd077404e7_l-12932351-images-thumbs&n=13", "https://avatars.mds.yandex.net/i?id=979c98a0828377d34c354cf8119dc713_l-5218109-images-thumbs&n=33&w=1752&h=1080", "https://avatars.mds.yandex.net/i?id=74741ddc83252354874f121722d05134_l-5233298-images-thumbs&n=13"],
           nameEn:"Benelli M4", nameRu:"Benelli M4", nameEs:"Benelli M4", nameDe:"Benelli M4", nameFr:"Benelli M4",
@@ -879,6 +834,7 @@
           fullDe:"Die Benelli M4 ist die ultimative halbautomatische taktische Flinte. Merkmale: Kaliber 12, 5+1 Kapazität, ARGO-Gassystem für beispiellose Zuverlässigkeit, wird vom US Marine Corps verwendet. Im Lieferumfang: Trageriemen, Choke-Kit, Hartschalenkoffer.",
           fullFr:"Le Benelli M4 est le fusil tactique semi-automatique ultime. Caractéristiques: calibre 12, capacité 5+1, système à gaz ARGO pour une fiabilité inégalée, utilisé par le Corps des Marines américain. Comprend: sangle, kit de chokes, mallette rigide." },
         
+        // 21. 9x19 FMJ Ammo
         { id:21, category:"Accessories", subcategory:"Ammunition", marketPrice:45,
           images:["https://оружие59.рф/upload/iblock/789/dd12ybrqrhewueh2ht3dzc9ikhqltcw2/patron_okhotnichiy_k_9kh19_luger_bpz_fmj_7_46_g.png"],
           nameEn:"9x19 FMJ Ammo", nameRu:"Патроны 9x19 FMJ", nameEs:"Munición 9x19 FMJ", nameDe:"9x19 FMJ Munition", nameFr:"Munition 9x19 FMJ",
@@ -889,6 +845,7 @@
           fullDe:"Qualitätsmunition 9 mm Luger FMJ. Vollmantelgeschoss 115 Grain, zuverlässige Zuführung, konstante Geschwindigkeit. 50-Schuss-Box. Geeignet für Glock, Beretta, CZ und andere 9x19-Pistolen. Ideal für Training und Wettkampf.",
           fullFr:"Munition FMJ 9 mm Luger de qualité. Balle FMJ 115 grains, alimentation fiable, vitesse constante. Boîte de 50 coups. Convient aux Glock, Beretta, CZ et autres pistolets 9x19. Idéal pour l'entraînement et la compétition." },
         
+        // 22. 5.45x39 FMJ Ammo
         { id:22, category:"Accessories", subcategory:"Ammunition", marketPrice:89,
           images:["https://avatars.mds.yandex.net/i?id=4e057ce8771a11e964f7b561f79606a1_sr-4461910-images-thumbs&n=13"],
           nameEn:"5.45x39 FMJ Ammo", nameRu:"Патроны 5.45x39 FMJ", nameEs:"Munición 5.45x39 FMJ", nameDe:"5.45x39 FMJ Munition", nameFr:"Munition 5.45x39 FMJ",
@@ -899,6 +856,7 @@
           fullDe:"Standardmunition 5.45x39 mm FMJ für AK-74-Gewehre. Vollmantelgeschoss 60 Grain, Stahlhülse, zuverlässige Leistung. 120-Schuss-Box. Geeignet für Sportschießen und Training.",
           fullFr:"Munition standard 5.45x39 mm FMJ pour fusils AK-74. Balle FMJ 60 grains, étui en acier, performance fiable. Boîte de 120 coups. Convient au tir sportif et à l'entraînement." },
         
+        // 23. 5.56x45 NATO Ammo
         { id:23, category:"Accessories", subcategory:"Ammunition", marketPrice:110,
           images:["https://cdn11.bigcommerce.com/s-a58gw09197/images/stencil/1280x1280/products/3972/529/GGG556CASE-20543457725.1541607496.jpg?c=2"],
           nameEn:"5.56x45 NATO Ammo", nameRu:"Патроны 5.56x45 NATO", nameEs:"Munición 5.56x45 OTAN", nameDe:"5.56x45 NATO Munition", nameFr:"Munition 5.56x45 OTAN",
@@ -909,6 +867,7 @@
           fullDe:"Premium-Munition 5.56x45 mm NATO. Vollmantelgeschoss 55 Grain, konstante Geschwindigkeit, zuverlässige Leistung. 100-Schuss-Box. Perfekt für M4, AR-15 und andere NATO-Plattformgewehre.",
           fullFr:"Munition OTAN 5.56x45 mm premium. Balle FMJ 55 grains, vitesse constante, performance fiable. Boîte de 100 coups. Parfait pour M4, AR-15 et autres fusils plateforme OTAN." },
         
+        // 24. .308 Win Ammo
         { id:24, category:"Accessories", subcategory:"Ammunition", marketPrice:95,
           images:["https://cdn.optipic.io/site-106498/upload/iblock/032/83opls64h5kn35l7nx3wxhpgukogg9kd/9,7%20%D0%B3%D1%80.),%20%D0%B0%D1%80%D1%82.20176220%20%D0%BF.=50%D1%88%D1%82.%20z%20%D0%9F%D0%B0%D1%82%D1%80%D0%BE%D0%BD%D1%8B%20%D0%BD%D0%B0%D1%80%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5.jpg"],
           nameEn:".308 Win Ammo", nameRu:"Патроны .308 Win", nameEs:"Munición .308 Win", nameDe:".308 Win Munition", nameFr:"Munition .308 Win",
@@ -919,6 +878,7 @@
           fullDe:"Match-Munition .308 Winchester. Vollmantelgeschoss 168 Grain, hohe Genauigkeit, konstante Leistung. 50-Schuss-Box. Ideal für Remington 700 und andere Repetiergewehre.",
           fullFr:"Munition .308 Winchester de qualité compétition. Balle FMJ 168 grains, haute précision, performance constante. Boîte de 50 coups. Idéal pour Remington 700 et autres fusils à verrou." },
         
+        // 25. Glock 17 Magazine
         { id:25, category:"Accessories", subcategory:"Magazines", marketPrice:42,
           images:["https://avatars.mds.yandex.net/i?id=1a5a7bd103712e5f4a42c930d0015c20_l-5233063-images-thumbs&n=13"],
           nameEn:"Glock 17 Magazine", nameRu:"Магазин Glock 17", nameEs:"Cargador Glock 17", nameDe:"Glock 17 Magazin", nameFr:"Chargeur Glock 17",
@@ -929,6 +889,7 @@
           fullDe:"Originales Werksmagazin für Glock 17. 17-Schuss-Kapazität, Kaliber 9x19 mm. Stahlkörper mit Polymerbeschichtung, zuverlässige Zuführung. Kompatibel mit allen Glock 17-Modellen.",
           fullFr:"Chargeur d'usine original pour Glock 17. Capacité de 17 coups, calibre 9x19 mm. Corps en acier avec revêtement polymère, alimentation fiable. Compatible avec tous les modèles Glock 17." },
         
+        // 26. AK-74 Magazine
         { id:26, category:"Accessories", subcategory:"Magazines", marketPrice:28,
           images:["https://www.365-plus.com/productimg/acu-ak-74-magazine-5-45x39mm-30-rds-gen-3-image.jpg?v=1734333506"],
           nameEn:"AK-74 Magazine", nameRu:"Магазин АК-74", nameEs:"Cargador AK-74", nameDe:"AK-74 Magazin", nameFr:"Chargeur AK-74",
@@ -939,6 +900,7 @@
           fullDe:"Hochwertiges Polymermagazin für AK-74-Gewehre. 30-Schuss-Kapazität, Kaliber 5.45x39 mm. Verstärkte Feder, zuverlässige Zuführung unter allen Bedingungen. Kompatibel mit allen AK-74-Varianten.",
           fullFr:"Chargeur en polymère de haute qualité pour fusils AK-74. Capacité de 30 coups, calibre 5.45x39 mm. Ressort renforcé, alimentation fiable dans toutes les conditions. Compatible avec toutes les variantes AK-74." },
         
+        // 27. PMAG 30 AR-15
         { id:27, category:"Accessories", subcategory:"Magazines", marketPrice:35,
           images:["https://custom-guns.ru/12138-large_default/magazin-pmag-30-gen-m3-na-30-patronov-kal-556-223-dlya-ar15-m4-m16-sa-80.jpg"],
           nameEn:"PMAG 30 AR-15", nameRu:"PMAG 30 AR-15", nameEs:"PMAG 30 AR-15", nameDe:"PMAG 30 AR-15", nameFr:"PMAG 30 AR-15",
@@ -949,6 +911,7 @@
           fullDe:"Das Magpul PMAG 30 ist der Industriestandard für AR-15-Magazine. 30-Schuss-Kapazität, schlagfestes Polymer, transparentes Fenster zur Schusszählung. Anti-Kipp-Folger. Kompatibel mit allen M4/AR-15-Plattformen.",
           fullFr:"Le Magpul PMAG 30 est la référence de l'industrie pour les chargeurs AR-15. Capacité de 30 coups, polymère résistant aux chocs, fenêtre transparente pour le comptage des coups. Poussoir anti-inclinaison. Compatible avec toutes les plates-formes M4/AR-15." },
         
+        // 28. HK416 Magazine
         { id:28, category:"Accessories", subcategory:"Magazines", marketPrice:55,
           images:["https://avatars.mds.yandex.net/i?id=8eec3a822c1484ad290dc262e04f2d20_sr-4688861-images-thumbs&n=13"],
           nameEn:"HK416 Magazine", nameRu:"Магазин HK416", nameEs:"Cargador HK416", nameDe:"HK416 Magazin", nameFr:"Chargeur HK416",
@@ -959,6 +922,7 @@
           fullDe:"Originales Werksmagazin für HK416. 30-Schuss-Kapazität, Kaliber 5.56x45 mm. Stahlkonstruktion, Anti-Kipp-Folger. Premium-Qualität für Premium-Gewehre.",
           fullFr:"Chargeur d'usine original pour HK416. Capacité de 30 coups, calibre 5.56x45 mm. Construction en acier, poussoir anti-inclinaison. Qualité premium pour fusils premium." },
         
+        // 29. 6B45 Body Armor
         { id:29, category:"Accessories", subcategory:"Body Armor", marketPrice:550,
           images:["https://i.ebayimg.com/images/g/3SQAAOSwMwBidPEi/s-l400.jpg"],
           nameEn:"6B45 Body Armor", nameRu:"Бронежилет 6Б45", nameEs:"Chaleco 6B45", nameDe:"6B45 Körperpanzerung", nameFr:"Gilet 6B45",
@@ -969,6 +933,7 @@
           fullDe:"Die 6B45 ist ein militärisches Körperpanzerungssystem. Schutzstufe 3 (GOST), Kevlar-Einsätze, Schnelllösesystem. Gewicht 8.5 kg, olivfarben. Bietet Schutz für lebenswichtige Bereiche.",
           fullFr:"Le 6B45 est un système de gilet pare-balles de qualité militaire. Protection niveau 3 (GOST), inserts en Kevlar, système de dégagement rapide. Poids 8.5 kg, couleur olive. Fournit une protection pour les zones vitales." },
         
+        // 30. TacTec Plate Carrier
         { id:30, category:"Accessories", subcategory:"Body Armor", marketPrice:390,
           images:["https://img.alicdn.com/imgextra/i3/405534025/TB2EULMCNGYBuNjy0FnXXX5lpXa_!!405534025.jpg"],
           nameEn:"TacTec Plate Carrier", nameRu:"TacTec Plate Carrier", nameEs:"Portaplacas TacTec", nameDe:"TacTec Plattenhalter", nameFr:"Porte-plaques TacTec",
@@ -979,6 +944,7 @@
           fullDe:"Der 5.11 TacTec Plattenhalter ist ein leichter taktischer Plattenhalter. Cordura-Nylon-Konstruktion, verstellbare Passform, nimmt Panzerplatten auf, MOLLE-Gurte für Zubehör. Perfekt für verdecktes Tragen und taktischen Einsatz.",
           fullFr:"Le Porte-plaques 5.11 TacTec est un porte-plaques tactique léger. Construction en nylon Cordura, ajustement réglable, accepte les plaques de blindage, sangles MOLLE pour accessoires. Parfait pour le port dissimulé et l'utilisation tactique." },
         
+        // 31. AR500 Armor Plates
         { id:31, category:"Accessories", subcategory:"Body Armor", marketPrice:280,
           images:["https://i.pinimg.com/736x/23/b9/64/23b9643de6d240924b8e40abc78e850e.jpg"],
           nameEn:"AR500 Armor Plates", nameRu:"AR500 Armor Plates", nameEs:"Placas AR500", nameDe:"AR500 Panzerplatten", nameFr:"Plaques AR500",
@@ -989,6 +955,7 @@
           fullDe:"AR500-Stahlpanzerplatten bieten Schutz der Stufe III+. Zwei Platten, Mehrfachtrefferfähigkeit, Splitterbeschichtung, 7.5 lbs pro Stück. NIJ-zertifizierter Schutz gegen Gewehrgeschosse.",
           fullFr:"Les plaques d'acier AR500 offrent une protection de niveau III+. Deux plaques, capacité multi-impact, revêtement anti-éclats, 7.5 lbs chacune. Protection certifiée NIJ contre les balles de fusil." },
         
+        // 32. Tactical Belt
         { id:32, category:"Accessories", subcategory:"Gear", marketPrice:55,
           images:["https://i.pinimg.com/originals/9c/5a/d0/9c5ad059bb2667e09eb863c679d8b88c.jpg"],
           nameEn:"Tactical Belt", nameRu:"Тактический пояс", nameEs:"Cinturón táctico", nameDe:"Taktischer Gürtel", nameFr:"Ceinture tactique",
@@ -999,6 +966,7 @@
           fullDe:"Hochbelastbarer taktischer Gürtel mit MOLLE-System. Verstärktes Gurtband, Metallschnalle. Breite 5 cm, Länge bis 120 cm verstellbar. Perfekt zur Befestigung von Taschen, Holstern und anderer taktischer Ausrüstung.",
           fullFr:"Ceinture tactique robuste avec système MOLLE. Sangle renforcée, boucle métallique. Largeur 5 cm, longueur réglable jusqu'à 120 cm. Parfait pour fixer des pochettes, étuis et autres équipements tactiques." },
         
+        // 33. Magazine Pouch
         { id:33, category:"Accessories", subcategory:"Gear", marketPrice:32,
           images:["https://www.kolchuga.ru/upload/resize_cache/iblock/ef0/400_300_1/8iewz00smtygfh2g4ln085mwgl6uxxll.jpg"],
           nameEn:"Magazine Pouch", nameRu:"Подсумок для магазинов", nameEs:"Funda para cargadores", nameDe:"Magazintasche", nameFr:"Poche à chargeurs",
@@ -1009,6 +977,7 @@
           fullDe:"Taktische Magazintasche für zwei Magazine. MOLLE-Befestigungssystem, verstellbare Klappen für sicheren Halt, Design für schnellen Zugriff. Farbe: khaki. Passt für Standard-AR-15/AK-47-Magazine.",
           fullFr:"Poche tactique pour deux chargeurs. Système de fixation MOLLE, rabats réglables pour une retenue sécurisée, conception à accès rapide. Couleur: kaki. Convient aux chargeurs standard AR-15/AK-47." },
         
+        // 34. Tactical Dump Pouch
         { id:34, category:"Accessories", subcategory:"Gear", marketPrice:38,
           images:["https://i.pinimg.com/736x/a8/2c/6c/a82c6ce6e7b029697674b978e8d77a8a.jpg"],
           nameEn:"Tactical Dump Pouch", nameRu:"Тактическая сумка", nameEs:"Bolsa táctica", nameDe:"Taktische Dump-Tasche", nameFr:"Poche tactique",
@@ -1019,6 +988,7 @@
           fullDe:"Große zusammenklappbare Dump-Tasche für leere Magazine und Ausrüstung. MOLLE-Befestigung, schneller Einsatz, elastisches Halteseil. Perfekt für den Einsatz auf dem Schießstand und taktische Operationen.",
           fullFr:"Grande poche de déchargement pliable pour chargeurs vides et équipement. Fixation MOLLE, déploiement rapide, cordon élastique de retenue. Parfait pour une utilisation sur le terrain de tir et les opérations tactiques." },
         
+        // 35. Shooting Glasses
         { id:35, category:"Accessories", subcategory:"Gear", marketPrice:45,
           images:["https://img-edg.joomcdn.net/876aea4ddb053be4fb6c7059796e7ca3f66690ca_original.jpeg"],
           nameEn:"Shooting Glasses", nameRu:"Защитные очки", nameEs:"Gafas de tiro", nameDe:"Schutzbrille", nameFr:"Lunettes de tir",
@@ -1088,10 +1058,7 @@
         let filtered = sortProducts().filter(p => p.category === activeCategory);
         if (activeSubcategory) filtered = filtered.filter(p => p.subcategory === activeSubcategory);
         if (searchQuery) {
-            filtered = filtered.filter(p => 
-                p.name.toLowerCase().includes(searchQuery) || 
-                p.shortDesc.toLowerCase().includes(searchQuery)
-            );
+            filtered = filtered.filter(p => p.name.toLowerCase().includes(searchQuery) || p.shortDesc.toLowerCase().includes(searchQuery));
         }
         return filtered;
     }
@@ -1129,9 +1096,21 @@
         saveCart();
     }
     
+    // Функция Buy Now — только этот товар, не добавляет в корзину
+    function buyNow(product, quantity) {
+        const discPrice = product.marketPrice * (1 - DISCOUNT);
+        const totalPrice = discPrice * quantity;
+        
+        let msg = "🛒 *ORDER*\n\n";
+        msg += `• ${product.name} x${quantity} = ${formatPrice(totalPrice)}\n`;
+        msg += `\n📦 *TOTAL: ${formatPrice(totalPrice)}* (20% off)`;
+        
+        window.open(`https://t.me/${TG_USERNAME}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+    
     function sendCartToTelegram() { 
         if(!cart.length) { alert(getTranslation('emptyCart')); return; } 
-        let msg="🛒 *NEW ORDER*\n\n"; 
+        let msg="🛒 *ORDER*\n\n"; 
         cart.forEach(i=>msg+=`• ${i.name} x${i.quantity} = ${formatPrice(i.price*(1-DISCOUNT)*i.quantity)}\n`); 
         msg+=`\n📦 *TOTAL: ${formatPrice(cart.reduce((s,i)=>s+(i.price*(1-DISCOUNT)*i.quantity),0))}* (20% off)`; 
         window.open(`https://t.me/${TG_USERNAME}?text=${encodeURIComponent(msg)}`,'_blank'); 
@@ -1145,11 +1124,11 @@
         document.getElementById('logoSub').innerHTML=t.logoSub;
         document.getElementById('discountBanner').innerHTML=`${t.discountBanner} <span>${t.discountSpan}</span>`;
         document.getElementById('footerText').innerHTML=t.footer;
-        document.getElementById('cartOrderBtn').innerHTML=`📲 ${t.sendOrder}`;
+        document.getElementById('cartOrderBtn').innerHTML=`${t.sendOrder}`;
         document.getElementById('cartTitle').innerHTML=`🛒 ${t.cartTitle}`;
         document.getElementById('cartBtnText').innerHTML=t.cartBtnText;
         document.getElementById('modalAddToCart').innerHTML=`+ ${t.addToCart}`;
-        document.getElementById('modalOrderNow').innerHTML=`📲 ${t.buyNow}`;
+        document.getElementById('modalOrderNow').innerHTML=`${t.buyNow}`;
         document.getElementById('modalBackBtn').innerHTML=`← ${t.back}`;
         document.getElementById('sortBtnText').innerHTML = t.sortLabel;
         
@@ -1247,7 +1226,7 @@
         tc.innerHTML='';
         currentModalProduct.images.forEach((img,i)=>{const t=document.createElement('img'); t.src=img; t.classList.add('thumbnail'); if(i===0)t.classList.add('active'); t.onerror=()=>t.src='https://placehold.co/70x70/2a2e3a/b8c7a3?text=img'; t.onclick=()=>{document.getElementById('modalMainImage').src=img; document.querySelectorAll('.thumbnail').forEach(th=>th.classList.remove('active')); t.classList.add('active');}; tc.appendChild(t);});
         document.getElementById('modalAddToCart').onclick=()=>{addToCart(currentModalProduct, modalQuantity); document.getElementById('productModal').classList.remove('active');};
-        document.getElementById('modalOrderNow').onclick=()=>{addToCart(currentModalProduct, modalQuantity); document.getElementById('cartModal').classList.add('active'); document.getElementById('productModal').classList.remove('active');};
+        document.getElementById('modalOrderNow').onclick=()=>{buyNow(currentModalProduct, modalQuantity); document.getElementById('productModal').classList.remove('active');};
         document.getElementById('modalBackBtn').onclick=()=>document.getElementById('productModal').classList.remove('active');
         document.getElementById('productModal').classList.add('active');
     }
@@ -1256,7 +1235,6 @@
     function closeCart(){ document.getElementById('cartModal').classList.remove('active'); }
     function escapeHtml(s){ if(!s) return ''; return s.replace(/[&<>]/g,m=>m==='&'?'&amp;':m==='<'?'&lt;':'&gt;'); }
 
-    // Event Listeners
     document.getElementById('langBtn').addEventListener('click',()=>document.getElementById('langDropdown').classList.toggle('active'));
     document.querySelectorAll('.lang-option').forEach(opt=>{opt.addEventListener('click',()=>{currentLang=opt.getAttribute('data-lang'); localStorage.setItem('kurbashop_lang',currentLang); updateUIForLanguage(); document.getElementById('langDropdown').classList.remove('active');});});
     document.addEventListener('click',e=>{if(!e.target.closest('.lang-selector')) document.getElementById('langDropdown').classList.remove('active');});
@@ -1274,10 +1252,8 @@
 
     window.updateCartItem=updateCartItem; window.removeCartItem=removeCartItem; window.addToCart=addToCart; window.getProductById=getProductById; window.updateCartUI=updateCartUI;
     
-    // Инициализация
     updateUIForLanguage();
     
-    // Schema.org структурированные данные
     const schemaScript = document.createElement('script');
     schemaScript.type = 'application/ld+json';
     schemaScript.textContent = JSON.stringify({
