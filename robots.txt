@@ -1,0 +1,20 @@
+# robots.txt для KurbaShop
+# https://kurbashop.onrender.com
+
+User-agent: *
+Allow: /
+
+# Запрещаем сканирование служебных страниц (их нет, но на всякий случай)
+Disallow: /admin
+Disallow: /cart
+Disallow: /checkout
+Disallow: /private/
+
+# Указываем где находится карта сайта
+Sitemap: https://kurbashop.onrender.com/sitemap.xml
+
+# Задержка между запросами (для уважения к серверу)
+Crawl-delay: 1
+
+# Хост (для некоторых поисковиков)
+Host: https://kurbashop.onrender.com
