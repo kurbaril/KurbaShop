@@ -11,6 +11,20 @@
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta name="format-detection" content="telephone=no, email=no, address=no">
     
+    <!-- Open Graph мета-теги для соцсетей -->
+    <meta property="og:title" content="KurbaShop | Tactical Arsenal & Gear">
+    <meta property="og:description" content="Premium tactical gear, firearms, air guns, hunting equipment, body armor, and ammunition. 20% off first order!">
+    <meta property="og:image" content="https://s10.iimage.su/s/30/gm40IcoxUk4TOznydW4AWPoUgZmiLVFjInPqcDGTC.jpg">
+    <meta property="og:url" content="https://kurbashop.onrender.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KurbaShop">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KurbaShop | Tactical Arsenal & Gear">
+    <meta name="twitter:description" content="Premium tactical gear, firearms, air guns, hunting equipment, body armor, and ammunition. 20% off first order!">
+    <meta name="twitter:image" content="https://s10.iimage.su/s/30/gm40IcoxUk4TOznydW4AWPoUgZmiLVFjInPqcDGTC.jpg">
+    
     <link rel="icon" type="image/jpeg" href="https://s10.iimage.su/s/30/gm40IcoxUk4TOznydW4AWPoUgZmiLVFjInPqcDGTC.jpg">
     <link rel="apple-touch-icon" href="https://s10.iimage.su/s/30/gm40IcoxUk4TOznydW4AWPoUgZmiLVFjInPqcDGTC.jpg">
     
@@ -122,14 +136,10 @@
             padding: 8px 12px;
             font-size: 13px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
             transition: background 0.2s;
             color: #cddbc0;
         }
         .sort-option:hover { background: #2c3e2b; }
-        .sort-option i { width: 20px; text-align: center; }
         
         .cart-btn {
             background: #2c3e2b;
@@ -191,6 +201,37 @@
         }
         .lang-option:hover { background: #2c3e2b; }
         .lang-option span { font-size: 18px; }
+        
+        .search-box {
+            background: #2c3e2b;
+            border: 1px solid #9eb67b;
+            border-radius: 40px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: #cddbc0;
+            font-size: 12px;
+            outline: none;
+            width: 120px;
+        }
+        .search-box input::placeholder {
+            color: #9eb67b;
+        }
+        .search-box button {
+            background: none;
+            border: none;
+            color: #cddbc0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        @media (max-width: 600px) {
+            .search-box input { width: 80px; }
+        }
         
         .categories {
             background: #0b0d17;
@@ -450,6 +491,34 @@
         .modal-order-btn { background: #d4af37; color: #0a0c12; }
         .modal-back-btn { background: #2c3e2b; color: #cddbc0; }
         
+        /* Счётчик количества для модального окна */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 16px 0;
+            background: #1e232f;
+            padding: 10px 16px;
+            border-radius: 40px;
+            width: fit-content;
+        }
+        .quantity-selector button {
+            background: #2c3e2b;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .quantity-selector span {
+            font-size: 18px;
+            font-weight: 600;
+            min-width: 40px;
+            text-align: center;
+        }
+        
         .footer {
             text-align: center;
             padding: 20px;
@@ -480,15 +549,19 @@
                 <div class="logo-text">KURBASHOP<span id="logoSub"> | tactical gear</span></div>
             </div>
             <div class="top-actions">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="🔍 Search..." oninput="filterProductsBySearch()">
+                    <button onclick="filterProductsBySearch()">🔍</button>
+                </div>
                 <div class="sort-selector">
                     <button class="sort-btn" id="sortBtn">
-                        <i>📊</i> <span id="sortBtnText">Sort</span> ▼
+                        <span id="sortBtnText">Sort</span> ▼
                     </button>
                     <div class="sort-dropdown" id="sortDropdown">
-                        <div class="sort-option" data-sort="name-asc"><i>🔤</i> Name A-Z</div>
-                        <div class="sort-option" data-sort="name-desc"><i>🔤</i> Name Z-A</div>
-                        <div class="sort-option" data-sort="price-asc"><i>💰</i> Price ↑</div>
-                        <div class="sort-option" data-sort="price-desc"><i>💰</i> Price ↓</div>
+                        <div class="sort-option" data-sort="name-asc">Name A-Z</div>
+                        <div class="sort-option" data-sort="name-desc">Name Z-A</div>
+                        <div class="sort-option" data-sort="price-asc">Price ↑</div>
+                        <div class="sort-option" data-sort="price-desc">Price ↓</div>
                     </div>
                 </div>
                 <button class="cart-btn" id="cartBtn">🛒 <span id="cartBtnText">CART</span> <span id="cartCount" class="cart-count">0</span></button>
@@ -547,6 +620,11 @@
                 <span class="modal-new-price" id="modalNewPrice"></span>
             </div>
             <div id="modalDescription" class="modal-description"></div>
+            <div class="quantity-selector">
+                <button onclick="modalQuantity = Math.max(1, modalQuantity - 1); updateModalQuantityDisplay()">-</button>
+                <span id="modalQuantityDisplay">1</span>
+                <button onclick="modalQuantity = modalQuantity + 1; updateModalQuantityDisplay()">+</button>
+            </div>
             <div class="modal-buttons">
                 <button id="modalAddToCart" class="modal-add-cart">+ Add to Cart</button>
                 <button id="modalOrderNow" class="modal-order-btn">📲 Buy Now</button>
@@ -569,7 +647,6 @@
 
     // ======================== ALL 35 PRODUCTS WITH FULL TRANSLATIONS ========================
     const products = [
-        // 1-5: Firearms / Pistols
         { id:1, category:"Firearms", subcategory:"Pistols", marketPrice:850, images:["https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Glock_17_Gen_4_Pistol_%28no_background%29.png/800px-Glock_17_Gen_4_Pistol_%28no_background%29.png"],
           nameEn:"Glock 17 Gen5", nameRu:"Glock 17 Gen5", nameEs:"Glock 17 Gen5", nameDe:"Glock 17 Gen5", nameFr:"Glock 17 Gen5",
           shortEn:"9mm Austrian pistol, reliability standard", shortRu:"9-мм австрийский пистолет, эталон надёжности", shortEs:"Pistola austriaca 9mm, estándar de fiabilidad", shortDe:"9mm österreichische Pistole, Zuverlässigkeitsstandard", shortFr:"Pistolet autrichien 9mm, standard de fiabilité",
@@ -865,7 +942,10 @@
     let activeCategory = "Firearms";
     let activeSubcategory = null;
     let currentSort = "name-asc";
+    let searchQuery = "";
     let cart = JSON.parse(localStorage.getItem('kurbashop_cart')) || [];
+    let modalQuantity = 1;
+    let currentModalProduct = null;
 
     const translations = {
         en: { logoSub:" | tactical gear", discountBanner:"20% OFF ON FIRST ORDER", discountSpan:"🔥 -20% 🔥", footer:"© KurbaShop — tactical arsenal & gear.<br>All orders via Telegram. 20% discount on first order.", cartTitle:"Shopping Cart", cartBtnText:"CART", emptyCart:"Your cart is empty", total:"Total:", sendOrder:"Send Order to Telegram", addToCart:"Add to Cart", buyNow:"Buy Now", back:"Back", all:"All", sort:{nameAsc:"Name A-Z", nameDesc:"Name Z-A", priceAsc:"Price ↑", priceDesc:"Price ↓"}, sortLabel:"Sort", categories:{"Firearms":"Firearms","Air Guns":"Air Guns","Less-Lethal":"Less-Lethal","Hunting":"Hunting","Accessories":"Accessories"}, subcategories:{"Pistols":"Pistols","Rifles":"Rifles","Air Pistols":"Air Pistols","Air Rifles":"Air Rifles","Less-Lethal Pistols":"Less-Lethal Pistols","Shotguns":"Shotguns","Ammunition":"Ammunition","Magazines":"Magazines","Body Armor":"Body Armor","Gear":"Gear"} },
@@ -890,10 +970,29 @@
     }
 
     function sortProducts() {
-        if (currentSort === 'name-asc') products.sort((a,b) => a.name.localeCompare(b.name));
-        else if (currentSort === 'name-desc') products.sort((a,b) => b.name.localeCompare(a.name));
-        else if (currentSort === 'price-asc') products.sort((a,b) => a.marketPrice - b.marketPrice);
-        else if (currentSort === 'price-desc') products.sort((a,b) => b.marketPrice - a.marketPrice);
+        let sorted = [...products];
+        if (currentSort === 'name-asc') sorted.sort((a,b) => a.name.localeCompare(b.name));
+        else if (currentSort === 'name-desc') sorted.sort((a,b) => b.name.localeCompare(a.name));
+        else if (currentSort === 'price-asc') sorted.sort((a,b) => a.marketPrice - b.marketPrice);
+        else if (currentSort === 'price-desc') sorted.sort((a,b) => b.marketPrice - a.marketPrice);
+        return sorted;
+    }
+
+    function filterProductsBySearch() {
+        searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+        renderProducts();
+    }
+
+    function getFilteredProducts() {
+        let filtered = sortProducts().filter(p => p.category === activeCategory);
+        if (activeSubcategory) filtered = filtered.filter(p => p.subcategory === activeSubcategory);
+        if (searchQuery) {
+            filtered = filtered.filter(p => 
+                p.name.toLowerCase().includes(searchQuery) || 
+                p.shortDesc.toLowerCase().includes(searchQuery)
+            );
+        }
+        return filtered;
     }
 
     function saveCart() { localStorage.setItem('kurbashop_cart', JSON.stringify(cart)); updateCartUI(); }
@@ -908,7 +1007,13 @@
     }
     function updateCartItem(id,q) { if(q<=0) removeCartItem(id); else { let i=cart.find(i=>i.id===id); if(i) i.quantity=q; saveCart(); } }
     function removeCartItem(id) { cart=cart.filter(i=>i.id!==id); saveCart(); }
-    function addToCart(p) { let e=cart.find(i=>i.id===p.id); if(e) e.quantity++; else cart.push({id:p.id,name:p.name,price:p.marketPrice,img:p.images[0],quantity:1}); saveCart(); alert(getTranslation('addToCart')+": "+p.name); }
+    function addToCart(p, quantity = 1) {
+        let e=cart.find(i=>i.id===p.id);
+        if(e) e.quantity += quantity;
+        else cart.push({id:p.id,name:p.name,price:p.marketPrice,img:p.images[0],quantity:quantity});
+        saveCart();
+        // Уведомление убрано
+    }
     function sendCartToTelegram() { if(!cart.length) { alert(getTranslation('emptyCart')); return; } let msg="🛒 *NEW ORDER*\n\n"; cart.forEach(i=>msg+=`• ${i.name} x${i.quantity} = ${formatPrice(i.price*(1-DISCOUNT)*i.quantity)}\n`); msg+=`\n📦 *TOTAL: ${formatPrice(cart.reduce((s,i)=>s+(i.price*(1-DISCOUNT)*i.quantity),0))}* (20% off)`; window.open(`https://t.me/${TG_USERNAME}?text=${encodeURIComponent(msg)}`,'_blank'); }
     function getProductById(id) { return products.find(p=>p.id===id); }
 
@@ -932,14 +1037,13 @@
         
         document.querySelectorAll('.sort-option').forEach(opt => {
             const sortVal = opt.getAttribute('data-sort');
-            if (sortVal === 'name-asc') opt.innerHTML = `<i>🔤</i> ${t.sort.nameAsc}`;
-            else if (sortVal === 'name-desc') opt.innerHTML = `<i>🔤</i> ${t.sort.nameDesc}`;
-            else if (sortVal === 'price-asc') opt.innerHTML = `<i>💰</i> ${t.sort.priceAsc}`;
-            else if (sortVal === 'price-desc') opt.innerHTML = `<i>💰</i> ${t.sort.priceDesc}`;
+            if (sortVal === 'name-asc') opt.innerHTML = `${t.sort.nameAsc}`;
+            else if (sortVal === 'name-desc') opt.innerHTML = `${t.sort.nameDesc}`;
+            else if (sortVal === 'price-asc') opt.innerHTML = `${t.sort.priceAsc}`;
+            else if (sortVal === 'price-desc') opt.innerHTML = `${t.sort.priceDesc}`;
         });
         
         updateProductNames();
-        sortProducts();
         renderCategories();
         updateSubcategories();
         renderProducts();
@@ -950,7 +1054,7 @@
         const cont=document.getElementById('categoriesList');
         if(!cont) return;
         cont.innerHTML=Array.from(categoriesSet).map(c=>`<button class="cat-btn ${activeCategory===c?'active':''}" data-cat="${c}">${getCategoryName(c)}</button>`).join('');
-        document.querySelectorAll('.cat-btn').forEach(btn=>{btn.addEventListener('click',()=>{activeCategory=btn.getAttribute('data-cat'); activeSubcategory=null; document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); updateSubcategories(); renderProducts();});});
+        document.querySelectorAll('.cat-btn').forEach(btn=>{btn.addEventListener('click',()=>{activeCategory=btn.getAttribute('data-cat'); activeSubcategory=null; searchQuery=""; document.getElementById('searchInput').value=""; document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); updateSubcategories(); renderProducts();});});
     }
 
     function updateSubcategories() {
@@ -971,27 +1075,32 @@
     function renderProducts() {
         const grid=document.getElementById('productsGrid');
         if(!grid) return;
-        let filtered=products.filter(p=>p.category===activeCategory);
-        if(activeSubcategory) filtered=filtered.filter(p=>p.subcategory===activeSubcategory);
+        const filtered=getFilteredProducts();
         if(!filtered.length){ grid.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:40px;">${currentLang==='en'?'No items':currentLang==='ru'?'Нет товаров':'Sin artículos'}</div>`; return; }
-        grid.innerHTML=filtered.map(p=>{const disc=p.marketPrice*(1-DISCOUNT); return `<div class="product-card" data-id="${p.id}"><img class="product-img" src="${p.images[0]}" alt="${escapeHtml(p.name)}" onerror="this.src='https://placehold.co/600x400/2a2e3a/b8c7a3?text=${encodeURIComponent(p.name)}'"><div class="product-info"><div class="product-name">${escapeHtml(p.name)}</div><div class="product-price"><span class="old-price">${formatPrice(p.marketPrice)}</span><span class="new-price">${formatPrice(disc)}</span><span class="discount-badge">-20%</span></div><div class="product-desc">${escapeHtml(p.shortDesc)}</div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(getProductById(${p.id}))">+ ${getTranslation('addToCart')}</button></div></div>`;}).join('');
+        grid.innerHTML=filtered.map(p=>{const disc=p.marketPrice*(1-DISCOUNT); return `<div class="product-card" data-id="${p.id}"><img class="product-img" src="${p.images[0]}" alt="${escapeHtml(p.name)}" onerror="this.src='https://placehold.co/600x400/2a2e3a/b8c7a3?text=${encodeURIComponent(p.name)}'"><div class="product-info"><div class="product-name">${escapeHtml(p.name)}</div><div class="product-price"><span class="old-price">${formatPrice(p.marketPrice)}</span><span class="new-price">${formatPrice(disc)}</span><span class="discount-badge">-20%</span></div><div class="product-desc">${escapeHtml(p.shortDesc)}</div><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(getProductById(${p.id}), 1)">+ ${getTranslation('addToCart')}</button></div></div>`;}).join('');
         document.querySelectorAll('.product-card').forEach(c=>{const id=parseInt(c.getAttribute('data-id')); c.addEventListener('click',()=>openProductModal(id));});
     }
 
+    function updateModalQuantityDisplay() {
+        document.getElementById('modalQuantityDisplay').innerText = modalQuantity;
+    }
+
     function openProductModal(id){
-        const p=getProductById(id);
-        if(!p) return;
-        const disc=p.marketPrice*(1-DISCOUNT);
-        document.getElementById('modalMainImage').src=p.images[0];
-        document.getElementById('modalTitle').innerText=p.name;
-        document.getElementById('modalDescription').innerHTML=p.fullDesc;
-        document.getElementById('modalOldPrice').innerText=formatPrice(p.marketPrice);
+        currentModalProduct = getProductById(id);
+        if(!currentModalProduct) return;
+        modalQuantity = 1;
+        updateModalQuantityDisplay();
+        const disc=currentModalProduct.marketPrice*(1-DISCOUNT);
+        document.getElementById('modalMainImage').src=currentModalProduct.images[0];
+        document.getElementById('modalTitle').innerText=currentModalProduct.name;
+        document.getElementById('modalDescription').innerHTML=currentModalProduct.fullDesc;
+        document.getElementById('modalOldPrice').innerText=formatPrice(currentModalProduct.marketPrice);
         document.getElementById('modalNewPrice').innerText=formatPrice(disc);
         const tc=document.getElementById('thumbnailsContainer');
         tc.innerHTML='';
-        p.images.forEach((img,i)=>{const t=document.createElement('img'); t.src=img; t.classList.add('thumbnail'); if(i===0)t.classList.add('active'); t.onerror=()=>t.src='https://placehold.co/70x70/2a2e3a/b8c7a3?text=img'; t.onclick=()=>{document.getElementById('modalMainImage').src=img; document.querySelectorAll('.thumbnail').forEach(th=>th.classList.remove('active')); t.classList.add('active');}; tc.appendChild(t);});
-        document.getElementById('modalAddToCart').onclick=()=>{addToCart(p); document.getElementById('productModal').classList.remove('active');};
-        document.getElementById('modalOrderNow').onclick=()=>{addToCart(p); document.getElementById('cartModal').classList.add('active'); document.getElementById('productModal').classList.remove('active');};
+        currentModalProduct.images.forEach((img,i)=>{const t=document.createElement('img'); t.src=img; t.classList.add('thumbnail'); if(i===0)t.classList.add('active'); t.onerror=()=>t.src='https://placehold.co/70x70/2a2e3a/b8c7a3?text=img'; t.onclick=()=>{document.getElementById('modalMainImage').src=img; document.querySelectorAll('.thumbnail').forEach(th=>th.classList.remove('active')); t.classList.add('active');}; tc.appendChild(t);});
+        document.getElementById('modalAddToCart').onclick=()=>{addToCart(currentModalProduct, modalQuantity); document.getElementById('productModal').classList.remove('active');};
+        document.getElementById('modalOrderNow').onclick=()=>{addToCart(currentModalProduct, modalQuantity); document.getElementById('cartModal').classList.add('active'); document.getElementById('productModal').classList.remove('active');};
         document.getElementById('modalBackBtn').onclick=()=>document.getElementById('productModal').classList.remove('active');
         document.getElementById('productModal').classList.add('active');
     }
@@ -1006,7 +1115,7 @@
     document.addEventListener('click',e=>{if(!e.target.closest('.lang-selector')) document.getElementById('langDropdown').classList.remove('active');});
     
     document.getElementById('sortBtn').addEventListener('click',()=>document.getElementById('sortDropdown').classList.toggle('active'));
-    document.querySelectorAll('.sort-option').forEach(opt=>{opt.addEventListener('click',()=>{currentSort=opt.getAttribute('data-sort'); sortProducts(); renderProducts(); document.getElementById('sortDropdown').classList.remove('active');});});
+    document.querySelectorAll('.sort-option').forEach(opt=>{opt.addEventListener('click',()=>{currentSort=opt.getAttribute('data-sort'); renderProducts(); document.getElementById('sortDropdown').classList.remove('active');});});
     document.addEventListener('click',e=>{if(!e.target.closest('.sort-selector')) document.getElementById('sortDropdown').classList.remove('active');});
     
     document.getElementById('closeModalBtn').addEventListener('click',closeModal);
@@ -1017,7 +1126,27 @@
     document.getElementById('cartOrderBtn').addEventListener('click',sendCartToTelegram);
 
     window.updateCartItem=updateCartItem; window.removeCartItem=removeCartItem; window.addToCart=addToCart; window.getProductById=getProductById;
+    
+    // Инициализация
     updateUIForLanguage();
+    
+    // robots.txt и sitemap.xml генерируются на серверной стороне, но для статического сайта добавим ссылки в head
+    // Добавляем мета-теги для Schema.org прямо в HTML через JavaScript (можно добавить статически, но для чистоты добавим)
+    const schemaScript = document.createElement('script');
+    schemaScript.type = 'application/ld+json';
+    schemaScript.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "KurbaShop",
+        "url": "https://kurbashop.onrender.com",
+        "description": "Tactical gear, firearms, air guns, hunting equipment, body armor, ammunition catalog. 20% off first order.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://kurbashop.onrender.com/?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    });
+    document.head.appendChild(schemaScript);
 </script>
 </body>
 </html>
