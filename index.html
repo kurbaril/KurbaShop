@@ -491,7 +491,6 @@
         .modal-order-btn { background: #d4af37; color: #0a0c12; }
         .modal-back-btn { background: #2c3e2b; color: #cddbc0; }
         
-        /* Счётчик количества для модального окна */
         .quantity-selector {
             display: flex;
             align-items: center;
@@ -645,9 +644,11 @@
     const CURRENCY = "$";
     function formatPrice(p) { return p.toLocaleString('ru-RU') + " " + CURRENCY; }
 
-    // ======================== ALL 35 PRODUCTS WITH FULL TRANSLATIONS ========================
+    // ======================== ALL 35 PRODUCTS WITH YOUR IMAGES ========================
     const products = [
-        { id:1, category:"Firearms", subcategory:"Pistols", marketPrice:850, images:["https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Glock_17_Gen_4_Pistol_%28no_background%29.png/800px-Glock_17_Gen_4_Pistol_%28no_background%29.png"],
+        // 1. Glock 17 Gen5
+        { id:1, category:"Firearms", subcategory:"Pistols", marketPrice:850, 
+          images:["https://i.pinimg.com/originals/a1/f8/e5/a1f8e52b3f84f2d83355021716727d8c.jpg", "https://essai-armes.fr/wp-content/uploads/2024/08/pistolet_semi_automatique_moderne_8968.jpg", "https://calibersusa.wordpress.com/wp-content/uploads/2017/09/glock_17_gen5_2.jpg"],
           nameEn:"Glock 17 Gen5", nameRu:"Glock 17 Gen5", nameEs:"Glock 17 Gen5", nameDe:"Glock 17 Gen5", nameFr:"Glock 17 Gen5",
           shortEn:"9mm Austrian pistol, reliability standard", shortRu:"9-мм австрийский пистолет, эталон надёжности", shortEs:"Pistola austriaca 9mm, estándar de fiabilidad", shortDe:"9mm österreichische Pistole, Zuverlässigkeitsstandard", shortFr:"Pistolet autrichien 9mm, standard de fiabilité",
           fullEn:"The Glock 17 Gen5 is the fifth generation of the legendary Austrian service pistol. Features: 9x19 mm caliber, 17-round magazine capacity, polymer frame with improved ergonomics, interchangeable backstraps, Glock Marksman Barrel for enhanced accuracy. Perfect for sport shooting, self-defense, and service use. Includes: holster, two magazines, safety lock, cleaning kit.",
@@ -655,7 +656,10 @@
           fullEs:"El Glock 17 Gen5 es la quinta generación del legendario pistola de servicio austriaco. Características: calibre 9x19 mm, capacidad de 17 rondas, marco de polímero con ergonomía mejorada, empuñaduras intercambiables, cañón Glock Marksman para mayor precisión. Perfecto para tiro deportivo, defensa personal y uso de servicio. Incluye: funda, dos cargadores, seguro de seguridad, kit de limpieza.",
           fullDe:"Die Glock 17 Gen5 ist die fünfte Generation der legendären österreichischen Dienstpistole. Merkmale: Kaliber 9x19 mm, 17-Schuss-Magazinkapazität, Polymerrahmen mit verbesserter Ergonomie, austauschbare Griffrücken, Glock Marksman Barrel für verbesserte Genauigkeit. Ideal für Sportschießen, Selbstverteidigung und Dienstgebrauch. Im Lieferumfang: Holster, zwei Magazine, Sicherheitsschloss, Reinigungsset.",
           fullFr:"Le Glock 17 Gen5 est la cinquième génération du légendaire pistolet de service autrichien. Caractéristiques: calibre 9x19 mm, capacité de 17 coups, cadre en polymère avec ergonomie améliorée, dosserets interchangeables, canon Glock Marksman pour une précision accrue. Parfait pour le tir sportif, la légitime défense et l'utilisation professionnelle. Comprend: étui, deux chargeurs, verrou de sécurité, kit de nettoyage." },
-        { id:2, category:"Firearms", subcategory:"Pistols", marketPrice:790, images:["https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Beretta_92FS_pistol_%28no_background%29.png/800px-Beretta_92FS_pistol_%28no_background%29.png"],
+        
+        // 2. Beretta 92FS
+        { id:2, category:"Firearms", subcategory:"Pistols", marketPrice:790,
+          images:["https://lastday.club/wp-content/uploads/2022/10/2-Beretta-92FS-Legendarnye-pistolety-populyarnost-kotoryh-i-ne-snilas-novym-modelyam-Last-Day-Club-696x475.jpg", "https://guns.club/upload/iblock/eb6/y2r7wu803esf43xl1bymjcx3bfkw47t8/beretta-92.png", "https://www.pyramydair.com/airgun-experience/wp-content/uploads/2016/08/4-Beretta-92-A1-post.jpg"],
           nameEn:"Beretta 92FS", nameRu:"Beretta 92FS", nameEs:"Beretta 92FS", nameDe:"Beretta 92FS", nameFr:"Beretta 92FS",
           shortEn:"Legendary Italian classic", shortRu:"Легендарная итальянская классика", shortEs:"Clásico italiano legendario", shortDe:"Legendärer italienischer Klassiker", shortFr:"Classique italien légendaire",
           fullEn:"The Beretta 92FS is a legendary Italian pistol chambered in 9x19 mm. Features: exposed hammer, high accuracy, open slide design for reliability, 15-round magazine. Used by US Army and special forces worldwide. Smooth trigger pull, exceptional reliability, ergonomic grip. Comes with: hard case, two 15-round magazines, cleaning kit, and holster.",
@@ -663,7 +667,10 @@
           fullEs:"La Beretta 92FS es un legendario pistola italiana calibre 9x19 mm. Características: martillo expuesto, alta precisión, diseño de corredera abierta para fiabilidad, cargador de 15 rondas. Utilizado por el ejército de EE.UU. y fuerzas especiales en todo el mundo. Disparador suave, fiabilidad excepcional, empuñadura ergonómica. Incluye: estuche rígido, dos cargadores de 15 rondas, kit de limpieza, funda.",
           fullDe:"Die Beretta 92FS ist eine legendäre italienische Pistole im Kaliber 9x19 mm. Merkmale: sichtbarer Hahn, hohe Genauigkeit, offenes Schlittendesign für Zuverlässigkeit, 15-Schuss-Magazin. Wird von der US-Armee und Spezialeinheiten weltweit eingesetzt. Sanfter Abzug, außergewöhnliche Zuverlässigkeit, ergonomischer Griff. Im Lieferumfang: Hartschalenkoffer, zwei 15-Schuss-Magazine, Reinigungsset, Holster.",
           fullFr:"Le Beretta 92FS est un légendaire pistolet italien chambré en 9x19 mm. Caractéristiques: chien exposé, haute précision, conception à glissière ouverte pour la fiabilité, chargeur de 15 coups. Utilisé par l'armée américaine et les forces spéciales du monde entier. Détente douce, fiabilité exceptionnelle, poignée ergonomique. Comprend: mallette rigide, deux chargeurs de 15 coups, kit de nettoyage, étui." },
-        { id:3, category:"Firearms", subcategory:"Pistols", marketPrice:680, images:["https://www.sigsauer.com/media/catalog/product/p/3/p320-full_1.png"],
+        
+        // 3. Sig Sauer P320
+        { id:3, category:"Firearms", subcategory:"Pistols", marketPrice:680,
+          images:["https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_68705e0a3b57ac4065a205e8_68705fc16d1a2c6483bcb7f4/scale_1200", "https://upload.wikimedia.org/wikipedia/commons/7/7a/Sig_Sauer_P320_Modular_Handgun_System.jpg", "https://i.ytimg.com/vi/7JhQxYpwQHw/maxresdefault.jpg"],
           nameEn:"Sig Sauer P320", nameRu:"Sig Sauer P320", nameEs:"Sig Sauer P320", nameDe:"Sig Sauer P320", nameFr:"Sig Sauer P320",
           shortEn:"Modular striker-fired pistol", shortRu:"Модульный ударно-спусковой пистолет", shortEs:"Pistola modular de percutor", shortDe:"Modulare Striker-Pistole", shortFr:"Pistolet modulaire à percuteur",
           fullEn:"The Sig Sauer P320 is the US Army's M17/M18 service pistol. Features: 9mm caliber, modular grip system allowing frame size changes, 17-round magazine, striker-fired action, excellent trigger, high accuracy. Includes: two magazines, interchangeable grip modules.",
@@ -671,7 +678,10 @@
           fullEs:"El Sig Sauer P320 es el pistola de servicio M17/M18 del ejército de EE.UU. Características: calibre 9mm, sistema de empuñadura modular que permite cambiar el tamaño del marco, cargador de 17 rondas, acción de percutor, excelente disparador, alta precisión. Incluye: dos cargadores, módulos de empuñadura intercambiables.",
           fullDe:"Die Sig Sauer P320 ist die M17/M18-Dienstpistole der US-Armee. Merkmale: Kaliber 9 mm, modulares Griffsystem ermöglicht Rahmenwechsel, 17-Schuss-Magazin, Striker-Abzug, ausgezeichneter Abzug, hohe Genauigkeit. Im Lieferumfang: zwei Magazine, austauschbare Griffmodule.",
           fullFr:"Le Sig Sauer P320 est le pistolet de service M17/M18 de l'armée américaine. Caractéristiques: calibre 9mm, système de poignée modulaire permettant de changer la taille du cadre, chargeur de 17 coups, action à percuteur, excellente détente, haute précision. Comprend: deux chargeurs, modules de poignée interchangeables." },
-        { id:4, category:"Firearms", subcategory:"Pistols", marketPrice:550, images:["https://www.czub.cz/en/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/1/p10c_1.jpg"],
+        
+        // 4. CZ P-10C
+        { id:4, category:"Firearms", subcategory:"Pistols", marketPrice:550,
+          images:["https://i.ytimg.com/vi/bybVZcR0nYk/maxresdefault.jpg", "https://i.ytimg.com/vi/50lm-E-MZIw/maxresdefault.jpg", "https://avatars.mds.yandex.net/i?id=4ee1d279d7036aff72ce4588f661c66b_l-5263756-images-thumbs&n=13"],
           nameEn:"CZ P-10C", nameRu:"CZ P-10C", nameEs:"CZ P-10C", nameDe:"CZ P-10C", nameFr:"CZ P-10C",
           shortEn:"Czech striker-fired compact", shortRu:"Чешский компактный ударник", shortEs:"Compacto checo de percutor", shortDe:"Tschechischer Striker-Compact", shortFr:"Compact tchèque à percuteur",
           fullEn:"The CZ P-10C is a Czech striker-fired compact pistol. Features: 9x19 mm, 15-round magazine, ergonomic grip with excellent texture, superior trigger with short reset, high reliability. Ideal for concealed carry and duty use. Includes: two magazines, cleaning kit, interchangeable backstraps.",
@@ -679,7 +689,10 @@
           fullEs:"El CZ P-10C es un pistola compacta checa de percutor. Características: 9x19 mm, cargador de 15 rondas, empuñadura ergonómica con excelente textura, disparador superior con reinicio corto, alta fiabilidad. Ideal para portación oculta y uso de servicio. Incluye: dos cargadores, kit de limpieza, empuñaduras intercambiables.",
           fullDe:"Die CZ P-10C ist eine tschechische Striker-Compact-Pistole. Merkmale: 9x19 mm, 15-Schuss-Magazin, ergonomischer Griff mit ausgezeichneter Textur, überlegener Abzug mit kurzem Reset, hohe Zuverlässigkeit. Ideal für verdecktes Tragen und Dienstgebrauch. Im Lieferumfang: zwei Magazine, Reinigungsset, austauschbare Griffrücken.",
           fullFr:"Le CZ P-10C est un pistolet compact tchèque à percuteur. Caractéristiques: 9x19 mm, chargeur de 15 coups, poignée ergonomique avec excellente texture, détente supérieure à réinitialisation courte, haute fiabilité. Idéal pour le port dissimulé et l'utilisation professionnelle. Comprend: deux chargeurs, kit de nettoyage, dosserets interchangeables." },
-        { id:5, category:"Firearms", subcategory:"Pistols", marketPrice:720, images:["https://www.waltherarms.com/wp-content/uploads/2020/12/PDP_1.png"],
+        
+        // 5. Walther PDP
+        { id:5, category:"Firearms", subcategory:"Pistols", marketPrice:720,
+          images:["https://fieldethos.com/wp-content/uploads/2024/11/IMG_0125-1536x1024.jpg", "https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_6825fe3bc49d2f29a42ad385_6825fed77d21f9196c1ac91c/scale_1200", "https://fieldethos.com/wp-content/uploads/2025/04/Walther-PDP-F-Series-1.jpg"],
           nameEn:"Walther PDP", nameRu:"Walther PDP", nameEs:"Walther PDP", nameDe:"Walther PDP", nameFr:"Walther PDP",
           shortEn:"Performance Duty Pistol", shortRu:"Служебный пистолет Performance", shortEs:"Pistola de servicio Performance", shortDe:"Performance Duty Pistol", shortFr:"Pistolet de service Performance",
           fullEn:"The Walther PDP (Performance Duty Pistol) features: 9mm caliber, 18-round magazine, advanced ergonomics with superior grip texture, Performance Duty Trigger system, optics-ready slide. Includes: two magazines, interchangeable backstraps.",
@@ -687,7 +700,10 @@
           fullEs:"El Walther PDP (Performance Duty Pistol) presenta: calibre 9mm, cargador de 18 rondas, ergonomía avanzada con textura de empuñadura superior, sistema de disparador Performance Duty, corredera preparada para óptica. Incluye: dos cargadores, empuñaduras intercambiables.",
           fullDe:"Die Walther PDP (Performance Duty Pistol) verfügt über: Kaliber 9 mm, 18-Schuss-Magazin, fortschrittliche Ergonomie mit überlegener Grifftextur, Performance Duty Abzugssystem, optikbereiter Schlitten. Im Lieferumfang: zwei Magazine, austauschbare Griffrücken.",
           fullFr:"Le Walther PDP (Performance Duty Pistol) présente: calibre 9mm, chargeur de 18 coups, ergonomie avancée avec texture de poignée supérieure, système de détente Performance Duty, glissière prête pour l'optique. Comprend: deux chargeurs, dosserets interchangeables." },
-        { id:6, category:"Firearms", subcategory:"Rifles", marketPrice:1250, images:["https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/AK-74_%28no_background%29.png/800px-AK-74_%28no_background%29.png"],
+        
+        // 6. AK-74M
+        { id:6, category:"Firearms", subcategory:"Rifles", marketPrice:1250,
+          images:["https://popadiv10.ru/image/catalog/files/signalnoe/izhmash/signalnyjizhmash4.jpg", "https://cdnb.artstation.com/p/marketplace/presentation_assets/002/326/785/large/file.jpg?1673462201", "https://cdnn1.inosmi.ru/img/24590/59/245905942_0:0:0:0_1240x0_80_0_0_743aaacb0a3c89ec1fe79e3f7d933fbc.jpg"],
           nameEn:"AK-74M", nameRu:"АК-74М", nameEs:"AK-74M", nameDe:"AK-74M", nameFr:"AK-74M",
           shortEn:"Kalashnikov, modern modification", shortRu:"Калашников, современная модификация", shortEs:"Kalashnikov, modificación moderna", shortDe:"Kalaschnikow, moderne Modifikation", shortFr:"Kalachnikov, modification moderne",
           fullEn:"The AK-74M is the modernized version of the legendary Kalashnikov rifle. Features: 5.45x39 mm caliber, folding polymer stock, side rail for optics, improved ergonomics. Legendary reliability tested in all conditions. Includes: 30-round magazine, sling, oil can, cleaning rod, and manual.",
@@ -695,7 +711,10 @@
           fullEs:"El AK-74M es la versión modernizada del legendario rifle Kalashnikov. Características: calibre 5.45x39 mm, culata plegable de polímero, riel lateral para óptica, ergonomía mejorada. Fiabilidad legendaria probada en todas las condiciones. Incluye: cargador de 30 rondas, correa, aceitera, varilla de limpieza, manual.",
           fullDe:"Das AK-74M ist die modernisierte Version des legendären Kalaschnikow-Gewehrs. Merkmale: Kaliber 5.45x39 mm, klappbarer Polymerkolben, seitliche Schiene für Optik, verbesserte Ergonomie. Legendäre Zuverlässigkeit, unter allen Bedingungen getestet. Im Lieferumfang: 30-Schuss-Magazin, Trageriemen, Ölkanne, Reinigungsstab, Handbuch.",
           fullFr:"L'AK-74M est la version modernisée du légendaire fusil Kalachnikov. Caractéristiques: calibre 5.45x39 mm, crosse pliante en polymère, rail latéral pour optique, ergonomie améliorée. Fiabilité légendaire testée dans toutes les conditions. Comprend: chargeur de 30 coups, sangle, huilier, tige de nettoyage, manuel." },
-        { id:7, category:"Firearms", subcategory:"Rifles", marketPrice:1450, images:["https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/M4_Carbine_%28no_background%29.png/800px-M4_Carbine_%28no_background%29.png"],
+        
+        // 7. M4 Carbine
+        { id:7, category:"Firearms", subcategory:"Rifles", marketPrice:1450,
+          images:["https://i0.wp.com/uploads.tapatalk-cdn.com/20170423/c70f2f5612e4efeaaca40b7d1788507e.jpg?ssl=1", "https://media.istockphoto.com/id/2150270605/tr/foto%C4%9Fraf/m4-carbine-and-5-56mm-shells-and-magazine-with-bullets.jpg?s=612x612&w=0&k=20&c=ERpzDQ6ksOV-Fas2K1qrK6lBNB95-CZjz9-F0htv-u4=", "https://nationalinterest.org/wp-content/uploads/2018/07/1280px-Marineshooting.jpg"],
           nameEn:"M4 Carbine", nameRu:"M4 Carbine", nameEs:"M4 Carbine", nameDe:"M4 Carbine", nameFr:"M4 Carbine",
           shortEn:"American AR-15 platform rifle", shortRu:"Американская винтовка AR-15", shortEs:"Rifle estadounidense plataforma AR-15", shortDe:"Amerikanisches AR-15 Plattformgewehr", shortFr:"Fusil américain plateforme AR-15",
           fullEn:"The M4 Carbine is the American standard-issue rifle. Features: 5.56x45 mm, telescoping stock, aluminum M-LOK handguard, flat-top upper receiver for optics. Lightweight, accurate, and reliable. Includes: PMAG 30 magazine, carry handle, sling, and cleaning kit.",
@@ -703,7 +722,10 @@
           fullEs:"El M4 Carbine es el rifle estándar estadounidense. Características: 5.56x45 mm, culata telescópica, guardamanos M-LOK de aluminio, receptor superior plano para óptica. Ligero, preciso y fiable. Incluye: cargador PMAG 30, asa de transporte, correa, kit de limpieza.",
           fullDe:"Das M4 Carbine ist das amerikanische Standardgewehr. Merkmale: 5.56x45 mm, Teleskopkolben, M-LOK-Handschutz aus Aluminium, flacher oberer Verschluss für Optik. Leicht, genau und zuverlässig. Im Lieferumfang: PMAG 30-Magazin, Tragegriff, Trageriemen, Reinigungsset.",
           fullFr:"Le M4 Carbine est le fusil standard américain. Caractéristiques: 5.56x45 mm, crosse télescopique, garde-main M-LOK en aluminium, récepteur supérieur plat pour optique. Léger, précis et fiable. Comprend: chargeur PMAG 30, poignée de transport, sangle, kit de nettoyage." },
-        { id:8, category:"Firearms", subcategory:"Rifles", marketPrice:2800, images:["https://www.heckler-koch.com/en/products/military/assault-rifles/hk416/hk416-14-5.png"],
+        
+        // 8. HK416
+        { id:8, category:"Firearms", subcategory:"Rifles", marketPrice:2800,
+          images:["https://i.pinimg.com/originals/bf/4d/9b/bf4d9b0997150233ebacacca5099e7ad.jpg", "https://avatars.mds.yandex.net/i?id=ef638b90ad52ffac194a719528cd3674_l-4338558-images-thumbs&n=13", "https://www.kalashnikov.ru/wp-content/uploads/2022/12/hk-416-frantsiya.jpg"],
           nameEn:"HK416", nameRu:"HK416", nameEs:"HK416", nameDe:"HK416", nameFr:"HK416",
           shortEn:"German premium assault rifle", shortRu:"Немецкая премиальная штурмовая винтовка", shortEs:"Fusil de asalto alemán premium", shortDe:"Deutsches Premium-Sturmgewehr", shortFr:"Fusil d'assaut allemand premium",
           fullEn:"The HK416 is a premium German assault rifle used by special forces worldwide. Features: 5.56x45 mm, gas piston system for superior reliability, cold hammer-forged barrel, free-floating handguard. Exceptional accuracy and durability. Includes: 30-round magazine, sling, and hard case.",
@@ -711,7 +733,10 @@
           fullEs:"El HK416 es un fusil de asalto alemán premium utilizado por fuerzas especiales en todo el mundo. Características: 5.56x45 mm, sistema de pistón de gas para fiabilidad superior, cañón forjado en frío, guardamanos flotante. Precisión y durabilidad excepcionales. Incluye: cargador de 30 rondas, correa, estuche rígido.",
           fullDe:"Das HK416 ist ein deutsches Premium-Sturmgewehr, das weltweit von Spezialeinheiten verwendet wird. Merkmale: 5.56x45 mm, Gasdrucklader für überlegene Zuverlässigkeit, kaltgeschmiedeter Lauf, freischwebender Handschutz. Außergewöhnliche Genauigkeit und Haltbarkeit. Im Lieferumfang: 30-Schuss-Magazin, Trageriemen, Hartschalenkoffer.",
           fullFr:"Le HK416 est un fusil d'assaut allemand premium utilisé par les forces spéciales du monde entier. Caractéristiques: 5.56x45 mm, système à piston à gaz pour une fiabilité supérieure, canon forgé à froid, garde-main flottant. Précision et durabilité exceptionnelles. Comprend: chargeur de 30 coups, sangle, mallette rigide." },
-        { id:9, category:"Firearms", subcategory:"Rifles", marketPrice:3400, images:["https://www.fnamerica.com/media/catalog/product/s/c/scar-17s_1.png"],
+        
+        // 9. FN SCAR-17
+        { id:9, category:"Firearms", subcategory:"Rifles", marketPrice:3400,
+          images:["https://avatars.mds.yandex.net/i?id=9258ccc09529b8e0f2f07fd95829abfd_l-10246546-images-thumbs&n=13", "https://avatars.mds.yandex.net/i?id=439983972cb5963257c4454ce0a3c749_l-5234784-images-thumbs&n=13", "https://i.pinimg.com/736x/4c/f7/4d/4cf74d5c411520e0ff352c4a622a097e.jpg"],
           nameEn:"FN SCAR-17", nameRu:"FN SCAR-17", nameEs:"FN SCAR-17", nameDe:"FN SCAR-17", nameFr:"FN SCAR-17",
           shortEn:"Special Operations Forces rifle", shortRu:"Винтовка сил специальных операций", shortEs:"Rifle de fuerzas de operaciones especiales", shortDe:"Special Operations Forces Gewehr", shortFr:"Fusil des forces d'opérations spéciales",
           fullEn:"The FN SCAR-17 is a battle-proven rifle used by US Special Operations Command. Features: 7.62x51 mm NATO, folding stock, fully ambidextrous controls, cold hammer-forged barrel. Battle-proven reliability and accuracy. Includes: 20-round magazine, sling, cleaning kit, and hard case.",
@@ -719,7 +744,10 @@
           fullEs:"El FN SCAR-17 es un rifle probado en batalla utilizado por el Comando de Operaciones Especiales de EE.UU. Características: 7.62x51 mm OTAN, culata plegable, controles completamente ambidiestros, cañón forjado en frío. Fiabilidad y precisión probadas en combate. Incluye: cargador de 20 rondas, correa, kit de limpieza, estuche rígido.",
           fullDe:"Das FN SCAR-17 ist ein kampferprobtes Gewehr, das vom US Special Operations Command verwendet wird. Merkmale: 7.62x51 mm NATO, klappbarer Kolben, vollständig ambidextrous Bedienelemente, kaltgeschmiedeter Lauf. Kampferprobte Zuverlässigkeit und Genauigkeit. Im Lieferumfang: 20-Schuss-Magazin, Trageriemen, Reinigungsset, Hartschalenkoffer.",
           fullFr:"Le FN SCAR-17 est un fusil éprouvé au combat utilisé par le Commandement des opérations spéciales américain. Caractéristiques: 7.62x51 mm OTAN, crosse pliante, commandes entièrement ambidextres, canon forgé à froid. Fiabilité et précision éprouvées au combat. Comprend: chargeur de 20 coups, sangle, kit de nettoyage, mallette rigide." },
-        { id:10, category:"Firearms", subcategory:"Rifles", marketPrice:1100, images:["https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Remington_700_ADL_%28no_background%29.png/800px-Remington_700_ADL_%28no_background%29.png"],
+        
+        // 10. Remington 700
+        { id:10, category:"Firearms", subcategory:"Rifles", marketPrice:1100,
+          images:["https://sportingshooter.com.au/wp-content/uploads/2024/09/Remington-700-Long-Range-HS-5_1800p.jpg", "https://i.pinimg.com/originals/8a/ba/4f/8aba4feef76973eaf9146a59072d5f69.jpg", "https://avatars.mds.yandex.net/i?id=a5ccfb14b777179b9d9f39845a89f644_sr-4524149-images-thumbs&n=13"],
           nameEn:"Remington 700", nameRu:"Remington 700", nameEs:"Remington 700", nameDe:"Remington 700", nameFr:"Remington 700",
           shortEn:"Precision bolt-action rifle", shortRu:"Точная болтовая винтовка", shortEs:"Rifle de cerrojo de precisión", shortDe:"Präzises Repetiergewehr", shortFr:"Fusil à verrou de précision",
           fullEn:"The Remington 700 is the gold standard for bolt-action rifles. Features: .308 Win caliber, match-grade barrel, adjustable trigger, legendary accuracy. Ideal for hunting and precision shooting. Includes: Weaver optics base, safety lock, and manual.",
@@ -727,7 +755,10 @@
           fullEs:"El Remington 700 es el estándar de oro para rifles de cerrojo. Características: calibre .308 Win, cañón de grado de competición, gatillo ajustable, precisión legendaria. Ideal para caza y tiro de precisión. Incluye: base Weaver para óptica, seguro de seguridad, manual.",
           fullDe:"Das Remington 700 ist der Goldstandard für Repetiergewehre. Merkmale: Kaliber .308 Win, Match-Lauf, einstellbarer Abzug, legendäre Genauigkeit. Ideal für Jagd und Präzisionsschießen. Im Lieferumfang: Weaver-Optikbasis, Sicherheitsschloss, Handbuch.",
           fullFr:"Le Remington 700 est l'étalon-or des fusils à verrou. Caractéristiques: calibre .308 Win, canon de qualité compétition, détente réglable, précision légendaire. Idéal pour la chasse et le tir de précision. Comprend: base Weaver pour optique, verrou de sécurité, manuel." },
-        { id:11, category:"Firearms", subcategory:"Rifles", marketPrice:950, images:["https://www.savagearms.com/sites/default/files/styles/product_detail/public/2020-03/110_1.png"],
+        
+        // 11. Savage 110
+        { id:11, category:"Firearms", subcategory:"Rifles", marketPrice:950,
+          images:["https://gunsmagazine.com/wp-content/uploads/2023/10/savagearms110trailhunter-e1697647536165.jpg", "https://avatars.mds.yandex.net/i?id=d7d46664ec2784f66ac92ee7d533eed2_l-5477018-images-thumbs&n=13", "https://gunsweek.com/sites/default/files/styles/content_sm/public/archive/contents/rifles/news/savage-arms-110-ppr-pro-pursuit-rifle/SavageArms-110PPR-2.jpg?itok=RHuE7otc"],
           nameEn:"Savage 110", nameRu:"Savage 110", nameEs:"Savage 110", nameDe:"Savage 110", nameFr:"Savage 110",
           shortEn:"Accurate bolt-action rifle", shortRu:"Точная болтовая винтовка", shortEs:"Rifle de cerrojo preciso", shortDe:"Präzises Repetiergewehr", shortFr:"Fusil à verrou précis",
           fullEn:"The Savage 110 features the revolutionary AccuTrigger system for a crisp, user-adjustable trigger pull. Features: .308 Win caliber, exceptional out-of-the-box accuracy, user-adjustable trigger, floating bolt head for precision. Includes: scope bases, sling swivels, and manual.",
@@ -735,7 +766,10 @@
           fullEs:"El Savage 110 presenta el revolucionario sistema AccuTrigger para un gatillo nítido y ajustable por el usuario. Características: calibre .308 Win, precisión excepcional de fábrica, gatillo ajustable por el usuario, cabeza de cerrojo flotante para precisión. Incluye: bases para mira, anillas para correa, manual.",
           fullDe:"Das Savage 110 verfügt über das revolutionäre AccuTrigger-System für einen knackigen, benutzereinstellbaren Abzug. Merkmale: Kaliber .308 Win, außergewöhnliche Genauigkeit ab Werk, benutzereinstellbarer Abzug, schwimmender Verschlusskopf für Präzision. Im Lieferumfang: Optikbasen, Trageriemenösen, Handbuch.",
           fullFr:"Le Savage 110 est doté du système AccuTrigger révolutionnaire pour une détente nette et réglable par l'utilisateur. Caractéristiques: calibre .308 Win, précision exceptionnelle dès la sortie de la boîte, détente réglable par l'utilisateur, tête de verrou flottante pour la précision. Comprend: bases pour optique, anneaux de sangle, manuel." },
-        { id:12, category:"Air Guns", subcategory:"Air Pistols", marketPrice:290, images:["https://www.umarex.com/media/catalog/product/2/2/2253015_walther_cp88_competition_black_1.jpg"],
+        
+        // 12. Umarex Walther CP88
+        { id:12, category:"Air Guns", subcategory:"Air Pistols", marketPrice:290,
+          images:["https://i3.guns.ru/forums/icons/forum_pictures/027391/27391822_28142.jpg", "https://i3.guns.ru/forums/icons/forum_pictures/007774/7774831.jpg", "https://avatars.mds.yandex.net/i?id=2dcd77103d5a6b9a9bcdd5c1c36681ff-5235960-images-thumbs&n=13"],
           nameEn:"Umarex Walther CP88", nameRu:"Umarex Walther CP88", nameEs:"Umarex Walther CP88", nameDe:"Umarex Walther CP88", nameFr:"Umarex Walther CP88",
           shortEn:"CO2 air pistol", shortRu:"Пневматический пистолет CO2", shortEs:"Pistola de aire CO2", shortDe:"CO2-Luftpistole", shortFr:"Pistolet à air CO2",
           fullEn:"The Umarex Walther CP88 is an exact replica of the legendary Walther CP88. Features: 4.5 mm caliber, CO2-powered, 8-round rotary magazine, realistic weight and feel. Perfect for training and recreational shooting. Includes: 4 CO2 cartridges, 100 pellets, and manual.",
@@ -743,7 +777,10 @@
           fullEs:"El Umarex Walther CP88 es una réplica exacta del legendario Walther CP88. Características: calibre 4.5 mm, CO2, cargador rotativo de 8 rondas, peso y sensación realistas. Perfecto para entrenamiento y tiro recreativo. Incluye: 4 cartuchos CO2, 100 balines, manual.",
           fullDe:"Die Umarex Walther CP88 ist eine exakte Nachbildung des legendären Walther CP88. Merkmale: Kaliber 4.5 mm, CO2-betrieben, 8-Schuss-Drehmagazin, realistisches Gewicht und Gefühl. Perfekt für Training und Freizeitschießen. Im Lieferumfang: 4 CO2-Kartuschen, 100 Diabolo, Handbuch.",
           fullFr:"L'Umarex Walther CP88 est une réplique exacte du légendaire Walther CP88. Caractéristiques: calibre 4.5 mm, CO2, chargeur rotatif de 8 coups, poids et sensations réalistes. Parfait pour l'entraînement et le tir récréatif. Comprend: 4 cartouches CO2, 100 plombs, manuel." },
-        { id:13, category:"Air Guns", subcategory:"Air Pistols", marketPrice:210, images:["https://www.sigsauer.com/media/catalog/product/p/2/p226-air_1.png"],
+        
+        // 13. Sig Sauer P226 Air
+        { id:13, category:"Air Guns", subcategory:"Air Pistols", marketPrice:210,
+          images:["https://avatars.mds.yandex.net/i?id=4cab61f7755da8dedefb1dafdba42b3b_l-4011872-images-thumbs&n=13", "https://www.kalashnikov.ru/wp-content/uploads/2024/09/1343-6.jpg", "https://athlonoutdoors.com/wp-content/uploads/2023/09/sig-sauer-p226-zev-01.jpg"],
           nameEn:"Sig Sauer P226 Air", nameRu:"Sig Sauer P226 Air", nameEs:"Sig Sauer P226 Air", nameDe:"Sig Sauer P226 Air", nameFr:"Sig Sauer P226 Air",
           shortEn:"CO2 air pistol replica", shortRu:"Пневматическая копия пистолета", shortEs:"Réplica de pistola de aire CO2", shortDe:"CO2-Luftpistolen-Replik", shortFr:"Réplique de pistolet à air CO2",
           fullEn:"The Sig Sauer P226 Air is a CO2-powered replica of the iconic P226 pistol. Features: 4.5 mm caliber, blowback action for realistic recoil, 18-round magazine, realistic weight and feel. Ideal for training and plinking. Includes: CO2 cartridges, pellets, and manual.",
@@ -751,7 +788,10 @@
           fullEs:"El Sig Sauer P226 Air es una réplica CO2 del icónico pistola P226. Características: calibre 4.5 mm, acción de retroceso para retroceso realista, cargador de 18 rondas, peso y sensación realistas. Ideal para entrenamiento y tiro recreativo. Incluye: cartuchos CO2, balines, manual.",
           fullDe:"Die Sig Sauer P226 Air ist eine CO2-betriebene Replik der ikonischen P226-Pistole. Merkmale: Kaliber 4.5 mm, Blowback-Aktion für realistischen Rückstoß, 18-Schuss-Magazin, realistisches Gewicht und Gefühl. Ideal für Training und Plinking. Im Lieferumfang: CO2-Kartuschen, Diabolo, Handbuch.",
           fullFr:"Le Sig Sauer P226 Air est une réplique CO2 de l'emblématique pistolet P226. Caractéristiques: calibre 4.5 mm, action blowback pour un recul réaliste, chargeur de 18 coups, poids et sensations réalistes. Idéal pour l'entraînement et le plinking. Comprend: cartouches CO2, plombs, manuel." },
-        { id:14, category:"Air Guns", subcategory:"Air Rifles", marketPrice:380, images:["https://www.hatsan.com.tr/uploads/products/hatsan-125-sniper-vortex.jpg"],
+        
+        // 14. Hatsan 125
+        { id:14, category:"Air Guns", subcategory:"Air Rifles", marketPrice:380,
+          images:["https://avatars.mds.yandex.net/i?id=0c69175cac4b7104fa2393e261d1cb66_sr-16491951-images-thumbs&n=13", "https://avatars.mds.yandex.net/i?id=dfe745507f0998b1bb481554ebe4433c_l-5587986-images-thumbs&n=13"],
           nameEn:"Hatsan 125", nameRu:"Hatsan 125", nameEs:"Hatsan 125", nameDe:"Hatsan 125", nameFr:"Hatsan 125",
           shortEn:"Powerful spring-piston air rifle", shortRu:"Мощная пружинно-поршневая винтовка", shortEs:"Rifle de aire de pistón-resorte potente", shortDe:"Leistungsstarkes Federkolben-Luftgewehr", shortFr:"Carabine à air à piston à ressort puissante",
           fullEn:"The Hatsan 125 is a powerful spring-piston air rifle. Features: 4.5 or 5.5 mm caliber, muzzle energy up to 30 J, precision rifled barrel, Quattro trigger system. Suitable for small game hunting and sport shooting. Includes: 4x32 scope, bipod, and manual.",
@@ -759,7 +799,10 @@
           fullEs:"La Hatsan 125 es un rifle de aire de pistón-resorte potente. Características: calibre 4.5 o 5.5 mm, energía de boca hasta 30 J, cañón estriado de precisión, sistema de gatillo Quattro. Adecuado para caza menor y tiro deportivo. Incluye: mira 4x32, bípode, manual.",
           fullDe:"Das Hatsan 125 ist ein leistungsstarkes Federkolben-Luftgewehr. Merkmale: Kaliber 4.5 oder 5.5 mm, Mündungsenergie bis 30 J, präzisionsgezogener Lauf, Quattro-Abzugsystem. Geeignet für die Jagd auf Kleinwild und Sportschießen. Im Lieferumfang: 4x32-Zielfernrohr, Zweibein, Handbuch.",
           fullFr:"La Hatsan 125 est une carabine à air à piston à ressort puissante. Caractéristiques: calibre 4.5 ou 5.5 mm, énergie initiale jusqu'à 30 J, canon rayé de précision, système de détente Quattro. Adapté à la chasse au petit gibier et au tir sportif. Comprend: lunette 4x32, bipied, manuel." },
-        { id:15, category:"Air Guns", subcategory:"Air Rifles", marketPrice:420, images:["https://www.gamo.com/media/catalog/product/s/w/swarm-magnum-10x-gen2_1.jpg"],
+        
+        // 15. Gamo Swarm Magnum
+        { id:15, category:"Air Guns", subcategory:"Air Rifles", marketPrice:420,
+          images:["https://i0.wp.com/mountainsportairguns.com/wp-content/uploads/2021/11/Snapshot_36-1.png?w=600&ssl=1", "https://cdn.airgundepot.com/customer_imgs/large-5272_19d6b76b_a40a_40e0_b212_07f88bfb6a90.jpg", "https://gamousa.com/wp-content/uploads/2020/04/Capture.jpg"],
           nameEn:"Gamo Swarm Magnum", nameRu:"Gamo Swarm Magnum", nameEs:"Gamo Swarm Magnum", nameDe:"Gamo Swarm Magnum", nameFr:"Gamo Swarm Magnum",
           shortEn:"10-shot multi-shot air rifle", shortRu:"10-зарядная многозарядная пневматическая винтовка", shortEs:"Rifle de aire multidisparo de 10 tiros", shortDe:"10-Schuss-Mehrmunitions-Luftgewehr", shortFr:"Carabine à air multi-coups 10 coups",
           fullEn:"The Gamo Swarm Magnum features the innovative 10-shot magazine system. Features: .22 caliber, IGT gas piston technology, 10-shot multi-shot system, Whisper Fusion sound suppression. High power and accuracy. Includes: 3-9x40 scope, 10-shot magazine, and manual.",
@@ -767,7 +810,10 @@
           fullEs:"El Gamo Swarm Magnum cuenta con el innovador sistema de cargador de 10 tiros. Características: calibre .22, pistón de gas IGT, sistema de 10 tiros, supresión de sonido Whisper Fusion. Alta potencia y precisión. Incluye: mira 3-9x40, cargador de 10 tiros, manual.",
           fullDe:"Das Gamo Swarm Magnum verfügt über das innovative 10-Schuss-Magazinsystem. Merkmale: .22 Kaliber, IGT-Gaskolben-Technologie, 10-Schuss-Mehrmunitionssystem, Whisper Fusion-Geräuschunterdrückung. Hohe Leistung und Genauigkeit. Im Lieferumfang: 3-9x40-Zielfernrohr, 10-Schuss-Magazin, Handbuch.",
           fullFr:"Le Gamo Swarm Magnum est doté du système de chargeur innovant à 10 coups. Caractéristiques: calibre .22, technologie à piston à gaz IGT, système multi-coups 10 coups, suppression sonore Whisper Fusion. Haute puissance et précision. Comprend: lunette 3-9x40, chargeur de 10 coups, manuel." },
-        { id:16, category:"Less-Lethal", subcategory:"Less-Lethal Pistols", marketPrice:320, images:["https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/MP-79-9TM.jpg/800px-MP-79-9TM.jpg"],
+        
+        // 16. MP-79-9TM
+        { id:16, category:"Less-Lethal", subcategory:"Less-Lethal Pistols", marketPrice:320,
+          images:["https://i3.guns.ru/forums/icons/forum_pictures/001681/1681829.jpg", "https://i3.guns.ru/forums/icons/forum_pictures/011856/11856866.jpg"],
           nameEn:"MP-79-9TM", nameRu:"МР-79-9ТМ", nameEs:"MP-79-9TM", nameDe:"MP-79-9TM", nameFr:"MP-79-9TM",
           shortEn:"Less-lethal Makarov pistol", shortRu:"Травматический пистолет Макарова", shortEs:"Pistola menos letal Makarov", shortDe:"Weniger tödliche Makarov-Pistole", shortFr:"Pistolet moins létal Makarov",
           fullEn:"The MP-79-9TM is a less-lethal pistol based on the Makarov design. Features: 9 mm R.A. caliber, 10-round magazine, rubber bullet ammunition, designed for self-defense. Includes: holster, two magazines, safety lock, and manual.",
@@ -775,7 +821,10 @@
           fullEs:"El MP-79-9TM es un pistola menos letal basada en el diseño Makarov. Características: calibre 9 mm R.A., cargador de 10 rondas, bala de goma, diseñado para defensa personal. Incluye: funda, dos cargadores, seguro de seguridad, manual.",
           fullDe:"Die MP-79-9TM ist eine weniger tödliche Pistole nach dem Makarov-Design. Merkmale: Kaliber 9 mm R.A., 10-Schuss-Magazin, Gummigeschoss, für Selbstverteidigung ausgelegt. Im Lieferumfang: Holster, zwei Magazine, Sicherheitsschloss, Handbuch.",
           fullFr:"Le MP-79-9TM est un pistolet moins létal basé sur le design Makarov. Caractéristiques: calibre 9 mm R.A., chargeur de 10 coups, balle en caoutchouc, conçu pour la légitime défense. Comprend: étui, deux chargeurs, verrou de sécurité, manuel." },
-        { id:17, category:"Less-Lethal", subcategory:"Less-Lethal Pistols", marketPrice:380, images:["https://byrna.com/cdn/shop/products/Byrna_HD_Black_01_1024x.png"],
+        
+        // 17. Byrna HD
+        { id:17, category:"Less-Lethal", subcategory:"Less-Lethal Pistols", marketPrice:380,
+          images:["https://avatars.mds.yandex.net/i?id=00923260208e54e159500b0abc7a69e5_l-5291569-images-thumbs&n=13", "https://i3.guns.ru/forums/icons/forum_pictures/026463/26463301_14701.jpg", "https://static.wixstatic.com/media/d25c36_342587181baa4b99bb9df6c457a34b92~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg"],
           nameEn:"Byrna HD", nameRu:"Byrna HD", nameEs:"Byrna HD", nameDe:"Byrna HD", nameFr:"Byrna HD",
           shortEn:"Kinetic self-defense launcher", shortRu:"Кинетический самооборонный метатель", shortEs:"Lanzador cinético de autodefensa", shortDe:"Kinetic-Selbstverteidigungswerfer", shortFr:"Lanceur cinétique de légitime défense",
           fullEn:"The Byrna HD is a CO2-powered kinetic self-defense launcher. Features: .68 caliber, fires kinetic and chemical projectiles, effective range up to 60 feet, lightweight polymer construction. Includes: CO2 cartridges, holster, and manual.",
@@ -783,7 +832,10 @@
           fullEs:"El Byrna HD es un lanzador cinético de autodefensa CO2. Características: calibre .68, dispara proyectiles cinéticos y químicos, alcance efectivo hasta 60 pies, construcción de polímero ligero. Incluye: cartuchos CO2, funda, manual.",
           fullDe:"Der Byrna HD ist ein CO2-betriebener Kinetic-Selbstverteidigungswerfer. Merkmale: .68 Kaliber, verschießt kinetische und chemische Projektile, effektive Reichweite bis 18 m, leichte Polymerkonstruktion. Im Lieferumfang: CO2-Kartuschen, Holster, Handbuch.",
           fullFr:"Le Byrna HD est un lanceur cinétique de légitime défense au CO2. Caractéristiques: calibre .68, tire des projectiles cinétiques et chimiques, portée effective jusqu'à 18 m, construction en polymère léger. Comprend: cartouches CO2, étui, manuel." },
-        { id:18, category:"Hunting", subcategory:"Shotguns", marketPrice:890, images:["https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Saiga_12K_%28no_background%29.png/800px-Saiga_12K_%28no_background%29.png"],
+        
+        // 18. Saiga-MK
+        { id:18, category:"Hunting", subcategory:"Shotguns", marketPrice:890,
+          images:["https://avatars.mds.yandex.net/i?id=2f4f859e55577bbf76a6487cfe9550e8_l-5209934-images-thumbs&n=13", "https://avatars.mds.yandex.net/i?id=7477307aeb46010687972964cbb1aa0f_l-4464285-images-thumbs&n=13", "https://cdn.kalashnikovgroup.ru/static/images/c/4/d/c4da08c851c421ef7f2d484650119b27-18462-720.jpg"],
           nameEn:"Saiga-MK", nameRu:"Сайга-МК", nameEs:"Saiga-MK", nameDe:"Saiga-MK", nameFr:"Saiga-MK",
           shortEn:"Semi-auto shotgun based on AK", shortRu:"Самозарядный карабин на базе АК", shortEs:"Escopeta semiautomática basada en AK", shortDe:"Halbautomatische Flinte basierend auf AK", shortFr:"Fusil semi-automatique basé sur AK",
           fullEn:"The Saiga-MK is a semi-automatic shotgun based on the AK platform. Features: 12/76 caliber, 8-round magazine, semi-automatic action, reliable AK-based mechanism. Excellent for hunting and outdoor activities. Includes: sling, case, interchangeable chokes, and manual.",
@@ -791,7 +843,10 @@
           fullEs:"La Saiga-MK es una escopeta semiautomática basada en la plataforma AK. Características: calibre 12/76, cargador de 8 rondas, acción semiautomática, mecanismo fiable basado en AK. Excelente para caza y actividades al aire libre. Incluye: correa, funda, estranguladores intercambiables, manual.",
           fullDe:"Die Saiga-MK ist eine halbautomatische Flinte basierend auf der AK-Plattform. Merkmale: Kaliber 12/76, 8-Schuss-Magazin, halbautomatische Aktion, zuverlässiger AK-basierter Mechanismus. Ausgezeichnet für Jagd und Outdoor-Aktivitäten. Im Lieferumfang: Trageriemen, Tasche, austauschbare Chokes, Handbuch.",
           fullFr:"La Saiga-MK est un fusil semi-automatique basé sur la plateforme AK. Caractéristiques: calibre 12/76, chargeur de 8 coups, action semi-automatique, mécanisme fiable basé sur AK. Excellent pour la chasse et les activités de plein air. Comprend: sangle, étui, chokes interchangeables, manuel." },
-        { id:19, category:"Hunting", subcategory:"Shotguns", marketPrice:480, images:["https://www.mossberg.com/media/catalog/product/5/0/500_1.png"],
+        
+        // 19. Mossberg 500
+        { id:19, category:"Hunting", subcategory:"Shotguns", marketPrice:480,
+          images:["https://avatars.mds.yandex.net/i?id=77e728b459f3889077bb8c58cafc6ab1_l-4988204-images-thumbs&n=13", "https://s.gunsbroker.ru/adv/pompovoe-ruje-mossberg-500-a-kalibr-1276-pompa-drobovik-obrez_1740668598.jpg", "https://blog.gritrsports.com/wp-content/uploads/2024/05/tactical-shotgun.webp"],
           nameEn:"Mossberg 500", nameRu:"Mossberg 500", nameEs:"Mossberg 500", nameDe:"Mossberg 500", nameFr:"Mossberg 500",
           shortEn:"Pump-action shotgun", shortRu:"Помповое ружьё", shortEs:"Escopeta de bombeo", shortDe:"Pump-Action-Flinte", shortFr:"Fusil à pompe",
           fullEn:"The Mossberg 500 is the most reliable pump-action shotgun. Features: 12 gauge, 5+1 capacity, dual extractors, positive steel-to-steel lockup, ambidextrous safety. Includes: sling, choke tubes, cable lock, and manual.",
@@ -799,7 +854,10 @@
           fullEs:"La Mossberg 500 es la escopeta de bombeo más fiable. Características: calibre 12, capacidad 5+1, extractores duales, bloqueo positivo acero-contra-acero, seguro ambidiestro. Incluye: correa, estranguladores, cable de seguridad, manual.",
           fullDe:"Die Mossberg 500 ist die zuverlässigste Pump-Action-Flinte. Merkmale: Kaliber 12, 5+1 Kapazität, duale Auszieher, positives Stahl-auf-Stahl-Verriegelung, ambidextrous Sicherung. Im Lieferumfang: Trageriemen, Chokes, Kabelschloss, Handbuch.",
           fullFr:"Le Mossberg 500 est le fusil à pompe le plus fiable. Caractéristiques: calibre 12, capacité 5+1, extracteurs doubles, verrouillage positif acier-sur-acier, sécurité ambidextre. Comprend: sangle, chokes, câble de sécurité, manuel." },
-        { id:20, category:"Hunting", subcategory:"Shotguns", marketPrice:1850, images:["https://www.benelliusa.com/media/catalog/product/m/4/m4_1.png"],
+        
+        // 20. Benelli M4
+        { id:20, category:"Hunting", subcategory:"Shotguns", marketPrice:1850,
+          images:["https://avatars.mds.yandex.net/i?id=c5016a40df3937b252d3e5cd077404e7_l-12932351-images-thumbs&n=13", "https://tuningstylespb.ru/wp-content/uploads/7/1/9/7199625a508ae023d6ce9d99535be428.jpeg", "https://avatars.mds.yandex.net/i?id=74741ddc83252354874f121722d05134_l-5233298-images-thumbs&n=13"],
           nameEn:"Benelli M4", nameRu:"Benelli M4", nameEs:"Benelli M4", nameDe:"Benelli M4", nameFr:"Benelli M4",
           shortEn:"Semi-auto tactical shotgun", shortRu:"Самозарядное тактическое ружьё", shortEs:"Escopeta táctica semiautomática", shortDe:"Halbautomatische taktische Flinte", shortFr:"Fusil tactique semi-automatique",
           fullEn:"The Benelli M4 is the ultimate semi-automatic tactical shotgun. Features: 12 gauge, 5+1 capacity, ARGO gas system for unparalleled reliability, used by US Marine Corps. Includes: sling, choke kit, and hard case.",
@@ -807,7 +865,10 @@
           fullEs:"La Benelli M4 es la mejor escopeta táctica semiautomática. Características: calibre 12, capacidad 5+1, sistema de gas ARGO para fiabilidad inigualable, utilizado por el Cuerpo de Marines de EE.UU. Incluye: correa, kit de estranguladores, estuche rígido.",
           fullDe:"Die Benelli M4 ist die ultimative halbautomatische taktische Flinte. Merkmale: Kaliber 12, 5+1 Kapazität, ARGO-Gassystem für beispiellose Zuverlässigkeit, wird vom US Marine Corps verwendet. Im Lieferumfang: Trageriemen, Choke-Kit, Hartschalenkoffer.",
           fullFr:"Le Benelli M4 est le fusil tactique semi-automatique ultime. Caractéristiques: calibre 12, capacité 5+1, système à gaz ARGO pour une fiabilité inégalée, utilisé par le Corps des Marines américain. Comprend: sangle, kit de chokes, mallette rigide." },
-        { id:21, category:"Accessories", subcategory:"Ammunition", marketPrice:45, images:["https://www.sgammo.com/sites/default/files/styles/product_image/public/9mm-ammo-box.jpg"],
+        
+        // 21. 9x19 FMJ Ammo
+        { id:21, category:"Accessories", subcategory:"Ammunition", marketPrice:45,
+          images:["https://оружие59.рф/upload/iblock/789/dd12ybrqrhewueh2ht3dzc9ikhqltcw2/patron_okhotnichiy_k_9kh19_luger_bpz_fmj_7_46_g.png"],
           nameEn:"9x19 FMJ Ammo", nameRu:"Патроны 9x19 FMJ", nameEs:"Munición 9x19 FMJ", nameDe:"9x19 FMJ Munition", nameFr:"Munition 9x19 FMJ",
           shortEn:"50 rounds, for Glock/Beretta", shortRu:"50 шт, для Glock/Beretta", shortEs:"50 rondas, para Glock/Beretta", shortDe:"50 Schuss, für Glock/Beretta", shortFr:"50 coups, pour Glock/Beretta",
           fullEn:"Quality 9 mm Luger FMJ ammunition. 115 grain full metal jacket bullet, reliable feeding, consistent velocity. 50-round box. Suitable for Glock, Beretta, CZ, and other 9x19 pistols. Ideal for training and competition.",
@@ -815,7 +876,10 @@
           fullEs:"Munición FMJ 9 mm Luger de calidad. Bala FMJ de 115 granos, alimentación fiable, velocidad consistente. Caja de 50 rondas. Adecuado para Glock, Beretta, CZ y otros pistolas 9x19. Ideal para entrenamiento y competición.",
           fullDe:"Qualitätsmunition 9 mm Luger FMJ. Vollmantelgeschoss 115 Grain, zuverlässige Zuführung, konstante Geschwindigkeit. 50-Schuss-Box. Geeignet für Glock, Beretta, CZ und andere 9x19-Pistolen. Ideal für Training und Wettkampf.",
           fullFr:"Munition FMJ 9 mm Luger de qualité. Balle FMJ 115 grains, alimentation fiable, vitesse constante. Boîte de 50 coups. Convient aux Glock, Beretta, CZ et autres pistolets 9x19. Idéal pour l'entraînement et la compétition." },
-        { id:22, category:"Accessories", subcategory:"Ammunition", marketPrice:89, images:["https://www.sgammo.com/sites/default/files/styles/product_image/public/545x39-ammo.jpg"],
+        
+        // 22. 5.45x39 FMJ Ammo
+        { id:22, category:"Accessories", subcategory:"Ammunition", marketPrice:89,
+          images:["https://avatars.mds.yandex.net/i?id=4e057ce8771a11e964f7b561f79606a1_sr-4461910-images-thumbs&n=13"],
           nameEn:"5.45x39 FMJ Ammo", nameRu:"Патроны 5.45x39 FMJ", nameEs:"Munición 5.45x39 FMJ", nameDe:"5.45x39 FMJ Munition", nameFr:"Munition 5.45x39 FMJ",
           shortEn:"120 rounds, for AK-74", shortRu:"120 шт, для АК-74", shortEs:"120 rondas, para AK-74", shortDe:"120 Schuss, für AK-74", shortFr:"120 coups, pour AK-74",
           fullEn:"Standard 5.45x39 mm FMJ ammunition for AK-74 rifles. 60 grain full metal jacket bullet, steel case, reliable performance. 120-round box. Suitable for sport shooting and training.",
@@ -823,7 +887,10 @@
           fullEs:"Munición estándar 5.45x39 mm FMJ para rifles AK-74. Bala FMJ de 60 granos, caja de acero, rendimiento fiable. Caja de 120 rondas. Adecuado para tiro deportivo y entrenamiento.",
           fullDe:"Standardmunition 5.45x39 mm FMJ für AK-74-Gewehre. Vollmantelgeschoss 60 Grain, Stahlhülse, zuverlässige Leistung. 120-Schuss-Box. Geeignet für Sportschießen und Training.",
           fullFr:"Munition standard 5.45x39 mm FMJ pour fusils AK-74. Balle FMJ 60 grains, étui en acier, performance fiable. Boîte de 120 coups. Convient au tir sportif et à l'entraînement." },
-        { id:23, category:"Accessories", subcategory:"Ammunition", marketPrice:110, images:["https://www.sgammo.com/sites/default/files/styles/product_image/public/556x45-ammo-box.jpg"],
+        
+        // 23. 5.56x45 NATO Ammo
+        { id:23, category:"Accessories", subcategory:"Ammunition", marketPrice:110,
+          images:["https://cdn11.bigcommerce.com/s-a58gw09197/images/stencil/1280x1280/products/3972/529/GGG556CASE-20543457725.1541607496.jpg?c=2"],
           nameEn:"5.56x45 NATO Ammo", nameRu:"Патроны 5.56x45 NATO", nameEs:"Munición 5.56x45 OTAN", nameDe:"5.56x45 NATO Munition", nameFr:"Munition 5.56x45 OTAN",
           shortEn:"100 rounds, for M4/AR-15", shortRu:"100 шт, для M4/AR-15", shortEs:"100 rondas, para M4/AR-15", shortDe:"100 Schuss, für M4/AR-15", shortFr:"100 coups, pour M4/AR-15",
           fullEn:"Premium 5.56x45 mm NATO ammunition. 55 grain full metal jacket bullet, consistent velocity, reliable performance. 100-round box. Perfect for M4, AR-15, and other NATO platform rifles.",
@@ -831,7 +898,10 @@
           fullEs:"Munición OTAN 5.56x45 mm premium. Bala FMJ de 55 granos, velocidad consistente, rendimiento fiable. Caja de 100 rondas. Perfecto para M4, AR-15 y otros rifles de plataforma OTAN.",
           fullDe:"Premium-Munition 5.56x45 mm NATO. Vollmantelgeschoss 55 Grain, konstante Geschwindigkeit, zuverlässige Leistung. 100-Schuss-Box. Perfekt für M4, AR-15 und andere NATO-Plattformgewehre.",
           fullFr:"Munition OTAN 5.56x45 mm premium. Balle FMJ 55 grains, vitesse constante, performance fiable. Boîte de 100 coups. Parfait pour M4, AR-15 et autres fusils plateforme OTAN." },
-        { id:24, category:"Accessories", subcategory:"Ammunition", marketPrice:95, images:["https://www.sgammo.com/sites/default/files/styles/product_image/public/308-win-ammo.jpg"],
+        
+        // 24. .308 Win Ammo
+        { id:24, category:"Accessories", subcategory:"Ammunition", marketPrice:95,
+          images:["https://cdn.optipic.io/site-106498/upload/iblock/032/83opls64h5kn35l7nx3wxhpgukogg9kd/9,7%20%D0%B3%D1%80.),%20%D0%B0%D1%80%D1%82.20176220%20%D0%BF.=50%D1%88%D1%82.%20z%20%D0%9F%D0%B0%D1%82%D1%80%D0%BE%D0%BD%D1%8B%20%D0%BD%D0%B0%D1%80%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5.jpg"],
           nameEn:".308 Win Ammo", nameRu:"Патроны .308 Win", nameEs:"Munición .308 Win", nameDe:".308 Win Munition", nameFr:"Munition .308 Win",
           shortEn:"50 rounds, for Remington 700", shortRu:"50 шт, для Remington 700", shortEs:"50 rondas, para Remington 700", shortDe:"50 Schuss, für Remington 700", shortFr:"50 coups, pour Remington 700",
           fullEn:"Match-grade .308 Winchester ammunition. 168 grain full metal jacket bullet, high accuracy, consistent performance. 50-round box. Ideal for Remington 700 and other bolt-action rifles.",
@@ -839,7 +909,10 @@
           fullEs:"Munición .308 Winchester de grado de competición. Bala FMJ de 168 granos, alta precisión, rendimiento consistente. Caja de 50 rondas. Ideal para Remington 700 y otros rifles de cerrojo.",
           fullDe:"Match-Munition .308 Winchester. Vollmantelgeschoss 168 Grain, hohe Genauigkeit, konstante Leistung. 50-Schuss-Box. Ideal für Remington 700 und andere Repetiergewehre.",
           fullFr:"Munition .308 Winchester de qualité compétition. Balle FMJ 168 grains, haute précision, performance constante. Boîte de 50 coups. Idéal pour Remington 700 et autres fusils à verrou." },
-        { id:25, category:"Accessories", subcategory:"Magazines", marketPrice:42, images:["https://us.glock.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/f/mf23001_1.jpg"],
+        
+        // 25. Glock 17 Magazine
+        { id:25, category:"Accessories", subcategory:"Magazines", marketPrice:42,
+          images:["https://avatars.mds.yandex.net/i?id=1a5a7bd103712e5f4a42c930d0015c20_l-5233063-images-thumbs&n=13"],
           nameEn:"Glock 17 Magazine", nameRu:"Магазин Glock 17", nameEs:"Cargador Glock 17", nameDe:"Glock 17 Magazin", nameFr:"Chargeur Glock 17",
           shortEn:"17 rounds, original", shortRu:"17 патронов, оригинальный", shortEs:"17 rondas, original", shortDe:"17 Schuss, original", shortFr:"17 coups, original",
           fullEn:"Original factory magazine for Glock 17. 17-round capacity, 9x19 mm caliber. Steel body with polymer coating, reliable feeding. Compatible with all Glock 17 models.",
@@ -847,7 +920,10 @@
           fullEs:"Cargador original de fábrica para Glock 17. Capacidad de 17 rondas, calibre 9x19 mm. Cuerpo de acero con revestimiento de polímero, alimentación fiable. Compatible con todos los modelos Glock 17.",
           fullDe:"Originales Werksmagazin für Glock 17. 17-Schuss-Kapazität, Kaliber 9x19 mm. Stahlkörper mit Polymerbeschichtung, zuverlässige Zuführung. Kompatibel mit allen Glock 17-Modellen.",
           fullFr:"Chargeur d'usine original pour Glock 17. Capacité de 17 coups, calibre 9x19 mm. Corps en acier avec revêtement polymère, alimentation fiable. Compatible avec tous les modèles Glock 17." },
-        { id:26, category:"Accessories", subcategory:"Magazines", marketPrice:28, images:["https://kalashnikov.ru/wp-content/uploads/2018/05/ak74-magazine.jpg"],
+        
+        // 26. AK-74 Magazine
+        { id:26, category:"Accessories", subcategory:"Magazines", marketPrice:28,
+          images:["https://www.365-plus.com/productimg/acu-ak-74-magazine-5-45x39mm-30-rds-gen-3-image.jpg?v=1734333506"],
           nameEn:"AK-74 Magazine", nameRu:"Магазин АК-74", nameEs:"Cargador AK-74", nameDe:"AK-74 Magazin", nameFr:"Chargeur AK-74",
           shortEn:"30 rounds, polymer", shortRu:"30 патронов, полимерный", shortEs:"30 rondas, polímero", shortDe:"30 Schuss, Polymer", shortFr:"30 coups, polymère",
           fullEn:"High-quality polymer magazine for AK-74 rifles. 30-round capacity, 5.45x39 mm caliber. Reinforced spring, reliable feeding in all conditions. Compatible with all AK-74 variants.",
@@ -855,7 +931,10 @@
           fullEs:"Cargador de polímero de alta calidad para rifles AK-74. Capacidad de 30 rondas, calibre 5.45x39 mm. Resorte reforzado, alimentación fiable en todas las condiciones. Compatible con todas las variantes AK-74.",
           fullDe:"Hochwertiges Polymermagazin für AK-74-Gewehre. 30-Schuss-Kapazität, Kaliber 5.45x39 mm. Verstärkte Feder, zuverlässige Zuführung unter allen Bedingungen. Kompatibel mit allen AK-74-Varianten.",
           fullFr:"Chargeur en polymère de haute qualité pour fusils AK-74. Capacité de 30 coups, calibre 5.45x39 mm. Ressort renforcé, alimentation fiable dans toutes les conditions. Compatible avec toutes les variantes AK-74." },
-        { id:27, category:"Accessories", subcategory:"Magazines", marketPrice:35, images:["https://www.magpul.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/m/pmag30_black_1.jpg"],
+        
+        // 27. PMAG 30 AR-15
+        { id:27, category:"Accessories", subcategory:"Magazines", marketPrice:35,
+          images:["https://custom-guns.ru/12138-large_default/magazin-pmag-30-gen-m3-na-30-patronov-kal-556-223-dlya-ar15-m4-m16-sa-80.jpg"],
           nameEn:"PMAG 30 AR-15", nameRu:"PMAG 30 AR-15", nameEs:"PMAG 30 AR-15", nameDe:"PMAG 30 AR-15", nameFr:"PMAG 30 AR-15",
           shortEn:"30 rounds, polymer, window", shortRu:"30 патронов, полимерный, окно", shortEs:"30 rondas, polímero, ventana", shortDe:"30 Schuss, Polymer, Fenster", shortFr:"30 coups, polymère, fenêtre",
           fullEn:"The Magpul PMAG 30 is the industry standard for AR-15 magazines. 30-round capacity, impact-resistant polymer, transparent window for round count. Anti-tilt follower. Compatible with all M4/AR-15 platforms.",
@@ -863,7 +942,10 @@
           fullEs:"El Magpul PMAG 30 es el estándar de la industria para cargadores AR-15. Capacidad de 30 rondas, polímero resistente a impactos, ventana transparente para contar rondas. Seguidor anti-inclinación. Compatible con todas las plataformas M4/AR-15.",
           fullDe:"Das Magpul PMAG 30 ist der Industriestandard für AR-15-Magazine. 30-Schuss-Kapazität, schlagfestes Polymer, transparentes Fenster zur Schusszählung. Anti-Kipp-Folger. Kompatibel mit allen M4/AR-15-Plattformen.",
           fullFr:"Le Magpul PMAG 30 est la référence de l'industrie pour les chargeurs AR-15. Capacité de 30 coups, polymère résistant aux chocs, fenêtre transparente pour le comptage des coups. Poussoir anti-inclinaison. Compatible avec toutes les plates-formes M4/AR-15." },
-        { id:28, category:"Accessories", subcategory:"Magazines", marketPrice:55, images:["https://www.hkparts.net/shop/pc/catalog/HK416-magazine_1.jpg"],
+        
+        // 28. HK416 Magazine
+        { id:28, category:"Accessories", subcategory:"Magazines", marketPrice:55,
+          images:["https://avatars.mds.yandex.net/i?id=8eec3a822c1484ad290dc262e04f2d20_sr-4688861-images-thumbs&n=13"],
           nameEn:"HK416 Magazine", nameRu:"Магазин HK416", nameEs:"Cargador HK416", nameDe:"HK416 Magazin", nameFr:"Chargeur HK416",
           shortEn:"30 rounds, steel", shortRu:"30 патронов, стальной", shortEs:"30 rondas, acero", shortDe:"30 Schuss, Stahl", shortFr:"30 coups, acier",
           fullEn:"Original factory magazine for HK416. 30-round capacity, 5.56x45 mm caliber. Steel construction, anti-tilt follower. Premium quality for premium rifles.",
@@ -871,7 +953,10 @@
           fullEs:"Cargador original de fábrica para HK416. Capacidad de 30 rondas, calibre 5.56x45 mm. Construcción de acero, seguidor anti-inclinación. Calidad premium para rifles premium.",
           fullDe:"Originales Werksmagazin für HK416. 30-Schuss-Kapazität, Kaliber 5.56x45 mm. Stahlkonstruktion, Anti-Kipp-Folger. Premium-Qualität für Premium-Gewehre.",
           fullFr:"Chargeur d'usine original pour HK416. Capacité de 30 coups, calibre 5.56x45 mm. Construction en acier, poussoir anti-inclinaison. Qualité premium pour fusils premium." },
-        { id:29, category:"Accessories", subcategory:"Body Armor", marketPrice:550, images:["https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/6B45_body_armor.jpg/800px-6B45_body_armor.jpg"],
+        
+        // 29. 6B45 Body Armor
+        { id:29, category:"Accessories", subcategory:"Body Armor", marketPrice:550,
+          images:["https://i.ebayimg.com/images/g/3SQAAOSwMwBidPEi/s-l400.jpg"],
           nameEn:"6B45 Body Armor", nameRu:"Бронежилет 6Б45", nameEs:"Chaleco 6B45", nameDe:"6B45 Körperpanzerung", nameFr:"Gilet 6B45",
           shortEn:"Level 3 protection, tactical", shortRu:"3-й класс защиты, тактический", shortEs:"Protección nivel 3, táctico", shortDe:"Schutzstufe 3, taktisch", shortFr:"Protection niveau 3, tactique",
           fullEn:"The 6B45 is a military-grade body armor system. Level 3 protection (GOST), Kevlar inserts, quick-release system. Weight 8.5 kg, olive color. Provides protection for vital areas.",
@@ -879,7 +964,10 @@
           fullEs:"El 6B45 es un sistema de chaleco antibalas de grado militar. Protección nivel 3 (GOST), inserciones de Kevlar, sistema de liberación rápida. Peso 8.5 kg, color oliva. Proporciona protección para áreas vitales.",
           fullDe:"Die 6B45 ist ein militärisches Körperpanzerungssystem. Schutzstufe 3 (GOST), Kevlar-Einsätze, Schnelllösesystem. Gewicht 8.5 kg, olivfarben. Bietet Schutz für lebenswichtige Bereiche.",
           fullFr:"Le 6B45 est un système de gilet pare-balles de qualité militaire. Protection niveau 3 (GOST), inserts en Kevlar, système de dégagement rapide. Poids 8.5 kg, couleur olive. Fournit une protection pour les zones vitales." },
-        { id:30, category:"Accessories", subcategory:"Body Armor", marketPrice:390, images:["https://www.511tactical.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/8/58180_01_1.jpg"],
+        
+        // 30. TacTec Plate Carrier
+        { id:30, category:"Accessories", subcategory:"Body Armor", marketPrice:390,
+          images:["https://img.alicdn.com/imgextra/i3/405534025/TB2EULMCNGYBuNjy0FnXXX5lpXa_!!405534025.jpg"],
           nameEn:"TacTec Plate Carrier", nameRu:"TacTec Plate Carrier", nameEs:"Portaplacas TacTec", nameDe:"TacTec Plattenhalter", nameFr:"Porte-plaques TacTec",
           shortEn:"Lightweight, concealed carry", shortRu:"Лёгкий, для скрытого ношения", shortEs:"Ligero, portación oculta", shortDe:"Leicht, verdecktes Tragen", shortFr:"Léger, port dissimulé",
           fullEn:"The 5.11 TacTec Plate Carrier is a lightweight tactical plate carrier. Cordura nylon construction, adjustable fit, accepts armor plates, MOLLE webbing for attachments. Perfect for concealed carry and tactical use.",
@@ -887,7 +975,10 @@
           fullEs:"El Portaplacas 5.11 TacTec es un portaplacas táctico ligero. Construcción de nailon Cordura, ajuste regulable, acepta placas de blindaje, correas MOLLE para accesorios. Perfecto para portación oculta y uso táctico.",
           fullDe:"Der 5.11 TacTec Plattenhalter ist ein leichter taktischer Plattenhalter. Cordura-Nylon-Konstruktion, verstellbare Passform, nimmt Panzerplatten auf, MOLLE-Gurte für Zubehör. Perfekt für verdecktes Tragen und taktischen Einsatz.",
           fullFr:"Le Porte-plaques 5.11 TacTec est un porte-plaques tactique léger. Construction en nylon Cordura, ajustement réglable, accepte les plaques de blindage, sangles MOLLE pour accessoires. Parfait pour le port dissimulé et l'utilisation tactique." },
-        { id:31, category:"Accessories", subcategory:"Body Armor", marketPrice:280, images:["https://www.ar500armor.com/media/catalog/product/a/r/ar500-plates_1.jpg"],
+        
+        // 31. AR500 Armor Plates
+        { id:31, category:"Accessories", subcategory:"Body Armor", marketPrice:280,
+          images:["https://i.pinimg.com/736x/23/b9/64/23b9643de6d240924b8e40abc78e850e.jpg"],
           nameEn:"AR500 Armor Plates", nameRu:"AR500 Armor Plates", nameEs:"Placas AR500", nameDe:"AR500 Panzerplatten", nameFr:"Plaques AR500",
           shortEn:"Level III+ steel plates", shortRu:"Стальные пластины Level III+", shortEs:"Placas de acero Nivel III+", shortDe:"Stahlplatten Level III+", shortFr:"Plaques en acier Niveau III+",
           fullEn:"AR500 steel armor plates provide Level III+ protection. Two plates, multi-hit capability, anti-spall coating, 7.5 lbs each. NIJ certified protection against rifle rounds.",
@@ -895,7 +986,10 @@
           fullEs:"Las placas de acero AR500 brindan protección Nivel III+. Dos placas, capacidad de múltiples impactos, revestimiento anti-astillas, 7.5 libras cada una. Protección certificada por NIJ contra rondas de rifle.",
           fullDe:"AR500-Stahlpanzerplatten bieten Schutz der Stufe III+. Zwei Platten, Mehrfachtrefferfähigkeit, Splitterbeschichtung, 7.5 lbs pro Stück. NIJ-zertifizierter Schutz gegen Gewehrgeschosse.",
           fullFr:"Les plaques d'acier AR500 offrent une protection de niveau III+. Deux plaques, capacité multi-impact, revêtement anti-éclats, 7.5 lbs chacune. Protection certifiée NIJ contre les balles de fusil." },
-        { id:32, category:"Accessories", subcategory:"Gear", marketPrice:55, images:["https://www.511tactical.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/9/59501_01_1.jpg"],
+        
+        // 32. Tactical Belt
+        { id:32, category:"Accessories", subcategory:"Gear", marketPrice:55,
+          images:["https://i.pinimg.com/originals/9c/5a/d0/9c5ad059bb2667e09eb863c679d8b88c.jpg"],
           nameEn:"Tactical Belt", nameRu:"Тактический пояс", nameEs:"Cinturón táctico", nameDe:"Taktischer Gürtel", nameFr:"Ceinture tactique",
           shortEn:"MOLLE, adjustable, khaki", shortRu:"MOLLE, регулируемый, хаки", shortEs:"MOLLE, ajustable, caqui", shortDe:"MOLLE, verstellbar, khaki", shortFr:"MOLLE, réglable, kaki",
           fullEn:"Heavy-duty tactical belt with MOLLE system. Reinforced webbing, metal buckle. Width 5 cm, length adjustable up to 120 cm. Perfect for attaching pouches, holsters, and other tactical gear.",
@@ -903,7 +997,10 @@
           fullEs:"Cinturón táctico de servicio pesado con sistema MOLLE. Correa reforzada, hebilla de metal. Ancho 5 cm, longitud ajustable hasta 120 cm. Perfecto para sujetar bolsas, fundas y otros equipos tácticos.",
           fullDe:"Hochbelastbarer taktischer Gürtel mit MOLLE-System. Verstärktes Gurtband, Metallschnalle. Breite 5 cm, Länge bis 120 cm verstellbar. Perfekt zur Befestigung von Taschen, Holstern und anderer taktischer Ausrüstung.",
           fullFr:"Ceinture tactique robuste avec système MOLLE. Sangle renforcée, boucle métallique. Largeur 5 cm, longueur réglable jusqu'à 120 cm. Parfait pour fixer des pochettes, étuis et autres équipements tactiques." },
-        { id:33, category:"Accessories", subcategory:"Gear", marketPrice:32, images:["https://www.511tactical.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/5/8/58007_01_1.jpg"],
+        
+        // 33. Magazine Pouch
+        { id:33, category:"Accessories", subcategory:"Gear", marketPrice:32,
+          images:["https://www.kolchuga.ru/upload/resize_cache/iblock/ef0/400_300_1/8iewz00smtygfh2g4ln085mwgl6uxxll.jpg"],
           nameEn:"Magazine Pouch", nameRu:"Подсумок для магазинов", nameEs:"Funda para cargadores", nameDe:"Magazintasche", nameFr:"Poche à chargeurs",
           shortEn:"MOLLE, 2 compartments, khaki", shortRu:"MOLLE, 2 отделения, хаки", shortEs:"MOLLE, 2 compartimentos, caqui", shortDe:"MOLLE, 2 Fächer, khaki", shortFr:"MOLLE, 2 compartiments, kaki",
           fullEn:"Tactical magazine pouch for two magazines. MOLLE attachment system, adjustable flaps for secure retention, quick access design. Color: khaki. Fits standard AR-15/AK-47 magazines.",
@@ -911,7 +1008,10 @@
           fullEs:"Funda táctica para dos cargadores. Sistema de fijación MOLLE, solapas ajustables para retención segura, diseño de acceso rápido. Color: caqui. Se adapta a cargadores estándar AR-15/AK-47.",
           fullDe:"Taktische Magazintasche für zwei Magazine. MOLLE-Befestigungssystem, verstellbare Klappen für sicheren Halt, Design für schnellen Zugriff. Farbe: khaki. Passt für Standard-AR-15/AK-47-Magazine.",
           fullFr:"Poche tactique pour deux chargeurs. Système de fixation MOLLE, rabats réglables pour une retenue sécurisée, conception à accès rapide. Couleur: kaki. Convient aux chargeurs standard AR-15/AK-47." },
-        { id:34, category:"Accessories", subcategory:"Gear", marketPrice:38, images:["https://www.condor.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/m/a/map-001_1.jpg"],
+        
+        // 34. Tactical Dump Pouch
+        { id:34, category:"Accessories", subcategory:"Gear", marketPrice:38,
+          images:["https://i.pinimg.com/736x/a8/2c/6c/a82c6ce6e7b029697674b978e8d77a8a.jpg"],
           nameEn:"Tactical Dump Pouch", nameRu:"Тактическая сумка", nameEs:"Bolsa táctica", nameDe:"Taktische Dump-Tasche", nameFr:"Poche tactique",
           shortEn:"Collapsible utility pouch", shortRu:"Складная универсальная сумка", shortEs:"Bolsa utilitaria plegable", shortDe:"Zusammenklappbare Utensilientasche", shortFr:"Poche utilitaire pliable",
           fullEn:"Large capacity collapsible dump pouch for empty magazines and gear. MOLLE attachment, quick deployment, elastic retention cord. Perfect for range use and tactical operations.",
@@ -919,7 +1019,10 @@
           fullEs:"Bolsa de descarga plegable de gran capacidad para cargadores vacíos y equipo. Fijación MOLLE, despliegue rápido, cordón elástico de retención. Perfecto para uso en campo de tiro y operaciones tácticas.",
           fullDe:"Große zusammenklappbare Dump-Tasche für leere Magazine und Ausrüstung. MOLLE-Befestigung, schneller Einsatz, elastisches Halteseil. Perfekt für den Einsatz auf dem Schießstand und taktische Operationen.",
           fullFr:"Grande poche de déchargement pliable pour chargeurs vides et équipement. Fixation MOLLE, déploiement rapide, cordon élastique de retenue. Parfait pour une utilisation sur le terrain de tir et les opérations tactiques." },
-        { id:35, category:"Accessories", subcategory:"Gear", marketPrice:45, images:["https://www.wileyx.com/media/catalog/product/w/x/wx-valor_1.jpg"],
+        
+        // 35. Shooting Glasses
+        { id:35, category:"Accessories", subcategory:"Gear", marketPrice:45,
+          images:["https://img-edg.joomcdn.net/876aea4ddb053be4fb6c7059796e7ca3f66690ca_original.jpeg"],
           nameEn:"Shooting Glasses", nameRu:"Защитные очки", nameEs:"Gafas de tiro", nameDe:"Schutzbrille", nameFr:"Lunettes de tir",
           shortEn:"Impact-resistant protective eyewear", shortRu:"Ударопрочные защитные очки", shortEs:"Gafas protectoras resistentes a impactos", shortDe:"Schlagfeste Schutzbrille", shortFr:"Lunettes de protection résistantes aux chocs",
           fullEn:"Professional shooting glasses with ANSI Z87.1 rating. UV protection, interchangeable lenses (clear, yellow, smoke), rubberized temples for secure fit. Essential for range safety.",
@@ -1012,7 +1115,6 @@
         if(e) e.quantity += quantity;
         else cart.push({id:p.id,name:p.name,price:p.marketPrice,img:p.images[0],quantity:quantity});
         saveCart();
-        // Уведомление убрано
     }
     function sendCartToTelegram() { if(!cart.length) { alert(getTranslation('emptyCart')); return; } let msg="🛒 *NEW ORDER*\n\n"; cart.forEach(i=>msg+=`• ${i.name} x${i.quantity} = ${formatPrice(i.price*(1-DISCOUNT)*i.quantity)}\n`); msg+=`\n📦 *TOTAL: ${formatPrice(cart.reduce((s,i)=>s+(i.price*(1-DISCOUNT)*i.quantity),0))}* (20% off)`; window.open(`https://t.me/${TG_USERNAME}?text=${encodeURIComponent(msg)}`,'_blank'); }
     function getProductById(id) { return products.find(p=>p.id===id); }
@@ -1130,8 +1232,7 @@
     // Инициализация
     updateUIForLanguage();
     
-    // robots.txt и sitemap.xml генерируются на серверной стороне, но для статического сайта добавим ссылки в head
-    // Добавляем мета-теги для Schema.org прямо в HTML через JavaScript (можно добавить статически, но для чистоты добавим)
+    // Schema.org структурированные данные
     const schemaScript = document.createElement('script');
     schemaScript.type = 'application/ld+json';
     schemaScript.textContent = JSON.stringify({
